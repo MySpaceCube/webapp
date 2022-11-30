@@ -17,9 +17,13 @@
     </div>
   </template>
   <script setup>
-  useMeta({
-    title: "Space-Cube - Serveur minecraft - Site en Maintenance",
-  });
+  export default {
+    head () {
+      return {
+        title: "Space-Cube - Serveur minecraft - Site en Maintenance",
+      }
+    }
+  }
   </script>
   <style>
   html,
