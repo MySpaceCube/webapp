@@ -1,0 +1,11 @@
+on: [pull_request]
+name: Lint PR
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm i
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx

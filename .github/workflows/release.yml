@@ -1,0 +1,39 @@
+name: 🏁 2 - Release
+
+# Run this workflow every time a new commit pushed to your repository
+on:
+  release:
+    types: # This configuration does not affect the page_build event above
+      - published
+jobs:
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      # Mandatory : fetch the current repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Download artifacts created in the previous job
+      - name: Download NPM artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: npm-build
+          path: dist
+
+      # Define the right Node.js environment
+      - name: Environment for deploy
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          protocol: ftp
+          port: 21
+          server-dir: ${{ secrets.ftp_path_beta }}
+          server: space-cube.xyz
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
