@@ -11,19 +11,35 @@ export default defineNuxtConfig({
       title: 'My App',
       meta: [
         // <meta name="description" content="My amazing site">
-        { name: 'description', content: 'My amazing site.' }
+        {name: 'description', content: 'My amazing site.'}
       ],
     }
   },
-  plugins: [
-  ],
+  plugins: [],
   router: {
-    extendRoutes (routes, resolve) {
-      routes.push({
-        name: 'login-redirect',
-        path: '/',
-        component: '~/pages/index.vue'
-      }
+    routeNameSplitter: '/',
+    extendRoutes(routes, resolve) {
+      routes.push(
+        {
+          name: "index",
+          path: "/",
+          component: "pages/index.vue",
+        },
+        {
+          name: 'users-profile',
+          path: ':id',
+          component: 'pages/users/_id/index.vue'
+        },
+        {
+          name: "maintenance",
+          path: "/maintenance",
+          component: "pages/maintenance.vue"
+        },
+        {
+          name: 'login-redirect',
+          path: '/',
+          component: '~/pages/index.vue'
+        }
       );
     }
   },

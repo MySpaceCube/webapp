@@ -2,8 +2,11 @@
   <header>
     <nav>
       <ul>
-        <li>home</li>
-        <li>truc</li>
+        <NuxtLink to="/">Home</NuxtLink>
+        &nbsp;
+        <NuxtLink to="users">Users</NuxtLink>
+        &nbsp;
+        <NuxtLink to="maintenance">Maintenance</NuxtLink>
       </ul>
     </nav>
   </header>
