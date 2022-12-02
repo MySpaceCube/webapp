@@ -16,7 +16,7 @@
       <p>&copy; 2022 - Tous droits réservés</p>
     </div>
   </template>
-  <script setup>
+  <script>
   export default {
     head () {
       return {
