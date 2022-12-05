@@ -37,8 +37,7 @@ export default {
     width: 100%;
     height: 100%;
   }
-  #__nuxt,
-  .maintenance {
+  #__nuxt .maintenance {
     padding: 1rem;
     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     height: 100%;
