@@ -75,6 +75,24 @@ export default ({
   },
   buildModules: [
     'nuxt-vite',
+<<<<<<< HEAD
     '@nuxt/image-edge'
   ]
 })
+=======
+    '@nuxt/image-edge',
+  ],
+  build: {
+    transpile: ['primevue']
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/settings/_colors.scss" as *;',
+        },
+      },
+    },
+  }
+});
+>>>>>>> 088d062 (fix: add therms of use and legals notice in about pages)
