@@ -11,6 +11,7 @@
     "precommit": "npm run lint"
   },
   "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "eslint": "^8.28.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
@@ -25,8 +26,11 @@
   "dependencies": {
     "axios": "^1.2.0",
     "node-sass": "^8.0.0",
+    "primeicons": "^6.0.1",
     "primevue": "^3.18.0",
+    "sass": "^1.56.2",
     "sass-loader": "^10.4.1",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.2.2",
+    "vuex": "^4.0.2"
   }
 }

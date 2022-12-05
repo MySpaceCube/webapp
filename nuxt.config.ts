@@ -28,12 +28,37 @@ export default defineNuxtConfig({
         {
           name: 'users-profile',
           path: ':id',
-          component: 'pages/users/_id/index.vue'
+          component: 'pages/users/[id].vue'
         },
         {
           name: "maintenance",
           path: "/maintenance",
           component: "pages/maintenance.vue"
+        },
+        {
+          name: "news",
+          path: "/news",
+          component: "pages/index.vue",
+        },
+        {
+          name: "feedbacks",
+          path: "/feedbacks",
+          component: "pages/index.vue",
+        },
+        {
+          name: "resources",
+          path: "/resources",
+          component: "pages/index.vue",
+        },
+        {
+          name: "server",
+          path: "/server",
+          component: "pages/index.vue",
+        },
+        {
+          name: "about",
+          path: "/about",
+          component: "pages/index.vue",
         },
         {
           name: 'login-redirect',
@@ -43,16 +68,11 @@ export default defineNuxtConfig({
       );
     }
   },
+  image: {
+    dir: 'img'
+  },
   buildModules: [
-    'nuxt-vite'
-  ],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/settings/_colors.scss" as *;',
-        },
-      },
-    },
-  }
+    'nuxt-vite',
+    '@nuxt/image-edge',
+  ]
 });
