@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const state = () => ({
   maintenance: false,
@@ -6,26 +6,26 @@ export const state = () => ({
 })
 
 export const getters = {
-  getMaintenance(state) {
+  getMaintenance (state) {
     return state.maintenance
   },
-  getApiVersion(state) {
+  getApiVersion (state) {
     return state.apiVersion
   }
 }
 
 export const mutations = {
-  setMaintenance(state, maintenance) {
+  setMaintenance (state, maintenance) {
     state.maintenance = maintenance
   }
 }
 
 export const actions = {
-  async fetchApiInfo({ state }) {
+  async fetchApiInfo ({ state }) {
     // TODO Fixme with var url
     axios.get('https://localhost:9080')
       .then((response) => {
-        console.log(response);
+        console.log(response)
 
         return response.data
       })

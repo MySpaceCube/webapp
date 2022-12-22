@@ -8,3 +8,6 @@ app.init: install
 install:
 	npm install
 	npm run dev
+
+lint:
+	npm run lintfix
