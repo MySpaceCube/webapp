@@ -6,9 +6,10 @@
 
 <script>
 export default {
+  name: 'HomePage',
   head () {
     return {
-      title: "Space-Cube | Texture Packs, Datapack, Guide & Serveur minecraft",
+      title: 'Space-Cube | Texture Packs, Datapack, Guide & Serveur minecraft'
     }
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <header>
     <nav>
-      <nuxt-img src="logo.png" loading="lazy" />
+      <NuxtLink to="/" class="logo">
+        <img src="../assets/img/logo.png"  alt="logo of spacecube" loading="lazy" height="40" width="40"/>
+      </NuxtLink>
       <ul>
         <div class="start">
           <li>
@@ -63,8 +65,8 @@
 
 <script>
 export default {
-  name: "AppHeader",
-  layout: "default"
+  name: 'AppHeader',
+  layout: 'default'
 }
 </script>
 
@@ -86,6 +88,9 @@ header nav {
   bottom: 1rem;
   border-radius: 10px;
   padding: 0;
+  .logo {
+    margin-top: 1rem;
+  }
   a span, a i {
     background: $cyan-gradient;
     -webkit-background-clip: text;
@@ -98,13 +103,14 @@ header nav {
     align-items: center;
     position: fixed;
     left: 1rem;
-    top: 4rem;
+    top: 5rem;
     bottom: 1rem;
     padding: 0;
     width: 72px;
     div.start {
       z-index: 2000;
       justify-content: start;
+      height: fit-content;
     }
     div.end {
       z-index: 1999;
@@ -126,7 +132,13 @@ header nav {
       font-size: 1.3rem;
     }
     a {
+      height: 55px;
       text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 6px;
       &.router-link-active,
       &.router-link-exact-active {
         &::after {
@@ -135,26 +147,22 @@ header nav {
           display: block;
           background: $pink-gradient;
           width: 4px;
-          height: 57px;
+          height: 65px;
           right: 0;
           border-radius: 20px;
         }
         background-color: $blue-dark;
-        height: 47.5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 6px;
         span {
           display: block;
+          opacity: 1;
           text-transform: uppercase;
         }
       }
       span {
+        display: block;
         flex-direction: column;
         padding-top: 5px;
-        display: none;
+        opacity: 0;
       }
     }
   }

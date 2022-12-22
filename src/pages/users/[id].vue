@@ -4,15 +4,14 @@
 
 <script>
 export default {
-  name: 'user-profile',
+  name: 'UserProfilePage',
   head () {
     console.log(this.$route)
     return {
-      title: "Space-Cube | Profile de " ,
+      title: 'Space-Cube | Profile de '
     }
   },
   data () {
-    user: this.$route.params.id
   }
 }
 </script>

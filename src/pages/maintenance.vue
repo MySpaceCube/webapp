@@ -16,15 +16,16 @@
       <p>&copy; 2022 - Tous droits réservés</p>
     </div>
   </template>
-  <script>
-  export default {
-    head () {
-      return {
-        title: "Space-Cube - Serveur minecraft - Site en Maintenance",
-      }
+<script>
+export default {
+  name: 'MaintenancePage',
+  head () {
+    return {
+      title: 'Space-Cube - Serveur minecraft - Site en Maintenance'
     }
   }
-  </script>
+}
+</script>
   <style>
   html,
   body {

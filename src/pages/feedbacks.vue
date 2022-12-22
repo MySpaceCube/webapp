@@ -1,0 +1,13 @@
+<template>
+  <h1>feedbacks</h1>
+</template>
+
+<script>
+export default {
+  name: 'FeedbacksPage'
+}
+</script>
+
+<style scoped>
+
+</style>
