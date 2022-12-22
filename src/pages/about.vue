@@ -1,14 +1,38 @@
 <template>
-  <section style="width: 100%">
+  <section>
     <TabView>
       <TabPanel>
+      <template #header>
+        <i class="pi pi-calendar"></i>
+        <span>About Us</span>
+      </template>
+        A propos de nous
+      </TabPanel>
+      <TabPanel>
         <template #header>
-          <i class="pi pi-calendar"></i>
-          <span>About Us</span>
+          <i class="pi pi-user"></i>
+          <span>Mentions Legals</span>
+        </template>
+        <h2>Mentions légales</h2>
+        <h3>Hébergeur du site</h3>
+        <br>
+        <NuxtLink to="/">https://www.space-cube.xyz</NuxtLink> est édité par un particulier agissant à titre non professionnel.<br>
+        Ce site est hébergé à Strasbourg dans un datacenter de la société OVH SAS :
+        <b>
+          OVH <br>
+          SAS au capital de 10 000 000 € RCS Roubaix – Tourcoing 424 761 419 00045 <br>
+          Code APE 6202A - N° TVA : FR 22 424 761 419 <br>
+          Siège social : 2 rue Kellermann 59100 Roubaix - France.
+        </b>
+      </TabPanel>
+      <TabPanel>
+        <template #header>
+          <i class="pi pi-user"></i>
+          <span>Condition General d'Utilisation</span>
         </template>
         <h2>Conditions Générales d'utilisations (CGU)</h2>
         <small>
-          Dernière mise à jour le 03 Septembre 2020
+          Dernière mise à jour le 26 Décembre 2022
         </small>
         <hr>
         <p>
@@ -135,32 +159,7 @@
           coordonnées inscrites dans <a href="{{ path('legal_notice') }}">les mentions légales</a>.
         </p>
       </TabPanel>
-      <TabPanel>
-        <template #header>
-          <i class="pi pi-user"></i>
-          <span>Mentions Legals</span>
-        </template>
-        <h2>Mentions légales</h2>
-        <h3>Hébergeur du site</h3>
-        <br>
-        <NuxtLink to="/">https://www.space-cube.xyz</NuxtLink> est édité par un particulier agissant à titre non professionnel.<br>
-        Ce site est hébergé à Strasbourg dans un datacenter de la société OVH SAS :
-        <b>
-          OVH <br>
-          SAS au capital de 10 000 000 € RCS Roubaix – Tourcoing 424 761 419 00045 <br>
-          Code APE 6202A - N° TVA : FR 22 424 761 419 <br>
-          Siège social : 2 rue Kellermann 59100 Roubaix - France.
-        </b>
-      </TabPanel>
-      <TabPanel>
-        <template #header>
-          <i class="pi pi-user"></i>
-          <span>Condition General d'Utilisation</span>
-        </template>
-        Content II
-      </TabPanel>
     </TabView>
-
   </section>
 </template>
 <script>
@@ -168,6 +167,7 @@ import TabView from 'primevue/tabview'
 import TabPanel from 'primevue/tabpanel'
 
 export default {
+  name: 'AboutPage',
   components: { TabView, TabPanel },
   head () {
     return {
@@ -176,3 +176,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "../assets/global.scss";
+
+.p-tabview {
+  margin-top: 0.6rem;
+}
+</style>

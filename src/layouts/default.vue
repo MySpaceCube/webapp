@@ -14,15 +14,31 @@ import 'primeicons/primeicons.css'
 @import "../assets/global";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 body {
+  color: white;
   font-family: poppins, sans-serif;
   background-color: $background;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: Inter, sans-serif;
 }
+p {
+  line-height: 1.5rem;
+}
+a {
+  color: #000;
+  text-decoration: none;
+  background-image: $pink-gradient;
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 100%;
+  transition: background-size 0.25s ease-in;
+}
 .container {
-  width: calc(90% - 2rem);
+  width: calc(80% - 2rem);
   position: absolute;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   left: 10%;
   padding-left: 1rem;
   padding-right: 1rem;

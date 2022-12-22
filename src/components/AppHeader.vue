@@ -90,6 +90,7 @@ header nav {
   padding: 0;
   .logo {
     margin-top: 1rem;
+    background: 0;
   }
   a span, a i {
     background: $cyan-gradient;
@@ -132,6 +133,7 @@ header nav {
       font-size: 1.3rem;
     }
     a {
+      background: 0;
       height: 55px;
       text-decoration: none;
       display: flex;
@@ -151,7 +153,7 @@ header nav {
           right: 0;
           border-radius: 20px;
         }
-        background-color: $blue-dark;
+        background-color: $blue-dark !important;
         span {
           display: block;
           opacity: 1;
