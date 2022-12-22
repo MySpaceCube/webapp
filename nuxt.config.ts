@@ -18,7 +18,7 @@ export default ({
     extendRoutes (routes) {
       routes.push(
         {
-          name: 'HomePage',
+          name: 'index',
           path: '/',
           component: 'pages/index.vue'
         },
@@ -75,24 +75,14 @@ export default ({
   },
   buildModules: [
     'nuxt-vite',
-<<<<<<< HEAD
     '@nuxt/image-edge'
-  ]
-})
-=======
-    '@nuxt/image-edge',
+  ],
+  css: [
+    'primevue/resources/themes/saga-blue/theme.css',
+    'primevue/resources/primevue.css',
+    'primeicons/primeicons.css'
   ],
   build: {
     transpile: ['primevue']
-  },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/settings/_colors.scss" as *;',
-        },
-      },
-    },
   }
-});
->>>>>>> 088d062 (fix: add therms of use and legals notice in about pages)
+})
