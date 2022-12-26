@@ -1,0 +1,36 @@
+.p-input-icon-left {
+    background: linear-gradient(0deg, rgb(33, 37, 84), rgba(81, 90, 180, 0));
+    border-radius: 16px !important;
+    margin-top: 8px;
+    padding-left: 3px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    width: fit-content;
+    height: 60px;
+    i:first-of-type {
+        left: 1.5rem;
+        z-index: 1000;
+    }
+    .p-inputtext {
+        padding-left: 3.5rem;
+    }
+    &.search {
+        width: 453px;
+    }
+}
+
+input, .input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem;
+    height: 56px;
+    border: 0px !important;
+
+    background: linear-gradient(162.34deg, #161A42 22.61%, #0B0D21 118.29%) !important;
+    border-radius: 16px !important;
+    .search {
+        width: 449px;
+    }
+}

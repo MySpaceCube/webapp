@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <aside>
     <nav>
       <NuxtLink to="/" class="logo">
-        <img src="../assets/img/logo.png"  alt="logo of spacecube" loading="lazy" height="40" width="40"/>
+        <nuxt-img src="logo.png" alt="logo of spacecube" loading="lazy" height="40" width="40" />
       </NuxtLink>
       <ul>
         <div class="start">
@@ -44,37 +44,22 @@
             </NuxtLink>
           </li>
         </div>
-        <div class="end">
-          <li>
-            <NuxtLink to="login">
-              <i class="pi pi-sign-in"></i>
-              <span>Login</span>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="register">
-              <i class="pi pi-user-plus"></i>
-              <span>Register</span>
-            </NuxtLink>
-          </li>
-        </div>
       </ul>
     </nav>
-  </header>
+  </aside>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader',
+  name: 'AppSidebar',
   layout: 'default'
 }
 </script>
-
 <style lang="scss">
-@import '../assets/global.scss';
+@import '../assets/scss/global.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-header nav {
+aside nav {
   font-family: Inter, sans-serif;
   display: flex;
   flex-direction: column;
@@ -90,7 +75,7 @@ header nav {
   padding: 0;
   .logo {
     margin-top: 1rem;
-    background: 0;
+    background: none;
   }
   a span, a i {
     background: $cyan-gradient;
@@ -133,7 +118,7 @@ header nav {
       font-size: 1.3rem;
     }
     a {
-      background: 0;
+      background: none;
       height: 55px;
       text-decoration: none;
       display: flex;
@@ -153,7 +138,7 @@ header nav {
           right: 0;
           border-radius: 20px;
         }
-        background-color: $blue-dark !important;
+        background-color: $blue-dark;
         span {
           display: block;
           opacity: 1;

@@ -1,6 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default ({
-  srcDir: './src',
+  srcDir: '.',
   target: 'static',
   app: {
     head: {
@@ -11,6 +11,10 @@ export default ({
         { name: 'description', content: 'My amazing site.' }
       ]
     }
+  },
+  components: {
+    global: true,
+    dirs: ['~/components']
   },
   router: {
     routeNameSplitter: '/',

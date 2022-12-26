@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <AppSidebar />
     <AppHeader />
     <slot />
     <AppFooter />
@@ -11,7 +12,7 @@ import 'primeicons/primeicons.css'
 </script>
 
 <style lang="scss">
-@import "../assets/global";
+@import "../assets/scss/global";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 body {
   color: white;
