@@ -1,0 +1,25 @@
+.p-input-icon-left {
+    background: linear-gradient(0deg, rgb(33, 37, 84), rgba(81, 90, 180, 0));
+    width: 453px;
+    height: 60px;
+    border-radius: 16px !important;
+    margin-top: 8px;
+    padding-left: 2px;
+    padding-top: 2px;
+    i:first-of-type {
+        left: 1.5rem;
+    }
+    .p-inputtext {
+        padding-left: 3.5rem;
+    }
+}
+
+button {
+    position: relative;
+    width: 449px;
+    height: 56px;
+    border: 0px !important;
+
+    background: linear-gradient(162.34deg, #161A42 22.61%, #0B0D21 118.29%) !important;
+    border-radius: 16px !important;
+}

@@ -177,7 +177,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "../assets/global.scss";
+@import "../assets/scss/global.scss";
 
 .p-tabview {
   margin-top: 0.6rem;
