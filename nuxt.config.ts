@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default ({
   srcDir: './src',
@@ -75,6 +77,21 @@ export default ({
   },
   buildModules: [
     'nuxt-vite',
-    '@nuxt/image-edge'
-  ]
+    '@nuxt/image-edge',
+    '@nuxtjs/sentry',
+    '@nuxtjs/dotenv',
+  ],
+  sentry: {
+    dsn: process.env.SENTRY_DSN, // Enter your project's DSN.
+    // Additional Module Options.
+    config: {
+      // Optional Sentry SDK configuration.
+      // Those options are shared by both the Browser and the Server instances.
+      // Browser-only and Server-only options should go
+      // into `clientConfig` and `serverConfig` objects respectively.
+    },
+    dotenv: {
+      /* module options */
+    }
+  }
 })
