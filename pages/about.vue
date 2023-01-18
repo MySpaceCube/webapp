@@ -163,18 +163,19 @@
   </section>
 </template>
 <script>
-import TabView from 'primevue/tabview'
-import TabPanel from 'primevue/tabpanel'
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 
 export default {
   name: 'AboutPage',
   components: { TabView, TabPanel },
+  layout: 'default',
   head () {
     return {
       title: 'Space-Cube - About us'
-    }
+    };
   }
-}
+};
 </script>
 <style lang="scss">
 @import "../assets/scss/global.scss";

@@ -22,9 +22,9 @@ export default {
   head () {
     return {
       title: 'Space-Cube - Serveur minecraft - Site en Maintenance'
-    }
+    };
   }
-}
+};
 </script>
   <style>
   </style>

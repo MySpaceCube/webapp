@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <AppSidebar />
     <AppHeader />
+    <AppSidebar />
     <slot />
     <AppFooter />
   </div>
 </template>
 
 <script>
-import 'primeicons/primeicons.css'
+import 'primeicons/primeicons.css';
 </script>
 
 <style lang="scss">

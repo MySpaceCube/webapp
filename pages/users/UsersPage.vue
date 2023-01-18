@@ -6,9 +6,9 @@
 export default {
   name: 'UsersPage',
   key (route) {
-    return route.fullPath
+    return route.fullPath;
   }
-}
+};
 </script>
 
 <style scoped>
