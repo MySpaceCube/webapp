@@ -10,4 +10,7 @@ install:
 	npm run dev
 
 lint:
+	npm run lint
+
+lint.fix:
 	npm run lintfix

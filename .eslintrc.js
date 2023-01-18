@@ -20,7 +20,6 @@ module.exports = {
   rules: {
     eqeqeq: 2,
     quotes: ['error', 'single'],
-    'no-extra-semi': 2,
     'no-useless-constructor': 2,
     'no-useless-concat': 2,
     'no-useless-computed-key': 2,
@@ -30,6 +29,7 @@ module.exports = {
     'block-spacing': 2,
     indent: ['error', 2],
     'linebreak-style': 2,
-    semi: 1
+    semi: [2, 'always'],
+    '@typescript-eslint/semi': 'warn'
   }
-}
+};

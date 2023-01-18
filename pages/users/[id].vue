@@ -6,14 +6,14 @@
 export default {
   name: 'UserProfilePage',
   head () {
-    console.log(this.$route)
+    console.log(this.$route);
     return {
       title: 'Space-Cube | Profile de '
-    }
+    };
   },
   data () {
   }
-}
+};
 </script>
 
 <style scoped>

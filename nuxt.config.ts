@@ -71,7 +71,7 @@ export default ({
           path: '/register',
           component: '~/pages/register.vue'
         }
-      )
+      );
     }
   },
   image: {
@@ -89,4 +89,4 @@ export default ({
   build: {
     transpile: ['primevue']
   }
-})
+});

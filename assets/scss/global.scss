@@ -1,2 +1,36 @@
 @import "./settings/Settings";
 @import "./components/Components";
+
+// UTILS
+
+.d-flex {
+    display: flex;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-start {
+    justify-content: start;
+}
+
+.align-items-start {
+    align-items: start;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.row {
+    flex-direction: row;
+}

@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'FeedbacksPage'
-}
+};
 </script>
 
 <style scoped>
