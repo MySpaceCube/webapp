@@ -13,32 +13,32 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="news">
+            <NuxtLink to="/news">
               <i class="pi pi-megaphone"></i>
               <span>News</span>
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="feedbacks">
+            <NuxtLink to="/feedbacks">
               <i class="pi pi-directions-alt"></i>
               <span>Feedbacks</span>
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="resources">
+            <NuxtLink to="/resources">
               <i class="pi pi-box"></i>
               <span>Resources</span>
             </NuxtLink>
           </li>
           <hr>
           <li>
-            <NuxtLink to="server">
+            <NuxtLink to="/server">
               <i class="pi pi-server"></i>
               <span>Server</span>
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="about">
+            <NuxtLink to="/about">
               <i class="pi pi-exclamation-circle"></i>
               <span>About</span>
             </NuxtLink>

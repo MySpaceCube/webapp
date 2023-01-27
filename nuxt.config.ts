@@ -2,6 +2,7 @@
 export default ({
   srcDir: '.',
   target: 'static',
+  ssr: false,
   app: {
     head: {
       charset: 'utf-16',
@@ -18,58 +19,83 @@ export default ({
   },
   router: {
     routeNameSplitter: '/',
+    trailingSlash: false,
     // @ts-expect-error
     extendRoutes (routes) {
       routes.push(
         {
-          name: 'index',
-          path: '/',
-          component: 'pages/index.vue'
+          name: 'HomePage',
+          path: '',
+          component: 'pages/index.vue',
+          absolute: true
         },
         {
           name: 'users-profile',
           path: ':id',
-          component: 'pages/users/[id].vue'
+          component: 'pages/users/[id].vue',
+          absolute: true
         },
         {
           name: 'maintenance',
           path: '/maintenance',
-          component: 'pages/maintenance.vue'
+          component: 'pages/maintenance.vue',
+          absolute: true
         },
         {
           name: 'news',
           path: '/news',
-          component: 'pages/news.vue'
+          component: 'pages/news.vue',
+          absolute: true
         },
         {
           name: 'feedbacks',
           path: '/feedbacks',
-          component: 'pages/feedbacks.vue'
+          component: 'pages/feedbacks.vue',
+          absolute: true
         },
         {
           name: 'resources',
           path: '/resources',
-          component: 'pages/resources.vue'
+          component: 'pages/resources.vue',
+          absolute: true
         },
         {
           name: 'server',
-          path: '/server',
-          component: 'pages/server.vue'
+          path: '/servers',
+          component: 'pages/server.vue',
+          absolute: true,
+          children: [
+            {
+              name: 'SpaceCube',
+              path: '/spacecube',
+              component: 'pages/servers/spacecube.vue',
+              absolute: true
+            },
+            {
+              name: 'PeepsLords',
+              path: '/peepslords',
+              component: 'pages/servers/peepslords.vue',
+              absolute: true
+            }
+          ]
         },
         {
           name: 'about',
           path: '/about',
-          component: 'pages/about.vue'
+          component: 'pages/about.vue',
+          absolute: true
         },
         {
           name: 'login',
           path: '/login',
-          component: '~/pages/login.vue'
+          component: 'pages/login.vue',
+          absolute: true
         },
         {
           name: 'register',
           path: '/register',
-          component: '~/pages/register.vue'
+          component: 'pages/register.vue',
+          absolute: true
         }
       );
     }
