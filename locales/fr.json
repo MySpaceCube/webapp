@@ -40,16 +40,6 @@
     "updatedBy": "Dernière modification par ",
     "invalidFormat": "Format invalide",
     "seeMore": "Voir plus ...",
-    "all": "Tous",
-    "page": {
-      "login": {
-        "connection": "Connexion",
-        "username": "Nom d'utilisateur",
-        "password": "Mot de passe",
-        "loading": "Connexion...",
-        "signin": "Se connecter",
-        "errorLogin": "Le nom ou le mot de passe est incorrect",
-        "errorGlobal": "Une erreur est survenue"
-      },
+    "all": "Tous"
   }
 }
