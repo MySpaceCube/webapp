@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default ({
   srcDir: '.',
@@ -7,9 +8,14 @@ export default ({
     head: {
       charset: 'utf-16',
       viewport: 'width=500, initial-scale=1',
-      title: 'My App',
+      title: 'Spacecube',
       meta: [
-        { name: 'description', content: 'My amazing site.' }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: ''
+        }
       ]
     }
   },
@@ -18,10 +24,15 @@ export default ({
     dirs: ['~/components']
   },
   router: {
+    middleware: 'i18n',
     routeNameSplitter: '/',
     trailingSlash: false,
     // @ts-expect-error
     extendRoutes (routes) {
+      for (const i in routes) {
+        const route = routes[i];
+        routes.push({ ...route, name: `lang-${route.name}`, path: `/:lang${route.path}` });
+      }
       routes.push(
         {
           name: 'HomePage',
@@ -100,6 +111,10 @@ export default ({
       );
     }
   },
+  plugins: [
+    { src: '~/plugins/global.js' },
+    { src: '~/plugins/i18n.js' }
+  ],
   image: {
     dir: 'public/img'
   },
