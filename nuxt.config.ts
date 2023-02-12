@@ -3,7 +3,7 @@
 export default ({
   srcDir: '.',
   target: 'static',
-  ssr: false,
+  ssr: true,
   app: {
     head: {
       charset: 'utf-16',
@@ -111,17 +111,30 @@ export default ({
       );
     }
   },
-  plugins: [
-    { src: '~/plugins/global.js' },
-    { src: '~/plugins/i18n.js' }
-  ],
   image: {
     dir: 'public/img'
   },
-  buildModules: [
-    'nuxt-vite',
+  modules: [
     '@nuxt/image-edge'
+    // '@nuxtjs/i18n'
   ],
+  buildModules: [
+    'nuxt-vite'
+  ],
+  // TODO: Remove comment in 3.2.1. See https://github.com/nuxt-modules/i18n/issues/85
+  // i18n: {
+  //   defaultLocale: 'en',
+  //   langDir: 'locales',
+  //   locales: [
+  //     { code: 'en', iso: 'en-EN', file: 'fr.json' },
+  //     { code: 'fr', iso: 'fr-FR', file: 'fr.json' }
+  //   ],
+  //   detectBrowserLanguage: {
+  //     useCookie: true,
+  //     cookieKey: 'i18n_redirected',
+  //     redirectOn: 'root' // recommended
+  //   }
+  // },
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.css',
