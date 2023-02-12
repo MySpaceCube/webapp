@@ -7,7 +7,7 @@ app.init: install
 
 install:
 	npm install
-	npm run dev
+	npm run dev -- -o
 
 lint:
 	npm run lint
