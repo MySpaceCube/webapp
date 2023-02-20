@@ -30,6 +30,7 @@ module.exports = {
     indent: ['error', 2],
     'linebreak-style': 2,
     semi: [2, 'always'],
-    '@typescript-eslint/semi': [2, 'always']
+    '@typescript-eslint/semi': [2, 'always'],
+    'no-undef': 0
   }
 };
