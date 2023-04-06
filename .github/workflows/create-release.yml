@@ -48,14 +48,5 @@ jobs:
           SSH_PORT: ${{ secrets.PORT }}
 
       - name: Check out the source
-        run: |
-          ssh staging
-          'export NVM_DIR=~/.nvm &&
-          source ~/.nvm/nvm.sh &&
-          nvm install 18 &&
-          nvm use 18 &&
-          cd /srv/webapp-beta &&
-          git fetch &&
-          git reset --hard origin/main &&
-          make install'
+        run: ssh staging 'export NVM_DIR=~/.nvm && source ~/.nvm/nvm.sh && nvm install 18 && nvm use 18 && cd /srv/webapp-beta && git fetch && git reset --hard origin/main && make install'
 
