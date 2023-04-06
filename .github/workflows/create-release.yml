@@ -54,7 +54,7 @@ jobs:
           source ~/.nvm/nvm.sh &&
           nvm install 18 &&
           nvm use 18 &&
-          cd /srv/beta &&
+          cd /srv/webapp-beta &&
           git fetch &&
           git reset --hard origin/main &&
           make install'
