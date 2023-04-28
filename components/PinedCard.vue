@@ -68,8 +68,14 @@ export default {
 };
 </script>
 <style lang="scss">
+.pined-card-section > * {
+  width: 49% !important;
+  &:first-child:nth-last-child(1) {
+    width: 100% !important;
+  }
+}
 .pined-card {
-  width: calc(50% - 30px);
+  width: calc(100% - 30px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

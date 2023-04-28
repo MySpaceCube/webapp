@@ -1,21 +1,20 @@
 <template>
   <h1>Profile page of {{ $route.params.id }}</h1>
+
+  {{ pending }}
+  {{ user }}
 </template>
 
-<script>
-export default {
-  name: 'UserProfilePage',
-  head () {
-    console.log(this.$route);
-    return {
-      title: 'Space-Cube | Profile de '
-    };
-  },
-  data () {
+<script setup>
+useHead({
+  title: 'Space-Cube | Feedbacks',
+  meta: [
+    { name: 'description', content: 'My amazing site.' }
+  ],
+  bodyAttrs: {
+    class: 'test'
   }
-};
+});
+const route = useRoute();
+const { pending, data: user } = await useLazyFetch(`http://localhost:9080/users/${route.params.id}`);
 </script>
-
-<style scoped>
-
-</style>

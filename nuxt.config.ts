@@ -61,7 +61,13 @@ export default ({
         {
           name: 'feedbacks',
           path: '/feedbacks',
-          component: 'pages/feedbacks.vue',
+          component: 'pages/feedbacks/index.vue',
+          absolute: true
+        },
+        {
+          name: 'feedbacks-infos',
+          path: '/feedbacks/:id',
+          component: 'pages/feedbacks/[id].vue',
           absolute: true
         },
         {
