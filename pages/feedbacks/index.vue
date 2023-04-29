@@ -25,7 +25,7 @@
         >
           <li>
             <NuxtLink :to="`/feedbacks/${feedback.id}`">{{ feedback.title }}</NuxtLink>
-            created by
+            {{ $t('global.createdBy') }}
             <NuxtLink :to="`/users/${feedback.author.username}`">{{ feedback.author.username }}</NuxtLink>
             at
           </li>

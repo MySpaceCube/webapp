@@ -5,6 +5,7 @@ export default ({
   target: 'static',
   ssr: true,
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: 'utf-16',
       viewport: 'width=500, initial-scale=1',
@@ -17,6 +18,12 @@ export default ({
           content: ''
         }
       ]
+    }
+  },
+  runtimeConfig: {
+    // see https://nuxt.com/modules/simple-sitemap
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.space-cube.xyz',
     }
   },
   components: {
@@ -121,26 +128,72 @@ export default ({
     dir: 'public/img'
   },
   modules: [
-    '@nuxt/image-edge'
-    // '@nuxtjs/i18n'
+    '@nuxt/image-edge',
+    '@nuxtjs/i18n',
+    '@nuxtjs/robots',
+    'nuxt-simple-sitemap',
+    '@nuxtjs/color-mode',
+    // '@nuxtjs/sentry' -> https://github.com/nuxt-community/sentry-module/issues/530
   ],
+  colorMode: {
+    // see https://color-mode.nuxtjs.org/
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
+  },
+  // Need https://github.com/nuxt-community/sentry-module/issues/530
+  // sentry: {
+  //   dsn: process.env.NUXT_SENTRY_DSN, // Enter your project's DSN.
+  //   publishRelease: {
+  //     authToken: process.env.NUXT_TOKEN_GITHUB,
+  //     org: 'SC-xyz',
+  //     project: 'webapp',
+  //     // Attach commits to the release (requires that the build triggered within a git repository).
+  //     setCommits: {
+  //       auto: true
+  //     }
+  //   },
+  //   environment: process.env.NUXT_ENV
+  // },
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: process.env.NUXT_ENV !== 'production'
+    }
+  },
   buildModules: [
     'nuxt-vite'
   ],
-  // TODO: Remove comment in 3.2.1. See https://github.com/nuxt-modules/i18n/issues/85
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   langDir: 'locales',
-  //   locales: [
-  //     { code: 'en', iso: 'en-EN', file: 'fr.json' },
-  //     { code: 'fr', iso: 'fr-FR', file: 'fr.json' }
-  //   ],
-  //   detectBrowserLanguage: {
-  //     useCookie: true,
-  //     cookieKey: 'i18n_redirected',
-  //     redirectOn: 'root' // recommended
-  //   }
-  // },
+  robots: {
+    // https://nuxt.com/modules/robots
+    /* module options */
+  },
+  nuxtIcon: {
+    // see: https://icones.js.org/ & https://nuxt.com/modules/icon
+    size: '24px', // default <Icon> size applied
+    class: 'icon', // default <Icon> class applied
+    aliases: {
+      'nuxt': 'logos:nuxt-icon',
+    }
+  },
+  i18n: {
+    defaultLocale: 'en',
+    langDir: 'locales',
+    locales: [
+      { code: 'en', iso: 'en-EN', file: 'en.json' },
+      { code: 'fr', iso: 'fr-FR', file: 'fr.json' }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root' // recommended
+    }
+  },
   css: [
     'primevue/resources/themes/saga-blue/theme.css',
     'primevue/resources/primevue.css',
