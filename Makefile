@@ -11,9 +11,8 @@ install-dev:
 
 install:
 	npm install
-	npm run generate
 	npm run build
-	pm2 start npm --name "webapp-beta" -- start
+	pm2 start npm --name "spacecube" -- start
 
 lint:
 	npm run lint
