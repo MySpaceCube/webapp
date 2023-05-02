@@ -3,7 +3,7 @@
     <h1>SpaceCube - Our server</h1>
     <section class="pined-card-section">
       <PinedCard
-        title="SpaceCube Hardcore"
+        title="SpaceCube"
         description="Tu vas manger tes grands morts"
         cta-label="play.space-cube.xyz"
         cta-path="/servers/spacecube"
@@ -21,6 +21,9 @@
         :is-icon-hidden="false"
         is-show-server-infos
       />
+    </section>
+    <section>
+      <TopContributors></TopContributors>
     </section>
   </div>
 </template>

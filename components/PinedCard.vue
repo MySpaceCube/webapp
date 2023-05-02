@@ -10,7 +10,7 @@
           <p>{{ description }}</p>
         </div>
         <div v-if="isShowServerInfos" class="pined-card-col-server_infos d-flex flex-column">
-            <div class="d-flex row count-players">17/50</div>
+            <div v-if="server" class="d-flex row count-players">{{ server.players.online }}/{{ server.players.max }}</div>
             <div class="d-flex row">players</div>
         </div>
       </div>
@@ -22,8 +22,21 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'pined-card',
+  mounted () {
+    axios.get('https://api.minetools.eu/ping/149.202.108.158/25589')
+      .then(response => {
+        this.server = response.data;
+      })
+  },
+  data () {
+    return {
+      server: null
+    }
+  },
   props: {
     title: {
       type: String,
