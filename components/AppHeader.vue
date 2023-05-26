@@ -7,7 +7,7 @@
       </span>
     </section>
     <section id="header-action-bar">
-      <section id="header-action-bar--logged" >
+      <section id="header-action-bar--logged" v-if="isLogged">
         <span class="p-input-icon-left">
           <span class="input">
             <nuxt-img src="gold-pts.svg" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
@@ -43,31 +43,27 @@
           <i class="pi pi-angle-down" />
         </section>
       </section>
+      <section id="header-action-bar--logged" v-if="!isLogged">
+        <NuxtLink to="login" class="p-input">
+          <Button class="input p-button-text" label="Sign-in" placeholder="Sign-in" />
+        </NuxtLink>
+        <NuxtLink to="register" class="p-input-administration">
+          <Button class="input p-button-text" label="Sign-up" placeholder="Sign-up" />
+        </NuxtLink>
+      </section>
     </section>
   </header>
 </template>
-<script>
+
+<script setup>
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
+import { useAuthStore } from '~/store/auth';
 
-export default {
-  name: 'AppHeader',
-  // eslint-disable-next-line vue/no-reserved-component-names
-  components: { InputText, Button, Avatar },
-  layout: 'default',
-  methods: {
-    getPoints () {
-      let points = Math.round(Math.random() * 20000);
-      if (points.toString().length >= 4) {
-        points /= 1000;
-        points = Math.round(points, 1) + ' k';
-      }
-      return points;
-    }
-  }
-};
+const isLogged = useAuthStore.isLogged;
 </script>
+
 <style lang="scss">
 header {
   display: flex;

@@ -30,7 +30,6 @@ export default ({
     dirs: ['~/components']
   },
   router: {
-    middleware: 'i18n',
     routeNameSplitter: '/',
     trailingSlash: false,
     // @ts-expect-error
@@ -132,8 +131,16 @@ export default ({
     '@nuxtjs/robots',
     'nuxt-simple-sitemap',
     '@nuxtjs/color-mode',
+    '@pinia/nuxt'
     // '@nuxtjs/sentry' -> https://github.com/nuxt-community/sentry-module/issues/530
   ],
+  pinia: {
+    autoImports: [
+      // automatically imports `defineStore`
+      'defineStore', // import { defineStore } from 'pinia'
+      ['defineStore', 'definePiniaStore'] // import { defineStore as definePiniaStore } from 'pinia'
+    ],
+  },
   colorMode: {
     // see https://color-mode.nuxtjs.org/
     preference: 'system', // default value of $colorMode.preference
@@ -166,6 +173,8 @@ export default ({
     }
   },
   buildModules: [
+    '@nuxtjs/composition-api/module',
+    ['@pinia/nuxt', { disableVuex: false }],
     'nuxt-vite'
   ],
   robots: {

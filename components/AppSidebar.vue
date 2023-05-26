@@ -149,7 +149,7 @@ aside nav {
         display: block;
         flex-direction: column;
         padding-top: 5px;
-        opacity: 0;
+        opacity: 1;
       }
     }
   }

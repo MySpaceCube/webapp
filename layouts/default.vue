@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <AppHeader />
-    <AppSidebar />
-    <slot />
-    <AppFooter />
+    <AppHeader/>
+    <AppSidebar/>
+    <slot/>
+    <AppFooter/>
   </div>
 </template>
 
@@ -14,17 +14,21 @@ import 'primeicons/primeicons.css';
 <style lang="scss">
 @import "../assets/scss/global";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
   color: white;
   font-family: poppins, sans-serif;
   background-color: $background;
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: Inter, sans-serif;
 }
+
 p {
   line-height: 1.5rem;
 }
+
 a {
   color: #000;
   text-decoration: none;
@@ -34,6 +38,7 @@ a {
   background-position: 0 100%;
   transition: background-size 0.25s ease-in;
 }
+
 .container {
   width: calc(80% - 2rem);
   position: absolute;
@@ -44,6 +49,7 @@ a {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
 hr {
   width: 80%;
   height: 4px;
