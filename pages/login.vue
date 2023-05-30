@@ -1,11 +1,9 @@
 <template>
   <h1>Login</h1>
+  <Card></Card>
 </template>
 
-<script>
-export default {
-  name: 'LoginPage'
-};
+<script setup>
 </script>
 
 <style scoped>

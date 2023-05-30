@@ -16,37 +16,24 @@ jobs:
           default-branch: main
   deploy-beta:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        node-version: [ 18.x ]
-    environment: beta
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          node-version: 18
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            Port $SSH_PORT
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-            ForwardAgent yes
-            HashKnownHosts          no
-          END
-        env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
-          SSH_PORT: ${{ secrets.PORT }}
-
-      - name: Check out the source
-        run: ssh staging 'export NVM_DIR=~/.nvm && source ~/.nvm/nvm.sh && nvm install 18 && nvm use 18 && cd /srv/webapp-beta && git fetch && git reset --hard origin/main && make install'
-
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
+          channelId: live
+          projectId: spacecube-beta # BETA
+# Remove this after deploy prod
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
+          channelId: live
+          projectId: spacecube-webapp #PROD
