@@ -1,24 +1,31 @@
-const stateObj = {
-  locales: ['fr'],
-  locale: 'fr',
-  urlConfig: {}
-};
+import { defineStore } from 'pinia';
 
-export const mutations = {
-  SET_LANG (state, locale) {
-    if (state.locales.includes(locale)) {
-      state.locale = locale;
+export const usePreferenceStore = defineStore({
+  id: 'preferences-store',
+  state: () => {
+    return {
+      locales: ['fr', 'en'],
+      locale: 'en',
+      urlConfig: {}
+    };
+  },
+  actions: {
+    SET_LANG (locale) {
+      if (this.locales.includes(locale)) {
+        this.locale = locale;
+      } else {
+        this.locale = 'en';
+      }
+    },
+    setConfig (state, urlConfig) {
+      this.urlConfig = urlConfig;
     }
   },
-  setConfig (state, urlConfig) {
-    state.urlConfig = urlConfig;
+  mutations: {
+  },
+  getters: {
+    filtersList: (state) => state.filtersList,
+    getMaintenance: (state) => state.maintenance,
+    getApiVersion: (state) => state.apiVersion
   }
-};
-
-export const state = () => stateObj;
-
-export default {
-  namespaced: true,
-  state,
-  mutations
-};
+});

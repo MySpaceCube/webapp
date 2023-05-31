@@ -22,7 +22,7 @@ export default ({
   runtimeConfig: {
     // see https://nuxt.com/modules/simple-sitemap
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.space-cube.xyz',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.space-cube.xyz'
     }
   },
   components: {
@@ -139,7 +139,7 @@ export default ({
       // automatically imports `defineStore`
       'defineStore', // import { defineStore } from 'pinia'
       ['defineStore', 'definePiniaStore'] // import { defineStore as definePiniaStore } from 'pinia'
-    ],
+    ]
   },
   colorMode: {
     // see https://color-mode.nuxtjs.org/
@@ -186,7 +186,7 @@ export default ({
     size: '24px', // default <Icon> size applied
     class: 'icon', // default <Icon> class applied
     aliases: {
-      'nuxt': 'logos:nuxt-icon',
+      nuxt: 'logos:nuxt-icon'
     }
   },
   i18n: {

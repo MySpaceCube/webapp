@@ -1,5 +1,7 @@
 {
   "global": {
+    "sign-in": "Sign in",
+    "sign-up": "Sign up",
     "actions": "Actions",
     "link": "Link",
     "title": "Title",
@@ -41,6 +43,14 @@
     "invalidFormat": "Invalid format",
     "seeMore": "See more ...",
     "all": "All",
-    "createdBy": "created by"
+    "createdBy": "created by",
+    "menu": {
+      "home": "Home",
+      "news": "News",
+      "feedbacks": "Feedbacks",
+      "resources": "Resources",
+      "servers": "Servers",
+      "about": "About"
+    }
   }
 }
