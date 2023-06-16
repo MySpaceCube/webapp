@@ -18,16 +18,15 @@ jobs:
   build_and_preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: npm ci && npm run generate
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WORLDLE_INFINITE }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
           projectId: spacecube-webapp # PORJECT_ID FIREBASE
-          channelId: preprod
+          channelId: ${{ github.ref_name }}
           target: spacecube-staging # STAGING
-          expires: ''
-          entryPoint:
+          expires: '7d'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

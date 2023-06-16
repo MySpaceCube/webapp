@@ -2,7 +2,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default ({
   srcDir: '.',
-  ssr: true,
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -22,7 +21,7 @@ export default ({
   runtimeConfig: {
     // see https://nuxt.com/modules/simple-sitemap
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.space-cube.xyz'
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://www.space-cube.xyz'
     }
   },
   components: {
