@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn && yarn build
+      - run: npm ci && npm run generate
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -28,5 +28,6 @@ jobs:
           channelId: preprod
           target: spacecube-staging # STAGING
           expires: ''
+          entryPoint:
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
