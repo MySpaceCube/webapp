@@ -24,7 +24,8 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
           channelId: live
-          projectId: spacecube-beta # BETA
+          projectId: spacecube-webapp # PROJECT_ID_FIREBASE
+          target: spacecube-beta #BETA
 # Remove this after deploy prod
   deploy:
     runs-on: ubuntu-latest
@@ -36,4 +37,5 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
           channelId: live
-          projectId: spacecube-webapp #PROD
+          projectId: spacecube-webapp # PROJECT_ID_FIREBASE
+          target: spacecube-webapp #PROD
