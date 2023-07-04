@@ -3,30 +3,30 @@
     <section id="header-search-bar">
       <span class="p-input-icon-left">
         <i class="pi pi-search" />
-        <InputText type="text" v-model="search" placeholder="Search by creator or resource" class="search"/>
+        <InputText type="text" v-model="search" :placeholder="`${ $t('global.menu.search') } ${store.isLogged}`" class="search"/>
       </span>
     </section>
     <section id="header-action-bar">
-      <section id="header-action-bar--logged" v-if="isLogged">
+      <section id="header-action-bar--logged" v-if="store.isLogged">
         <span class="p-input-icon-left">
           <span class="input">
             <nuxt-img src="gold-pts.svg" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
-            <span>{{ getPoints() }} pts</span>
+            <span>{{ store.user.points }} pts</span>
           </span>
         </span>
         <span class="p-input-icon-left">
           <Button icon="pi pi-bell" class="input p-button-text" />
         </span>
-        <span class="p-input">
-          <Button class="input p-button-text" label="Create" placeholder="Create" />
+        <span v-if="store.user.isVerify && store.user.isMinecraftVerify" class="p-input">
+          <Button class="input p-button-text" label="Create" :placeholder="`${ $t('global.nav.create') }`" />
         </span>
-        <span class="p-input-administration">
-          <Button class="input p-button-text" label="Administation" placeholder="Administation" />
+        <span v-if="store.isAdmin" class="p-input-administration">
+          <Button class="input p-button-text" label="Administation" :placeholder="`${ $t('global.nav.admin') }`" />
         </span>
         <div class="vertical-separator" />
         <section class="me-info d-flex row align-items-center">
           <Avatar
-          image="https://images.nightcafe.studio/jobs/N34Ggz3WD4EiFTPDWzeZ/N34Ggz3WD4EiFTPDWzeZ--7--w9snj.jpg?tr=w-1600,c-at_max"
+          :image="`${store.user.avatar}`"
           size="large"
           shape="circle"
           />
@@ -36,14 +36,14 @@
             class="p-button-text d-flex flex-column justify-content-start align-items-start"
             @click="toggle"
             >
-              <span class="header-me-info-pseudo">username</span>
-              <span class="text-muted">fake.email@email.com</span>
+              <span class="header-me-info-pseudo">{{store.user.username}}</span>
+              <span class="text-muted">{{store.user.email}}</span>
             </Button>
           </section>
           <i class="pi pi-angle-down" />
         </section>
       </section>
-      <section id="header-action-bar--logged" v-if="!isLogged">
+      <section v-else id="header-action-bar--logged">
         <NuxtLink to="login" class="p-input">
           <Button class="input p-button-text" label="Sign-in" placeholder="Sign-in" />
         </NuxtLink>
@@ -59,9 +59,8 @@
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
-import { useAuthStore } from '~/store/auth';
-
-const isLogged = useAuthStore.isLogged;
+import { authStore } from '~/store/auth';
+const store = authStore();
 </script>
 
 <style lang="scss">

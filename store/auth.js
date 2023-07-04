@@ -1,33 +1,32 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-export const useAuthStore = defineStore({
-  id: 'auth-store',
+export const authStore = defineStore({
+  id: 'Authentication',
   state: () => {
     return {
-      user: null,
+      isAdmin: false,
       isLogged: false,
-      isAdmin: false
+      token: null,
+      user: {}
     };
   },
   actions: {
-    getMe () {
-      axios.get('https://localhost:9080/me')
-        .then((response) => {
-          console.log(response);
-
-          return response.data;
-        })
-        .catch((error) => {
-          console.error(error);
-
-          return error;
+    async fetchUser(data) {
+      // TODO: Replace localhost by const
+      this.token = await axios.post('http://localhost:9080/sign-in', {email: data.email, password: data.password})
+        .then(async (res) => {
+          this.user = (await axios.get('http://localhost:9080/users/me', {
+            headers: {
+              Authorization: 'Bearer ' + res.data.token
+            }
+          })).data.data;
+          this.isLogged = true;
+          return res.data.token;
         });
-    }
+    },
   },
   getters: {
-    filtersList: (state) => state.filtersList,
-    getMaintenance: (state) => state.maintenance,
-    getApiVersion: (state) => state.apiVersion
+    getIsLogged: (state) => state.isLogged
   }
-});
+})

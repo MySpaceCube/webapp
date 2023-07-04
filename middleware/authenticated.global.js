@@ -1,7 +1,7 @@
-import { useAuthStore } from '~/store/auth';
+import {authStore} from '~/store/auth';
 
 export default defineNuxtPlugin((nuxt) => {
-  const store = useAuthStore(nuxt.$pinia);
+  const store = authStore(nuxt.$pinia);
 
   console.log(store.isLogged);
 });

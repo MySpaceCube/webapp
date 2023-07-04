@@ -1,5 +1,8 @@
 {
   "global": {
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "password": "Mot de passe",
     "sign-in": "Se connecter",
     "sign-up": "S'inscrire",
     "actions": "Actions",
@@ -44,13 +47,16 @@
     "seeMore": "Voir plus ...",
     "all": "Tous",
     "createdBy": "créé par",
-    "menu": {
+    "all_right_reserved": "Tous les droits réservées",
+    "nav": {
       "home": "Accueil",
       "news": "Articles",
       "feedbacks": "Feedbacks",
       "resources": "Ressources",
       "servers": "Serveurs",
-      "about": "A propos"
+      "about": "A propos",
+      "admin": "Administration",
+      "create": "Créer"
     }
   }
 }

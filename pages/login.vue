@@ -1,6 +1,6 @@
 <template>
-  <h1>Login</h1>
-  <Card></Card>
+  <h1>{{ $t('global.sign-in') }}</h1>
+  <Card signIn></Card>
 </template>
 
 <script setup>

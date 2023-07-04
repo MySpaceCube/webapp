@@ -1,5 +1,8 @@
 {
   "global": {
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "actions": "Actions",
@@ -44,13 +47,16 @@
     "seeMore": "See more ...",
     "all": "All",
     "createdBy": "created by",
-    "menu": {
+    "all_right_reserved": "All rights reserved",
+    "nav": {
       "home": "Home",
       "news": "News",
       "feedbacks": "Feedbacks",
       "resources": "Resources",
       "servers": "Servers",
-      "about": "About"
+      "about": "About",
+      "admin": "Administration",
+      "create": "Create"
     }
   }
 }

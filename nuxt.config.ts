@@ -2,8 +2,8 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default ({
   srcDir: '.',
+  ssr: true,
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: 'utf-16',
       viewport: 'width=500, initial-scale=1',
@@ -133,13 +133,6 @@ export default ({
     '@pinia/nuxt'
     // '@nuxtjs/sentry' -> https://github.com/nuxt-community/sentry-module/issues/530
   ],
-  pinia: {
-    autoImports: [
-      // automatically imports `defineStore`
-      'defineStore', // import { defineStore } from 'pinia'
-      ['defineStore', 'definePiniaStore'] // import { defineStore as definePiniaStore } from 'pinia'
-    ]
-  },
   colorMode: {
     // see https://color-mode.nuxtjs.org/
     preference: 'system', // default value of $colorMode.preference

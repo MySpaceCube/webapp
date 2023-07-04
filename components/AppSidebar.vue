@@ -2,48 +2,46 @@
   <aside>
     <nav>
       <NuxtLink to="/" class="logo">
-        <nuxt-img src="logo.png" alt="logo of spacecube" loading="lazy" height="40" width="40" />
+        <nuxt-img src="logo.png" alt="logo of spacecube" loading="lazy" height="40" width="40"/>
       </NuxtLink>
-      <ul>
-        <div class="start">
-          <li>
-            <NuxtLink to="/">
-              <i class="pi pi-home"></i>
-              <span>Home</span>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/news">
-              <i class="pi pi-megaphone"></i>
-              <span>News</span>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/feedbacks">
-              <i class="pi pi-directions-alt"></i>
-              <span>Feedbacks</span>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/resources">
-              <i class="pi pi-box"></i>
-              <span>Resources</span>
-            </NuxtLink>
-          </li>
-          <hr>
-          <li>
-            <NuxtLink to="/server">
-              <i class="pi pi-server"></i>
-              <span>Server</span>
-            </NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/about">
-              <i class="pi pi-exclamation-circle"></i>
-              <span>About</span>
-            </NuxtLink>
-          </li>
-        </div>
+      <ul class="start">
+        <li>
+          <NuxtLink to="/">
+            <i class="pi pi-home"></i>
+            <span>{{ $t('global.nav.home') }}</span>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/news">
+            <i class="pi pi-megaphone"></i>
+            <span>{{ $t('global.nav.news') }}</span>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/feedbacks">
+            <i class="pi pi-directions-alt"></i>
+            <span>{{ $t('global.nav.feedbacks') }}</span>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/resources">
+            <i class="pi pi-box"></i>
+            <span>{{ $t('global.nav.resources') }}</span>
+          </NuxtLink>
+        </li>
+        <hr>
+        <li>
+          <NuxtLink to="/server">
+            <i class="pi pi-server"></i>
+            <span>{{ $t('global.nav.servers') }}</span>
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/about">
+            <i class="pi pi-exclamation-circle"></i>
+            <span>{{ $t('global.nav.about') }}</span>
+          </NuxtLink>
+        </li>
       </ul>
     </nav>
   </aside>
@@ -73,16 +71,19 @@ aside nav {
   bottom: 1rem;
   border-radius: 10px;
   padding: 0;
+
   .logo {
     margin-top: 1rem;
     background: none;
   }
+
   a span, a i {
     background: $cyan-gradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
   }
+
   ul, ul > div {
     display: flex;
     flex-direction: column;
@@ -93,16 +94,19 @@ aside nav {
     bottom: 1rem;
     padding: 0;
     width: 72px;
+
     div.start {
       z-index: 2000;
       justify-content: start;
       height: fit-content;
     }
+
     div.end {
       z-index: 1999;
       justify-content: end;
     }
   }
+
   li {
     position: relative;
     display: flex;
@@ -114,9 +118,11 @@ aside nav {
     width: 100%;
     height: 72px;
     margin-bottom: 1rem;
+
     i {
       font-size: 1.3rem;
     }
+
     a {
       background: none;
       height: 55px;
@@ -126,6 +132,7 @@ aside nav {
       justify-content: center;
       align-items: center;
       border-radius: 6px;
+
       &.router-link-active,
       &.router-link-exact-active {
         &::after {
@@ -138,13 +145,16 @@ aside nav {
           right: 0;
           border-radius: 20px;
         }
+
         background-color: $blue-dark;
+
         span {
           display: block;
           opacity: 1;
           text-transform: uppercase;
         }
       }
+
       span {
         display: block;
         flex-direction: column;
