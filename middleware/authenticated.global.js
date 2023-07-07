@@ -6,4 +6,5 @@ export default defineNuxtPlugin((nuxt) => {
   const api = apiStore(nuxt.$pinia);
   console.log(store.isLogged);
   console.log(api.apiVersion);
+  console.log(api.apiUrl);
 });

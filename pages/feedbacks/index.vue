@@ -18,7 +18,7 @@
     <!-- TODO COMPONENTS   -->
     <section>
       <h2>Other Feedback</h2>
-      <div v-if='!pending'>
+      <div v-if='!pending && feedbacks.data'>
         <ul
           v-for="feedback in feedbacks.data"
           :key='feedback.id'
@@ -60,6 +60,6 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/')) || {};
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || {};
+} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/')) || { data: [] };
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || { data: [] };
 </script>

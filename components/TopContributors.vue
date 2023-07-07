@@ -1,7 +1,7 @@
 <template>
   <section class="top-players">
     <h2>⭐ Top Contributors</h2>
-    <section v-if="!pending" class="d-flex">
+    <section v-if="!pending && userTop" class="d-flex">
       <div v-for="user in userTop.data">
         <section class="top-players-player d-flex mr-5">
           <img :src="user.avatar" alt="{{ user }}" height="60" width="60" style="border-radius: 12px">
@@ -50,7 +50,7 @@ function getVerifyBadges (rank) {
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch(api.apiUrl + '/users/top')) || {};
+} = await useLazyAsyncData('userTop', () => $fetch(api.apiUrl + '/users/top')) || { data: [] };
 </script>
 
 <style>
