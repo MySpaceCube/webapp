@@ -60,6 +60,6 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/'));
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned');
+} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/')) || {};
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || {};
 </script>
