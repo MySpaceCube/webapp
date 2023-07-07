@@ -60,6 +60,14 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/')) || { data: [] };
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || { data: [] };
+} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/', {
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
+})) || { data: [] };
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned', {
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
+}) || { data: [] };
 </script>
