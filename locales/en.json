@@ -56,7 +56,8 @@
       "servers": "Servers",
       "about": "About",
       "admin": "Administration",
-      "create": "Create"
+      "create": "Create",
+      "search": "Search"
     }
   }
 }

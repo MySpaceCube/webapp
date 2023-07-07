@@ -173,6 +173,10 @@ export default ({
     '@nuxtjs/proxy',
     '@nuxtjs/axios'
   ],
+  plugins: [
+    '~/plugins/axios',
+    '~/plugins/vercel'
+  ],
   axios: {
     proxy: true
   },
