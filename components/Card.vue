@@ -88,11 +88,12 @@ export default {
     ...mapActions(authStore, ['fetchUser']),
     async submit () {
       this.isLoading = true;
-      await this.fetchUser(this.form);
+      await this.fetchUser(this.form).finally(() => {
+        this.isLoading = false;
+      });
       if (this.isLogged) {
         return navigateTo('/');
       }
-      this.isLoading = true;
     }
   }
 };

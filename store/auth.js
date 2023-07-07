@@ -14,16 +14,11 @@ export const authStore = defineStore({
   },
   actions: {
     async fetchUser (data) {
-      this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password }, {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+      this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password })
         .then(async (res) => {
           this.user = (await axios.get(this.apiUrl + '/users/me', {
             headers: {
-              Authorization: 'Bearer ' + res.data.token,
-              'Access-Control-Allow-Origin': '*'
+              Authorization: 'Bearer ' + res.data.token
             }
           })).data.data;
           this.isLogged = true;

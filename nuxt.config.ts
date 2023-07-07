@@ -169,8 +169,16 @@ export default ({
     '@nuxtjs/composition-api/module',
     ['@pinia/nuxt', { disableVuex: false }],
     'nuxt-vite',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios'
   ],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': { target: process.env.NUXT_PUBLIC_API_URL, pathRewrite: { '^/api/': '' }, changeOrigin: true }
+  },
   robots: {
     // https://nuxt.com/modules/robots
     /* module options */

@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Feedbacks</h1>
-    <section v-if='!pendingPinned'>
+    <section v-if='!pendingPinned && feedbacksPinned'>
       <section
-        v-for="feedback in feedbacksPinned"
+        v-for="feedback in feedbacksPinned.data"
         :key='feedback.id' class="pined-card-section">
         <PinedCard
           :title="feedback.title"
@@ -60,14 +60,6 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/', {
-  headers: {
-    'Access-Control-Allow-Origin': '*'
-  }
-})) || { data: [] };
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned', {
-  headers: {
-    'Access-Control-Allow-Origin': '*'
-  }
-}) || { data: [] };
+} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/')) || { data: [] };
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || { data: [] };
 </script>
