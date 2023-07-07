@@ -22,20 +22,20 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   name: 'pined-card',
   mounted () {
     axios.get('https://api.minetools.eu/ping/149.202.108.158/25589')
-      .then(response => {
+      .then((response) => {
         this.server = response.data;
-      })
+      });
   },
   data () {
     return {
       server: null
-    }
+    };
   },
   props: {
     title: {

@@ -22,8 +22,7 @@ export const mutations = {
 
 export const actions = {
   async fetchApiInfo ({ state }) {
-    // TODO Fixme with var url
-    axios.get('https://localhost:9080')
+    axios.get(this.apiUrl)
       .then((response) => {
         console.log(response);
 

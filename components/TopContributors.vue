@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-function getPoints() {
+function getPoints () {
   let points = Math.round(Math.random() * 20000);
   if (points.toString().length >= 4) {
     points /= 1000;
@@ -30,15 +30,15 @@ function getPoints() {
   return points;
 }
 
-function getVerifyBadges(rank) {
+function getVerifyBadges (rank) {
   if (Object.values(rank).indexOf('ROLE_ADMIN') === 0 || Object.values(rank).indexOf('ROLE_SUPER_ADMIN') === 0) {
-    return 'verify/verify-admin.svg'
+    return 'verify/verify-admin.svg';
   }
   if (Object.values(rank).indexOf('ROLE_MODERATOR') === 0) {
-    return 'verify/verify-moderator.svg'
+    return 'verify/verify-moderator.svg';
   }
   if (Object.values(rank).indexOf('ROLE_AUTHOR') === 0) {
-    return 'verify/verify-author.svg'
+    return 'verify/verify-author.svg';
   }
   return 'verify/verify-all.svg';
 }
@@ -46,7 +46,7 @@ function getVerifyBadges(rank) {
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch('http://localhost:9080/users/top'));
+} = await useLazyAsyncData('userTop', () => $fetch(this.apiUrl + '/users/top'));
 </script>
 
 <style>

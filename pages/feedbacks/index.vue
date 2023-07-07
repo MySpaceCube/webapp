@@ -47,7 +47,7 @@ import Skeleton from 'primevue/skeleton';
 useHead({
   title: 'Space-Cube | Feedbacks',
   meta: [
-    {name: 'description', content: 'My amazing site.'}
+    { name: 'description', content: 'My amazing site.' }
   ],
   bodyAttrs: {
     class: 'test'
@@ -56,6 +56,6 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch('http://localhost:9080/feedbacks/'));
-const {pendingPinned, data: feedbacksPinned} = await useLazyFetch('http://localhost:9080/feedbacks/pinned');
+} = await useLazyAsyncData('feedbacks', () => $fetch(this.apiUrl + '/feedbacks/'));
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(this.apiUrl + '/feedbacks/pinned');
 </script>

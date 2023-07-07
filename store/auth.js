@@ -12,11 +12,11 @@ export const authStore = defineStore({
     };
   },
   actions: {
-    async fetchUser(data) {
+    async fetchUser (data) {
       // TODO: Replace localhost by const
-      this.token = await axios.post('http://localhost:9080/sign-in', {email: data.email, password: data.password})
+      this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password })
         .then(async (res) => {
-          this.user = (await axios.get('http://localhost:9080/users/me', {
+          this.user = (await axios.get(this.apiUrl + '/users/me', {
             headers: {
               Authorization: 'Bearer ' + res.data.token
             }
@@ -24,9 +24,9 @@ export const authStore = defineStore({
           this.isLogged = true;
           return res.data.token;
         });
-    },
+    }
   },
   getters: {
     getIsLogged: (state) => state.isLogged
   }
-})
+});

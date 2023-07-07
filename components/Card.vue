@@ -23,7 +23,7 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { authStore } from "~/store/auth";
+import { authStore } from '~/store/auth';
 
 export default {
   name: 'card',
@@ -81,12 +81,12 @@ export default {
         password: null
       },
       isLoading: false,
-      isValid: false,
+      isValid: false
     });
   },
   methods: {
     ...mapActions(authStore, ['fetchUser']),
-    async submit() {
+    async submit () {
       this.isLoading = true;
       await this.fetchUser(this.form);
       if (this.isLogged) {
