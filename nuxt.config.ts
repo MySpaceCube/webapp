@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default ({
+module.exports = {
   srcDir: '.',
   ssr: true,
   app: {
@@ -202,4 +202,4 @@ export default ({
   build: {
     transpile: ['primevue']
   }
-});
+};

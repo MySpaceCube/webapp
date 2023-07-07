@@ -14,15 +14,3 @@ jobs:
           token: ${{ secrets.TOKEN_GITHUB }}
           release-type: node
           default-branch: main
-  deploy-beta:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm ci && npm run generate
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPACECUBE_WEBAPP }}'
-          channelId: live
-          projectId: spacecube-webapp # PROJECT_ID_FIREBASE
-          target: spacecube-beta #BETA
