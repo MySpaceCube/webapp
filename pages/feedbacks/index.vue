@@ -42,7 +42,11 @@
 </template>
 
 <script setup>
+import { apiStore } from '~/store/api';
 import Skeleton from 'primevue/skeleton';
+import PinedCard from '~/components/PinedCard.vue';
+
+const api = apiStore();
 
 useHead({
   title: 'Space-Cube | Feedbacks',
@@ -56,6 +60,6 @@ useHead({
 const {
   pending,
   data: feedbacks
-} = await useLazyAsyncData('feedbacks', () => $fetch(this.apiUrl + '/feedbacks/'));
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(this.apiUrl + '/feedbacks/pinned');
+} = await useLazyAsyncData('feedbacks', () => $fetch(api.apiUrl + '/feedbacks/'));
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned');
 </script>

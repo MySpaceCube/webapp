@@ -21,6 +21,10 @@
 </template>
 
 <script setup>
+import { apiStore } from '~/store/api';
+
+const api = apiStore();
+
 function getPoints () {
   let points = Math.round(Math.random() * 20000);
   if (points.toString().length >= 4) {
@@ -46,7 +50,7 @@ function getVerifyBadges (rank) {
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch(this.apiUrl + '/users/top'));
+} = await useLazyAsyncData('userTop', () => $fetch(api.apiUrl + '/users/top')) || {};
 </script>
 
 <style>

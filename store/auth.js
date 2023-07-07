@@ -8,12 +8,12 @@ export const authStore = defineStore({
       isAdmin: false,
       isLogged: false,
       token: null,
-      user: {}
+      user: {},
+      apiUrl: process.env.NUXT_PUBLIC_API_URL
     };
   },
   actions: {
     async fetchUser (data) {
-      // TODO: Replace localhost by const
       this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password })
         .then(async (res) => {
           this.user = (await axios.get(this.apiUrl + '/users/me', {

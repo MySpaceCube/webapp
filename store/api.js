@@ -1,8 +1,15 @@
 import axios from 'axios';
+import { defineStore } from 'pinia';
 
-export const state = () => ({
-  maintenance: false,
-  apiVersion: '0.0.0'
+export const apiStore = defineStore({
+  id: 'Api',
+  state: () => {
+    return {
+      maintenance: false,
+      apiVersion: '0.0.0',
+      apiUrl: process.env.NUXT_PUBLIC_API_URL
+    };
+  }
 });
 
 export const getters = {
@@ -22,11 +29,9 @@ export const mutations = {
 
 export const actions = {
   async fetchApiInfo ({ state }) {
-    axios.get(this.apiUrl)
+    axios.get('http://localhost:3000')
       .then((response) => {
-        console.log(response);
-
-        return response.data;
+        this.state.apiVersion = response.data.version;
       })
       .catch((error) => {
         console.error(error);

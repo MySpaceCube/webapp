@@ -12,7 +12,6 @@ install-dev:
 install:
 	npm install
 	npm run build
-	pm2 start npm --name "spacecube" -- start
 
 lint:
 	npm run lint
