@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-module.exports = {
+export default ({
   srcDir: '.',
   ssr: true,
   app: {
@@ -22,7 +22,7 @@ module.exports = {
     // see https://nuxt.com/modules/simple-sitemap
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://www.space-cube.xyz',
-      apiUrl: process.env.NUXT_API_URL ?? 'https://api.space-cube.xyz'
+      apiUrl: process.env.NUXT_PUBLIC_API_URL ?? 'https://api.space-cube.xyz'
     }
   },
   components: {
@@ -168,7 +168,8 @@ module.exports = {
   buildModules: [
     '@nuxtjs/composition-api/module',
     ['@pinia/nuxt', { disableVuex: false }],
-    'nuxt-vite'
+    'nuxt-vite',
+    '@nuxtjs/dotenv'
   ],
   robots: {
     // https://nuxt.com/modules/robots
@@ -203,4 +204,4 @@ module.exports = {
   build: {
     transpile: ['primevue']
   }
-};
+});

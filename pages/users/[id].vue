@@ -13,15 +13,15 @@ useHead({
     class: 'test'
   }
 });
-function getVerifyBadges(rank) {
+function getVerifyBadges (rank) {
   if (Object.values(rank).indexOf('ROLE_ADMIN') === 0 || Object.values(rank).indexOf('ROLE_SUPER_ADMIN') === 0) {
-    return 'verify/verify-admin.svg'
+    return 'verify/verify-admin.svg';
   }
   if (Object.values(rank).indexOf('ROLE_MODERATOR') === 0) {
-    return 'verify/verify-moderator.svg'
+    return 'verify/verify-moderator.svg';
   }
   if (Object.values(rank).indexOf('ROLE_AUTHOR') === 0) {
-    return 'verify/verify-author.svg'
+    return 'verify/verify-author.svg';
   }
   return 'verify/verify-all.svg';
 }
