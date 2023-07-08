@@ -180,9 +180,13 @@ export default ({
   axios: {
     proxy: true
   },
-  proxy: {
-    '/api/': { target: process.env.NUXT_PUBLIC_API_URL, pathRewrite: { '^/api/': '' }, changeOrigin: true }
-  },
+  serverMiddleware: [
+    // Proxy API requests
+    {
+      path: '/api',
+      handler: '~/server-middleware/api-proxy',
+    },
+  ],
   robots: {
     // https://nuxt.com/modules/robots
     /* module options */
