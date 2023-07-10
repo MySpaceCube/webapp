@@ -1,5 +1,6 @@
 <template>
   <h1>Register</h1>
+  <CardRegister />
 </template>
 
 <script>

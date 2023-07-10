@@ -3,6 +3,7 @@
     "username": "Username",
     "email": "Email",
     "password": "Password",
+    "repeatPassword": "Repeat password",
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "actions": "Actions",
@@ -57,7 +58,7 @@
       "about": "About",
       "admin": "Administration",
       "create": "Create",
-      "search": "Search"
+      "search": "Search a creator, resource, feedbacks..."
     }
   }
 }

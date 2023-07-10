@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/5148310c223a3d5d8689/maintainability)](https://codeclimate.com/repos/64ac21307605715d155f7797/maintainability)
+
 # Nuxt 3 Minimal Starter
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.

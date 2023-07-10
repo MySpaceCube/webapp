@@ -3,7 +3,7 @@
     <section id="header-search-bar">
       <span class="p-input-icon-left">
         <i class="pi pi-search" />
-        <InputText type="text" v-model="search" :placeholder="`${ $t('global.menu.search') } ${store.isLogged}`" class="search"/>
+        <InputText type="text" v-model="search" :placeholder="`${ $t('global.nav.search') }`" class="search"/>
       </span>
     </section>
     <section id="header-action-bar">

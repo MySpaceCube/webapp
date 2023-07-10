@@ -1,13 +1,13 @@
 <template>
-  <section class="card" :class="signIn ? 'card-login' : ''" :style="`background-image: url('${cardImg}')`">
-    <div class="card-infos" :class="signIn ? 'form-login' : ''">
+  <section class="card card-login" :style="`background-image: url('${cardImg}')`">
+    <div class="card-infos form-login">
       <div class="d-flex row justify-content-between">
         <div v-if="isIconHidden" class="card-col-icon">
           <i :class="`pi pi-${iconName}`"></i>
         </div>
         <form class="card-col-infos">
           <h2>{{ $t('global.sign-in') }}</h2>
-          <input id="input-username" type="text" name="email" v-model="form.email" :placeholder="`${ $t('global.email') }`" required>
+          <input id="input-email" type="text" name="email" v-model="form.email" :placeholder="`${ $t('global.email') }`" required>
           <input id="input-password" type="password" name="password" v-model="form.password" :placeholder="`${ $t('global.password') }`" required>
         </form>
       </div>
@@ -26,7 +26,7 @@ import { mapActions, mapState } from 'pinia';
 import { authStore } from '~/store/auth';
 
 export default {
-  name: 'card',
+  name: 'CardLogin',
   props: {
     cardImg: {
       type: String,
@@ -53,14 +53,14 @@ export default {
     ...mapState(authStore, ['isLogged'])
   },
   watch: {
-    'form.username' () {
+    'form.email' () {
       this.isLoading = false;
-      if (this.form.email !== null && this.form.email !== undefined && this.form.email !== '') {
-        document.getElementById('input-username').classList.add('valid');
+      if (this.form.email && this.form.email !== '') {
+        document.getElementById('input-email').classList.add('valid');
         this.isValid = this.form.password !== null && this.form.password !== undefined && this.form.password !== '';
       } else {
         this.isValid = false;
-        document.getElementById('input-username').classList.remove('valid');
+        document.getElementById('input-email').classList.remove('valid');
       }
     },
     'form.password' () {
@@ -162,9 +162,10 @@ export default {
           }
 
           &.valid {
-            &:focus, &:hover {
+            &:focus, &:hover, &:active, &:focus-visible {
               border-color: $success;
-              box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25)
+              box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25);
+              outline: $success auto 1px !important;
             }
             border: 1px solid $success !important;
           }

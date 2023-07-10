@@ -16,14 +16,23 @@ export const authStore = defineStore({
     async fetchUser (data) {
       this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password })
         .then(async (res) => {
-          this.user = (await axios.get(this.apiUrl + '/users/me', {
-            headers: {
-              Authorization: 'Bearer ' + res.data.token
-            }
-          })).data.data;
+          await this.updateUser(res.data.token);
           this.isLogged = true;
           return res.data.token;
         });
+    },
+    async createUser (data) {
+      await axios.post(this.apiUrl + '/users/', data)
+        .then(async (res) => {
+          await this.fetchUser({ email: data.email, password: data.password });
+        });
+    },
+    async updateUser (token) {
+      this.user = (await axios.get(this.apiUrl + '/users/me', {
+        headers: {
+          Authorization: 'Bearer ' + token ?? this.token
+        }
+      })).data.data;
     }
   },
   getters: {

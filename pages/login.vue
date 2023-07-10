@@ -1,11 +1,9 @@
 <template>
   <h1>{{ $t('global.sign-in') }}</h1>
-  <Card signIn></Card>
+  <CardLogin></CardLogin>
 </template>
-
-<script setup>
+<script>
+export default {
+  name: 'LoginPage'
+};
 </script>
-
-<style scoped>
-
-</style>

@@ -3,6 +3,7 @@
     "username": "Nom d'utilisateur",
     "email": "Email",
     "password": "Mot de passe",
+    "repeatPassword": "Répéter le mot de passe",
     "sign-in": "Se connecter",
     "sign-up": "S'inscrire",
     "actions": "Actions",
@@ -57,7 +58,7 @@
       "about": "A propos",
       "admin": "Administration",
       "create": "Créer",
-      "search": "Rechercher"
+      "search": "Rechercher un créateur, un serveur, un article, ..."
     }
   }
 }
