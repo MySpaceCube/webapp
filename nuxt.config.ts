@@ -177,16 +177,6 @@ export default ({
     '~/plugins/axios',
     '~/plugins/vercel'
   ],
-  axios: {
-    proxy: true
-  },
-  serverMiddleware: [
-    // Proxy API requests
-    {
-      path: '/api',
-      handler: '~/server-middleware/api-proxy',
-    },
-  ],
   robots: {
     // https://nuxt.com/modules/robots
     /* module options */
