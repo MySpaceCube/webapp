@@ -17,6 +17,16 @@ export const authStore = defineStore({
       this.token = await axios.post(this.apiUrl + '/sign-in', { email: data.email, password: data.password })
         .then(async (res) => {
           await this.updateUser(res.data.token);
+          this.user.roles.forEach((role) => {
+            if (role === 'ROLE_ADMIN' ||
+              role === 'ROLE_SUPER_ADMIN' ||
+              role === 'ROLE_EDITOR' ||
+              role === 'ROLE_MODERATOR'
+            ) {
+              this.isAdmin = true;
+            }
+          });
+          localStorage.setItem('token', res.data.token);
           this.isLogged = true;
           return res.data.token;
         });

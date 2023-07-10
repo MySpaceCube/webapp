@@ -52,6 +52,12 @@ export default ({
           absolute: true
         },
         {
+          name: 'users-settings',
+          path: '/me/settings',
+          component: 'pages/users/settings.vue',
+          absolute: true
+        },
+        {
           name: 'maintenance',
           path: '/maintenance',
           component: 'pages/maintenance.vue',
@@ -175,7 +181,8 @@ export default ({
   ],
   plugins: [
     '~/plugins/axios',
-    '~/plugins/vercel'
+    '~/plugins/vercel',
+    '~/plugins/primevue'
   ],
   robots: {
     // https://nuxt.com/modules/robots

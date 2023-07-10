@@ -15,13 +15,22 @@
           </span>
         </span>
         <span class="p-input-icon-left">
-          <Button icon="pi pi-bell" class="input p-button-text" />
+          <Button type="button" icon="pi pi-bell" class="input p-button-text" />
         </span>
         <span v-if="store.user.isVerify && store.user.isMinecraftVerify" class="p-input">
-          <Button class="input p-button-text" label="Create" :placeholder="`${ $t('global.nav.create') }`" />
+          <Button
+            type="button"
+            class="input p-button-text"
+            aria-haspopup="true"
+            aria-controls="overlay_create"
+            :label="`${ $t('global.nav.create') }`"
+            :placeholder="`${ $t('global.nav.create') }`"
+            @click="toggle"
+          />
+          <TieredMenu ref="menu" id="overlay_create" :model="itemsCreate" :popup="true" />
         </span>
         <span v-if="store.isAdmin" class="p-input-administration">
-          <Button class="input p-button-text" label="Administation" :placeholder="`${ $t('global.nav.admin') }`" />
+          <Button type="button" class="input p-button-text" :label="`${ $t('global.nav.admin') }`" :placeholder="`${ $t('global.nav.admin') }`" />
         </span>
         <div class="vertical-separator" />
         <section class="me-info d-flex row align-items-center">
@@ -34,11 +43,16 @@
             <Button
             type="button"
             class="p-button-text d-flex flex-column justify-content-start align-items-start"
-            @click="toggle"
+            aria-haspopup="true"
+            aria-controls="overlay_me"
+            @click="toggleUser"
             >
               <span class="header-me-info-pseudo">{{store.user.username}}</span>
-              <span class="text-muted">{{store.user.email}}</span>
+              <span class="text-muted">
+                {{ $t('global.roles.' + showRole()) }}
+              </span>
             </Button>
+            <TieredMenu ref="menuUser" id="overlay_me" :model="itemsUser" :popup="true" />
           </section>
           <i class="pi pi-angle-down" />
         </section>
@@ -59,8 +73,105 @@
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
+import TieredMenu from 'primevue/tieredmenu';
+import { getCurrentRole } from '~/utils/utils';
+import { ref } from 'vue';
 import { authStore } from '~/store/auth';
 const store = authStore();
+const { t } = useI18n();
+const menu = ref();
+const menuUser = ref();
+
+const toggle = (event) => {
+  menu.value.toggle(event);
+};
+
+const toggleUser = (event) => {
+  menuUser.value.toggle(event);
+};
+
+const itemsUser = ref([
+  { separator: true },
+  {
+    label: t('global.nav.user.profile'),
+    icon: 'pi pi-fw pi-user',
+    disabled: true
+  },
+  {
+    label: t('global.nav.user.setting'),
+    icon: 'pi pi-fw pi-cog',
+    to: '/me/settings'
+  },
+  { separator: true },
+  {
+    label: t('global.logout'),
+    icon: 'pi pi-fw pi-power-off',
+    disabled: true
+  }
+]);
+
+const itemsCreate = ref([
+  {
+    label: t('global.nav.create.feedbacks'),
+    icon: 'pi pi-directions-alt',
+    disabled: true
+  },
+  {
+    label: t('global.nav.create.news'),
+    icon: 'pi pi-megaphone',
+    disabled: true
+  },
+  {
+    label: t('global.nav.create.server'),
+    icon: 'pi pi-fw pi-server',
+    disabled: true
+  },
+  {
+    label: t('global.nav.create.ressources.label'),
+    icon: 'pi pi-box',
+    items: [
+      {
+        label: t('global.nav.create.ressources.texturePack'),
+        icon: 'pi pi-fw pi-image',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.datapack'),
+        icon: 'pi pi-fw pi-th-large',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.mods'),
+        icon: 'pi pi-fw pi-box',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.maps'),
+        icon: 'pi pi-fw pi-map',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.skin'),
+        icon: 'pi pi-fw pi-users',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.plugins'),
+        icon: 'pi pi-fw pi-play',
+        disabled: true
+      },
+      {
+        label: t('global.nav.create.ressources.other'),
+        icon: 'pi pi-fw pi-users',
+        disabled: true
+      }
+    ]
+  }
+]);
+
+const showRole = () => {
+  return getCurrentRole(store.user.roles[0]);
+};
 </script>
 
 <style lang="scss">
