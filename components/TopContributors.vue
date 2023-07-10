@@ -50,7 +50,7 @@ function getVerifyBadges (rank) {
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch('/api/users/top')) || { data: [] };
+} = await useLazyAsyncData('userTop', () => $fetch(api.apiUrl + '/api/users/top')) || { data: [] };
 </script>
 
 <style>
