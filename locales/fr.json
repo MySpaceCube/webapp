@@ -49,6 +49,17 @@
     "all": "Tous",
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
+    "roles": {
+      "super_admin": "Super administrateur",
+      "admin": "Administrateur",
+      "moderator":  "Modérateur",
+      "editor": "Éditeur",
+      "author":  "Auteur",
+      "minecraft": "Joueur Minecraft",
+      "minecraft_admin": "Administrateur Minecraft",
+      "minecraft_moderator": "Modérateur Minecraft",
+      "user": "Utilisateur"
+    },
     "nav": {
       "home": "Accueil",
       "news": "Articles",

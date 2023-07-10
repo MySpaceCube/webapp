@@ -1,5 +1,6 @@
 import { authStore } from '~/store/auth';
 import { apiStore } from '~/store/api';
+import { isAdmin } from '~/utils/utils';
 
 export default defineNuxtPlugin((nuxt) => {
   const store = authStore(nuxt.$pinia);
@@ -7,4 +8,22 @@ export default defineNuxtPlugin((nuxt) => {
   console.log(store.isLogged);
   console.log(api.apiVersion);
   console.log(api.apiUrl);
+
+  // Do not run on server
+  if (process.server) {
+    return;
+  }
+
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    store.token = token;
+    store.isLogged = true;
+    store.updateUser(token)
+      .then(() => {
+        store.isAdmin = isAdmin(store.user.roles[0]);
+      });
+  }
+
+  // TODO if user go to login page or register page, redirect to home page
 });
