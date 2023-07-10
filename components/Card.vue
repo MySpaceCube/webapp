@@ -162,6 +162,10 @@ export default {
           }
 
           &.valid {
+            &:focus, &:hover {
+              border-color: $success;
+              box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25)
+            }
             border: 1px solid $success !important;
           }
         }
