@@ -114,6 +114,12 @@ export default ({
           absolute: true
         },
         {
+          name: 'logout',
+          path: '/logout',
+          component: 'pages/logout.vue',
+          absolute: true
+        },
+        {
           name: 'login',
           path: '/login',
           component: 'pages/login.vue',

@@ -4,6 +4,7 @@
     "email": "Email",
     "password": "Password",
     "repeatPassword": "Repeat password",
+    "logout": "Logout",
     "sign-in": "Sign in",
     "sign-up": "Sign up",
     "actions": "Actions",
@@ -49,6 +50,13 @@
     "all": "All",
     "createdBy": "created by",
     "all_right_reserved": "All rights reserved",
+    "user": {
+      "isNotVerify": "Your account is not verified, please check your emails.",
+      "isNotVerify2": "Please verify your account to get access to all features.",
+      "isNotVerifyEmail": "Don't forget to check your spam folder! Don't received the email?",
+      "isNotVerifyResend": "Resend verification email",
+      "experimentalFeature": "Experimental Features"
+    },
     "roles": {
       "super_admin": "Super Administrator",
       "admin": "Administrator",
@@ -68,8 +76,27 @@
       "servers": "Servers",
       "about": "About",
       "admin": "Administration",
-      "create": "Create",
-      "search": "Search a creator, resource, feedbacks..."
+      "search": "Search a creator, resource, feedbacks...",
+      "user": {
+        "profile": "Profile",
+        "settings": "Settings"
+      },
+      "create": {
+        "label": "Create",
+        "feedback": "Feedback",
+        "news": "News",
+        "server": "Server",
+        "resources": {
+          "label": "Resource",
+          "plugin": "Plugin",
+          "mod": "Mod",
+          "texturePack": "Texture Pack",
+          "map": "Map",
+          "datapack": "Datapack",
+          "skin": "Skin",
+          "other": "Other"
+        }
+      }
     }
   }
 }

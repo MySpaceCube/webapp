@@ -23,8 +23,8 @@
             class="input p-button-text"
             aria-haspopup="true"
             aria-controls="overlay_create"
-            :label="`${ $t('global.nav.create') }`"
-            :placeholder="`${ $t('global.nav.create') }`"
+            :label="`${ $t('global.nav.create.label') }`"
+            :placeholder="`${ $t('global.nav.create.label') }`"
             @click="toggle"
           />
           <TieredMenu ref="menu" id="overlay_create" :model="itemsCreate" :popup="true" />
@@ -91,28 +91,28 @@ const toggleUser = (event) => {
 };
 
 const itemsUser = ref([
-  { separator: true },
   {
     label: t('global.nav.user.profile'),
     icon: 'pi pi-fw pi-user',
     disabled: true
   },
   {
-    label: t('global.nav.user.setting'),
+    label: t('global.nav.user.settings'),
     icon: 'pi pi-fw pi-cog',
-    to: '/me/settings'
+    to: '/users/settings'
   },
   { separator: true },
   {
     label: t('global.logout'),
     icon: 'pi pi-fw pi-power-off',
-    disabled: true
+    disabled: false,
+    to: '/logout'
   }
 ]);
 
 const itemsCreate = ref([
   {
-    label: t('global.nav.create.feedbacks'),
+    label: t('global.nav.create.feedback'),
     icon: 'pi pi-directions-alt',
     disabled: true
   },
@@ -127,41 +127,41 @@ const itemsCreate = ref([
     disabled: true
   },
   {
-    label: t('global.nav.create.ressources.label'),
+    label: t('global.nav.create.resources.label'),
     icon: 'pi pi-box',
     items: [
       {
-        label: t('global.nav.create.ressources.texturePack'),
+        label: t('global.nav.create.resources.texturePack'),
         icon: 'pi pi-fw pi-image',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.datapack'),
+        label: t('global.nav.create.resources.datapack'),
         icon: 'pi pi-fw pi-th-large',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.mods'),
+        label: t('global.nav.create.resources.mod'),
         icon: 'pi pi-fw pi-box',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.maps'),
+        label: t('global.nav.create.resources.map'),
         icon: 'pi pi-fw pi-map',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.skin'),
+        label: t('global.nav.create.resources.skin'),
         icon: 'pi pi-fw pi-users',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.plugins'),
+        label: t('global.nav.create.resources.plugin'),
         icon: 'pi pi-fw pi-play',
         disabled: true
       },
       {
-        label: t('global.nav.create.ressources.other'),
+        label: t('global.nav.create.resources.other'),
         icon: 'pi pi-fw pi-users',
         disabled: true
       }
