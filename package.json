@@ -9,11 +9,10 @@
     "lint": "eslint --ext .js,.vue,.ts --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue,.ts --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "start": "nuxt-start",
-    "deploy": "firebase deploy"
+    "start": "nuxt-start"
   },
   "devDependencies": {
-    "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
+    "@nuxt/image-edge": "^1.0.0-rc.1",
     "@nuxtjs/i18n": "^8.0.0-beta.11",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "eslint": "^8.39.0",

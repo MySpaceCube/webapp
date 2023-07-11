@@ -4,6 +4,7 @@
     "email": "Email",
     "password": "Mot de passe",
     "repeatPassword": "Répéter le mot de passe",
+    "logout": "Se déconnecter",
     "sign-in": "Se connecter",
     "sign-up": "S'inscrire",
     "actions": "Actions",
@@ -49,6 +50,13 @@
     "all": "Tous",
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
+    "user": {
+      "isNotVerify": "Votre compte n'est pas vérifié.",
+      "isNotVerify2": "Veuillez vérifier votre compte pour accéder à toutes les fonctionnalités.",
+      "isNotVerifyEmail": "N'oubliez pas de vérifié vos spams. Si vous n'avez pas reçu l'email de vérification, vous pouvez le renvoyer.",
+      "isNotVerifyResend": "Renvoyer l'email de vérification",
+      "experimentalFeature": "Fonctionnalité expérimentale"
+    },
     "roles": {
       "super_admin": "Super administrateur",
       "admin": "Administrateur",
@@ -68,8 +76,27 @@
       "servers": "Serveurs",
       "about": "A propos",
       "admin": "Administration",
-      "create": "Créer",
-      "search": "Rechercher un créateur, un serveur, un article, ..."
+      "search": "Rechercher un créateur, un serveur, un article, ...",
+      "user": {
+        "profile": "Profile",
+        "settings": "Settings"
+      },
+      "create": {
+        "label": "Créer",
+        "feedback": "Suggestion",
+        "news": "Article",
+        "server": "Serveur",
+        "resources": {
+          "label": "Ressource",
+          "plugin": "Plugin",
+          "mod": "Mod",
+          "texturePack": "Pack de textures",
+          "map": "Carte",
+          "datapack": "Datapack",
+          "skin": "Skin",
+          "other": "Autre"
+        }
+      }
     }
   }
 }

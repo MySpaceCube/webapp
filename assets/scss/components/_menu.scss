@@ -1,0 +1,30 @@
+.p-tieredmenu.p-tieredmenu-overlay {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: $blue-dark;
+  margin-top: 3px;
+  border-radius: 15px;
+  border: 3px solid $blue;
+  .p-menuitem-link {
+    background-color: $blue-dark !important;
+  }
+  .p-menuitem .p-menuitem-active .p-highlight, .p-menuitem-link:hover {
+    background-color: $blue !important;
+  }
+  .p-menuitem-separator {
+    border-top: 3px solid $blue !important;
+  }
+  .p-submenu-list {
+    background-color: $blue-dark !important;
+    border-radius: 0 15px 15px 15px;
+    border: 3px solid $blue;
+  }
+  ul {
+    li {
+      a {
+        color: $text-white !important;
+        background: none;
+      }
+    }
+  }
+}

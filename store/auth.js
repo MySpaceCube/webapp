@@ -43,6 +43,12 @@ export const authStore = defineStore({
           Authorization: 'Bearer ' + token ?? this.token
         }
       })).data.data;
+    },
+    logout () {
+      this.isLogged = false;
+      this.isAdmin = false;
+      this.token = null;
+      this.user = {};
     }
   },
   getters: {
