@@ -135,7 +135,10 @@ export default ({
     }
   },
   image: {
-    dir: 'public/img'
+    dir: 'public/img',
+    domains: [
+      process.env.NUXT_PUBLIC_IMG_URL
+    ]
   },
   modules: [
     '@nuxt/image-edge',
