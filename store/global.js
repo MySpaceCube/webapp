@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia';
+import * as pkg from '../package.json';
 
-export const usePreferenceStore = defineStore({
-  id: 'preferences-store',
+export const globalStore = defineStore({
+  id: 'GlobalStore',
   state: () => {
     return {
       locales: ['fr', 'en'],
       locale: 'en',
+      beta: true,
+      version: pkg.version,
       urlConfig: {}
     };
   },

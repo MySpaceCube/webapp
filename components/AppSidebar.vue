@@ -43,15 +43,17 @@
           </NuxtLink>
         </li>
       </ul>
+      <div class="version">
+        <strong v-if="`${ global.beta }`">Beta</strong> <br>
+        <span>V{{ global.version }}</span>
+      </div>
     </nav>
   </aside>
 </template>
 
-<script>
-export default {
-  name: 'AppSidebar',
-  layout: 'default'
-};
+<script setup>
+import { globalStore } from '~/store/global';
+const global = globalStore();
 </script>
 <style lang="scss">
 @import '../assets/scss/global.scss';
@@ -162,6 +164,18 @@ aside nav {
         opacity: 1;
       }
     }
+  }
+  .version {
+    position: absolute;
+    display: block;
+    bottom: 20px;
+    font-size: 0.9rem;
+    background: #0000004a;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
   }
 }
 </style>
