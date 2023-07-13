@@ -6,6 +6,7 @@
     {{ $t('global.user.isNotVerifyEmail') }}
     <span style="text-decoration: underline; cursor: pointer" @click="sendConfirmationEmail()">{{ $t('global.user.isNotVerifyResend') }}</span>
   </Message>
+  <Toast />
   <hr>
   <form action="">
     <Card>
@@ -34,6 +35,8 @@
 </template>
 
 <script setup>
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import Message from 'primevue/message';
@@ -60,7 +63,7 @@ useHead({
     class: 'test'
   }
 });
-function getVerifyBadges (rank) {
+const getVerifyBadges = (rank) => {
   if (Object.values(rank).indexOf('ROLE_ADMIN') === 0 || Object.values(rank).indexOf('ROLE_SUPER_ADMIN') === 0) {
     return 'verify/verify-admin.svg';
   }
@@ -71,18 +74,17 @@ function getVerifyBadges (rank) {
     return 'verify/verify-author.svg';
   }
   return 'verify/verify-all.svg';
-}
+};
 
-function sendConfirmationEmail () {
-  // TODO : TOAST in then, and in catch
+const sendConfirmationEmail = () => {
   axios.get(api.apiUrl + '/sendConfirmationEmail', {
     headers: {
       Authorization: 'Bearer ' + store.token
     }
   }).then((response) => {
-    console.log(response);
+    useToast().add({ severity: 'success', summary: 'Success Message', detail: response.data.message, life: 5000 });
   }).catch((error) => {
-    console.log(error);
+    useToast().add({ severity: 'error', summary: 'Error Message', detail: error, life: 5000 });
   });
-}
+};
 </script>

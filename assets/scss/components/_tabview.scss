@@ -1,0 +1,29 @@
+.p-tabview .p-tabview-nav {
+  background: transparent;
+  color: $text-white;
+  border-radius: 0 15px;
+  border: none;
+    li {
+      &.p-highlight .p-tabview-nav-link {
+        background: $blue !important;
+      }
+      a {
+        background: $blue-dark !important;
+        border: 3px solid $blue-dark !important;
+        border-radius: 15px 15px 0 0 !important;
+        margin-right: 0.5rem !important;
+        color: $text-white !important;
+        &:hover {
+          color: $text-white !important;
+        }
+      }
+    }
+}
+
+.p-tabview .p-tabview-panels {
+  background: $blue !important;
+  color: $text-white;
+  a {
+    color: $text-white !important;
+  }
+}
