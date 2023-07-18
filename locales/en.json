@@ -51,11 +51,15 @@
     "createdBy": "created by",
     "all_right_reserved": "All rights reserved",
     "user": {
+      "basicInfos": "Basic informations",
       "isNotVerify": "Your account is not verified, please check your emails.",
       "isNotVerify2": "Please verify your account to get access to all features.",
       "isNotVerifyEmail": "Don't forget to check your spam folder! Don't received the email?",
       "isNotVerifyResend": "Resend verification email",
-      "experimentalFeature": "Experimental Features"
+      "experimentalFeature": "Experimental Features",
+      "emailVerify": {
+        "confirm": "Your account has been verified."
+      }
     },
     "roles": {
       "super_admin": "Super Administrator",

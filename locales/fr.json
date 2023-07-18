@@ -51,11 +51,15 @@
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
     "user": {
+      "basicInfos": "Informations de base",
       "isNotVerify": "Votre compte n'est pas vérifié.",
       "isNotVerify2": "Veuillez vérifier votre compte pour accéder à toutes les fonctionnalités.",
       "isNotVerifyEmail": "N'oubliez pas de vérifié vos spams. Si vous n'avez pas reçu l'email de vérification, vous pouvez le renvoyer.",
       "isNotVerifyResend": "Renvoyer l'email de vérification",
-      "experimentalFeature": "Fonctionnalité expérimentale"
+      "experimentalFeature": "Fonctionnalité expérimentale",
+      "emailVerify": {
+        "confirm": "Votre compte a été vérifié avec succès."
+      }
     },
     "roles": {
       "super_admin": "Super administrateur",
@@ -78,8 +82,8 @@
       "admin": "Administration",
       "search": "Rechercher un créateur, un serveur, un article, ...",
       "user": {
-        "profile": "Profile",
-        "settings": "Settings"
+        "profile": "Profil",
+        "settings": "Parametres"
       },
       "create": {
         "label": "Créer",

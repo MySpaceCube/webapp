@@ -11,7 +11,7 @@
         <span class="p-input-icon-left">
           <span class="input">
             <nuxt-img src="gold-pts.svg" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
-            <span>{{ store.user.points }} pts</span>
+            <span>{{ getPoints(store.user.points) }} pts</span>
           </span>
         </span>
         <span class="p-input-icon-left">
@@ -74,7 +74,7 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
 import TieredMenu from 'primevue/tieredmenu';
-import { getCurrentRole } from '~/utils/utils';
+import {getCurrentRole, getPoints} from '~/utils/utils';
 import { ref } from 'vue';
 import { authStore } from '~/store/auth';
 const store = authStore();

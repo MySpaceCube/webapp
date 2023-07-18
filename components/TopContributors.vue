@@ -8,10 +8,10 @@
           <section>
           <NuxtLink :to="`/users/${user.username}`" class="d-flex flex-row top-players-username">
             @{{ user.username }}
-            <nuxt-img :src="getVerifyBadges(user.roles)" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/>
+            <nuxt-img :src="getVerifyBadges(user, false)" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/>
           </NuxtLink>
             <span class="top-players-countPoints">
-              {{ getPoints() }}
+              {{ getPoints(user.points) }} pts
             </span>
           </section>
         </section>
@@ -22,30 +22,9 @@
 
 <script setup>
 import { apiStore } from '~/store/api';
+import { getVerifyBadges, getPoints } from '~/utils/utils';
 
 const api = apiStore();
-
-function getPoints () {
-  let points = Math.round(Math.random() * 20000);
-  if (points.toString().length >= 4) {
-    points /= 1000;
-    points = Math.round(points, 1) + ' k';
-  }
-  return points;
-}
-
-function getVerifyBadges (rank) {
-  if (Object.values(rank).indexOf('ROLE_ADMIN') === 0 || Object.values(rank).indexOf('ROLE_SUPER_ADMIN') === 0) {
-    return 'verify/verify-admin.svg';
-  }
-  if (Object.values(rank).indexOf('ROLE_MODERATOR') === 0) {
-    return 'verify/verify-moderator.svg';
-  }
-  if (Object.values(rank).indexOf('ROLE_AUTHOR') === 0) {
-    return 'verify/verify-author.svg';
-  }
-  return 'verify/verify-all.svg';
-}
 
 const {
   pending,

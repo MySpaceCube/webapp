@@ -1,10 +1,13 @@
 <template>
-  <h1>{{ store.user.username }} <nuxt-img v-if="store.user" :src="getVerifyBadges(store.user.roles[0])" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/></h1>
-  <Message v-if="!store.user.isVerify" severity="warn" :closable="false" sticky>
+  <h1>{{ store.user.username }} <nuxt-img v-if="store.user && (store.user.isVerify || store.user.isMinecraftVerify)" :src="getVerifyBadges(store.user)" alt="icon" height="20" width="20" style="margin-left: 5px; "/></h1>
+  <Message v-if="store.user && !store.user.isVerify" severity="warn" :closable="false" sticky>
     <span class="p-text-bold">{{ $t('global.user.isNotVerify') }}</span> {{ $t('global.user.isNotVerify2') }}
     <br>
     {{ $t('global.user.isNotVerifyEmail') }}
     <span style="text-decoration: underline; cursor: pointer" @click="sendConfirmationEmail()">{{ $t('global.user.isNotVerifyResend') }}</span>
+  </Message>
+  <Message v-if="isEmailVerify" severity="success" sticky>
+    <span>{{ $t('global.user.emailVerify.confirm') }}</span>
   </Message>
   <Toast />
   <hr>
@@ -15,11 +18,11 @@
         <label for="username">Username :</label>
         <InputText id="username" type="text" v-model="username" disabled />
         <label for="email">Email :</label>
-        <InputText id="email" type="text" v-model="email" />
+        <InputText id="email" type="text" v-model="email" disabled />
         <label for="password">Password :</label>
-        <InputText id="password" type="text" v-model="password" />
+        <InputText id="password" type="text" v-model="password" disabled />
         <label for="newPassword">newPassord :</label>
-        <InputText id="newPassword" type="text" v-model="newPassword" />
+        <InputText id="newPassword" type="text" v-model="newPassword" disabled />
       </template>
     </Card>
   </form>
@@ -35,7 +38,6 @@
 </template>
 
 <script setup>
-import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
@@ -45,15 +47,19 @@ import { authStore } from '~/store/auth';
 import { apiStore } from '~/store/api';
 import { ref } from 'vue';
 import axios from 'axios';
+import { getVerifyBadges } from '~/utils/utils';
+
 const store = authStore();
 const api = apiStore();
-
+const route = useRoute();
+const isEmailVerify = (route.query.successVerifyEmail === '1');
 const beta = ref(store.user.beta ? 'On' : 'Off');
 const username = ref(store.user.username);
 const email = ref(store.user.email);
 const password = ref('');
 const newPassword = ref('');
 const options = ref(['Off', 'On']);
+const toast = useToast();
 useHead({
   title: 'Space-Cube | Settings',
   meta: [
@@ -63,18 +69,11 @@ useHead({
     class: 'test'
   }
 });
-const getVerifyBadges = (rank) => {
-  if (Object.values(rank).indexOf('ROLE_ADMIN') === 0 || Object.values(rank).indexOf('ROLE_SUPER_ADMIN') === 0) {
-    return 'verify/verify-admin.svg';
+if (isEmailVerify) {
+  if (route.query.successVerifyEmail === '1') {
+    delete route.query.successVerifyEmail;
   }
-  if (Object.values(rank).indexOf('ROLE_MODERATOR') === 0) {
-    return 'verify/verify-moderator.svg';
-  }
-  if (Object.values(rank).indexOf('ROLE_AUTHOR') === 0) {
-    return 'verify/verify-author.svg';
-  }
-  return 'verify/verify-all.svg';
-};
+}
 
 const sendConfirmationEmail = () => {
   axios.get(api.apiUrl + '/sendConfirmationEmail', {
@@ -82,9 +81,9 @@ const sendConfirmationEmail = () => {
       Authorization: 'Bearer ' + store.token
     }
   }).then((response) => {
-    useToast().add({ severity: 'success', summary: 'Success Message', detail: response.data.message, life: 5000 });
+    toast.add({ severity: 'success', summary: 'Success Message', detail: response.data.data.message, life: 5000 });
   }).catch((error) => {
-    useToast().add({ severity: 'error', summary: 'Error Message', detail: error, life: 5000 });
+    toast.add({ severity: 'error', summary: 'Error Message', detail: error, life: 5000 });
   });
 };
 </script>

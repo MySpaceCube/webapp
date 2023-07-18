@@ -1,11 +1,11 @@
 button {
     position: relative;
-    height: 56px !important;
+    height: 56px;
     border: 0px !important;
 
-    background: linear-gradient(162.34deg, #161A42 22.61%, #0B0D21 118.29%) !important;
+    background: linear-gradient(162.34deg, #161A42 22.61%, #0B0D21 118.29%);
     border-radius: 16px !important;
-    
+
     span.p-button-label {
         color: $text-white !important;
     }
@@ -13,4 +13,8 @@ button {
     .p-button-text {
         background: transparent !important;
     }
+
+  &.p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon, .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close {
+    background-color: transparent !important;
+  }
 }
