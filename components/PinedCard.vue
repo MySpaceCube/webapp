@@ -2,12 +2,12 @@
   <section :class="`pined-card invert-${invertInfos}`" :style="`background-image: url('${cardImg}')`">
     <div class="pined-card-infos">
       <div class="d-flex row justify-content-between">
-        <div v-if="isIconHidden" class="pined-card-col-icon">
+        <div v-if="!isIconHidden" class="pined-card-col-icon">
           <i :class="`pi pi-${iconName}`"></i>
         </div>
         <div class="pined-card-col-infos">
           <h3>{{ title }}</h3>
-          <p>{{ description }}</p>
+          <p>{{ formatDescription(description) }}</p>
         </div>
         <div v-if="isShowServerInfos" class="pined-card-col-server_infos d-flex flex-column">
             <div v-if="server" class="d-flex row count-players">{{ server.players.online }}/{{ server.players.max }}</div>
@@ -71,11 +71,16 @@ export default {
     },
     isIconHidden: {
       type: Boolean,
-      default: false
+      default: true
     },
     isShowServerInfos: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    formatDescription (description) {
+      return description.substring(0, 40) ;
     }
   }
 };

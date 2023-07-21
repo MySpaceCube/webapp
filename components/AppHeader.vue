@@ -17,7 +17,7 @@
         <span class="p-input-icon-left">
           <Button type="button" icon="pi pi-bell" class="input p-button-text" />
         </span>
-        <span v-if="store.user.isVerify && store.user.isMinecraftVerify" class="p-input">
+        <span v-if="store.user.isVerify" class="p-input">
           <Button
             type="button"
             class="input p-button-text"
@@ -30,7 +30,9 @@
           <TieredMenu ref="menu" id="overlay_create" :model="itemsCreate" :popup="true" />
         </span>
         <span v-if="store.isAdmin" class="p-input-administration">
-          <Button type="button" class="input p-button-text" :label="`${ $t('global.nav.admin') }`" :placeholder="`${ $t('global.nav.admin') }`" />
+          <NuxtLink :to="api.apiUrl + '/acp_login'" target="_blank">
+            <Button type="button" class="input p-button-text" :label="`${ $t('global.nav.admin') }`" :placeholder="`${ $t('global.nav.admin') }`" />
+          </NuxtLink>
         </span>
         <div class="vertical-separator" />
         <section class="me-info d-flex row align-items-center">
@@ -74,10 +76,12 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
 import TieredMenu from 'primevue/tieredmenu';
-import {getCurrentRole, getPoints} from '~/utils/utils';
+import { getCurrentRole, getPoints } from '~/utils/utils';
 import { ref } from 'vue';
 import { authStore } from '~/store/auth';
 const store = authStore();
+import { apiStore } from '~/store/api';
+const api = apiStore();
 const { t } = useI18n();
 const menu = ref();
 const menuUser = ref();

@@ -1,6 +1,6 @@
 import { authStore } from '~/store/auth';
-import { apiStore } from '~/store/api';
 import { isAdmin } from '~/utils/utils';
+import { apiStore } from '~/store/api';
 
 export default defineNuxtPlugin((nuxt) => {
   const store = authStore(nuxt.$pinia);

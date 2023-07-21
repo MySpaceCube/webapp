@@ -2,12 +2,16 @@ import { defineStore } from 'pinia';
 import * as pkg from '../package.json';
 
 export const globalStore = defineStore({
-  id: 'GlobalStore',
+  id: 'Global',
   state: () => {
     return {
       locales: ['fr', 'en'],
       locale: 'en',
       beta: true,
+      maintenance: false,
+      apiVersion: '0.0.0',
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
+      imgPath: process.env.NUXT_PUBLIC_IMG_URL,
       version: pkg.version,
       urlConfig: {}
     };

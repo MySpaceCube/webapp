@@ -1,5 +1,5 @@
 <template>
-  <h1>Profile page of {{ $route.params.id }}</h1>
+  <h1>{{ $route.params.id }} - {{ $t('global.feedback') }}</h1>
 </template>
 
 <script>

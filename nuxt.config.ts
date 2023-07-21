@@ -21,8 +21,9 @@ export default ({
   runtimeConfig: {
     // see https://nuxt.com/modules/simple-sitemap
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://www.space-cube.xyz',
-      apiUrl: process.env.NUXT_PUBLIC_API_URL ?? 'https://api.space-cube.xyz'
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
+      imgUrl: process.env.NUXT_PUBLIC_IMG_URL
     }
   },
   components: {
