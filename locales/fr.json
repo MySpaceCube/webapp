@@ -9,6 +9,11 @@
     "sign-up": "S'inscrire",
     "actions": "Actions",
     "readMore": "Lire la suite",
+    "player": "Joueur",
+    "players": "Joueurs",
+    "other": "Autre",
+    "feedback": "Suggestion",
+    "feedbacks": "Suggestions",
     "link": "Lien",
     "title": "Titre",
     "type": "Type",
@@ -62,6 +67,28 @@
         "confirm": "Votre compte a été vérifié avec succès."
       }
     },
+    "feedbacksInfos": {
+      "statuses": {
+        "pending": "En attente",
+        "accepted": "Accepté",
+        "refused": "Refusé",
+        "in-progress": "En cours",
+        "done": "Terminé"
+      },
+      "types": {
+        "bug": "Bug",
+        "feature": "Fonctionnalité",
+        "feedback": "Suggestion",
+        "style": "Style",
+        "ask": "Question",
+        "other": "Autre"
+      },
+      "targetApp": {
+        "website": "Site web",
+        "minecraft": "Serveur Minecraft",
+        "administration": "Adminstration"
+      }
+    },
     "roles": {
       "super_admin": "Super administrateur",
       "admin": "Administrateur",
@@ -80,6 +107,7 @@
       "resources": "Ressources",
       "servers": "Serveurs",
       "about": "A propos",
+      "website": "Site web utiles",
       "admin": "Administration",
       "search": "Rechercher un créateur, un serveur, un article, ...",
       "user": {

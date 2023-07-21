@@ -11,7 +11,7 @@
             <nuxt-img :src="getVerifyBadges(user, false)" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/>
           </NuxtLink>
             <span class="top-players-countPoints">
-              {{ getPoints(user.points) }} pts
+              {{ getPoints(user.points) }} PTS
             </span>
           </section>
         </section>

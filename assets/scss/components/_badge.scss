@@ -1,0 +1,8 @@
+.p-badge {
+  border-radius: 5px;
+
+  &.p-badge-success {
+    background-color: $green-500;
+    color: $text;
+  }
+}

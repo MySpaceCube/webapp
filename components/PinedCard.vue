@@ -1,9 +1,18 @@
 <template>
   <section :class="`pined-card invert-${invertInfos}`" :style="`background-image: url('${cardImg}')`">
     <div class="pined-card-infos">
+      <div v-if="isFeedback" class="feedback-card-likes">
+        <span class="feedback-date">{{ getDateFormat(feedback.createdAt) }}</span>
+        &nbsp;-&nbsp;
+        <span class="likes">1</span>
+        <NuxtImg src="heart-full.png" height="24px" width="24px" />
+      </div>
       <div class="d-flex row justify-content-between">
         <div v-if="!isIconHidden" class="pined-card-col-icon">
           <i :class="`pi pi-${iconName}`"></i>
+        </div>
+        <div v-if="isFeedback" class="d-flex flex-row justify-content-between">
+          <NuxtImg :src="`${author.avatar}`" height="24" width="24" />
         </div>
         <div class="pined-card-col-infos">
           <h3>{{ title }}</h3>
@@ -65,9 +74,21 @@ export default {
       type: Boolean,
       default: false
     },
+    isFeedback: {
+      type: Boolean,
+      default: false
+    },
     iconName: {
       type: String,
       default: 'hourglass'
+    },
+    author: {
+      type: Object,
+      required: false
+    },
+    feedback: {
+      type: Object,
+      required: false
     },
     isIconHidden: {
       type: Boolean,
@@ -80,7 +101,7 @@ export default {
   },
   methods: {
     formatDescription (description) {
-      return description.substring(0, 40) ;
+      return description.substring(0, 40);
     }
   }
 };
@@ -93,7 +114,6 @@ export default {
   }
 }
 .pined-card {
-  width: calc(100% - 30px);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -129,14 +149,17 @@ export default {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(6px);
     padding: 14px 24px;
-    height: 50%;
-    width: 357px;
+    min-height: 50%;
+    min-width: 357px;
     border-radius: 1rem;
     border: 1px solid #60A5FA;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    div.pined-card-col-infos {
+      width: 80%;
+    }
 
     h3 {
       margin: 0;

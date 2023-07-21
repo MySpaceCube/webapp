@@ -37,6 +37,12 @@
           </NuxtLink>
         </li>
         <li>
+          <NuxtLink to="/website">
+            <i class="pi pi-globe"></i>
+            <span>{{ $t('global.nav.website') }}</span>
+          </NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="/about">
             <i class="pi pi-exclamation-circle"></i>
             <span>{{ $t('global.nav.about') }}</span>

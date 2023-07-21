@@ -1,8 +1,38 @@
 import { roles, rolesTrans } from './constant';
 
 export const getDateFormat = (datetime) => {
-  return new Date(datetime).getDate() + '/' + new Date(datetime).getMonth() + '/' + new Date(datetime).getFullYear();
+  return new Date(datetime).getDate() + ' ' + getMonths(new Date(datetime).getMonth()) + ' ' + new Date(datetime).getFullYear();
 };
+
+export const getMonths = (datetime) => {
+  switch (datetime) {
+  case 1:
+    return 'February';
+  case 2:
+    return 'March';
+  case 3:
+    return 'April';
+  case 4:
+    return 'May';
+  case 5:
+    return 'June';
+  case 6:
+    return 'July';
+  case 7:
+    return 'August';
+  case 8:
+    return 'September';
+  case 9:
+    return 'October';
+  case 10:
+    return 'November';
+  case 11:
+    return 'Décember';
+  case 0:
+  default:
+    return 'January';
+  }
+}
 
 export const getDateTimeFormat = (datetime) => {
   return new Date(datetime).getUTCDate().toLocaleString();
@@ -95,5 +125,62 @@ export const getVerifyBadges = (user, checkIsVerify = true) => {
     return 'verify/verify-partial.svg';
   } else {
     return 'verify/verify-none.svg';
+  }
+};
+
+export const feedbackVariantType = (type) => {
+  switch (type) {
+  case 'style':
+    return 'dark';
+  case 'bug':
+    return 'danger';
+  case 'done':
+    return 'info';
+  case 'in-progress':
+    return 'warning';
+  case 'pending':
+  default:
+    return 'secondary';
+  }
+};
+
+export const feedbackTransTargetApp = (targetApp) => {
+  switch (targetApp) {
+  case '3':
+    return 'administration';
+  case '2':
+    return 'minecraft';
+  case '1':
+  default:
+    return 'website';
+  }
+};
+
+export const feedbackVariantTargetApp = (targetApp) => {
+  switch (targetApp) {
+  case '1':
+    return 'danger';
+  case '3':
+    return 'warning';
+  case '2':
+    return 'success';
+  default:
+    return 'secondary';
+  }
+};
+
+export const feedbackVariantStatus = (status) => {
+  switch (status) {
+  case 'accepted':
+    return 'success';
+  case 'refused':
+    return 'danger';
+  case 'done':
+    return 'info';
+  case 'in-progress':
+    return 'warning';
+  case 'pending':
+  default:
+    return 'secondary';
   }
 };

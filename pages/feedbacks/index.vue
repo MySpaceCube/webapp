@@ -9,26 +9,27 @@
           :invertInfos="key === 1"
           :title="feedback.title"
           :description="feedback.description"
+          is-feedback
+          :feedback="feedback"
+          :author="feedback.author"
+          :card-path="`/feedbacks/${feedback.slug}`"
           :cta-label="$t('global.readMore')"
           :cta-path="`/feedbacks/${feedback.slug}`"
           :card-img="`${global.imgPath}${feedback.img}` || 'https://www.minecraft.net/content/dam/games/badger/key-art/MC_Badger-Gather-Your-Strength_1200x540.png.transform/minecraft-image-large/image.png'"
         />
       </section>
     </section>
-    <!-- TODO COMPONENTS   -->
+    <br>
+    <hr>
     <section>
-      <h2>Other Feedback</h2>
+      <h2>{{ $t('global.other') }} {{ $t('global.feedbacks') }}</h2>
       <div v-if='!pending && feedbacks.data'>
-        <ul
-          v-for="feedback in feedbacks.data"
-          :key='feedback.id'
-        >
-          <li>
-            <NuxtLink :to="`/feedbacks/${feedback.slug}`">{{ feedback.title }}</NuxtLink>
-            {{ $t('global.createdBy') }}
-            <NuxtLink :to="`/users/${feedback.author.username}`">{{ feedback.author.username }}</NuxtLink>
-            at
-          </li>
+        <ul class="d-flex feedbacks-card-section">
+          <FeedbackCard
+            v-for="feedback in feedbacks.data"
+            :key='feedback.id'
+            :feedback="feedback"
+          />
         </ul>
       </div>
       <div v-if='pending'>
@@ -46,6 +47,7 @@ import { apiStore } from '~/store/api';
 import { globalStore } from '~/store/global';
 import Skeleton from 'primevue/skeleton';
 import PinedCard from '~/components/PinedCard.vue';
+import FeedbackCard from '~/components/FeedbackCard.vue';
 
 const api = apiStore();
 const global = globalStore();

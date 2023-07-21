@@ -32,3 +32,42 @@
     }
   }
 }
+
+.feedback-card-likes {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.pined-card-likes,
+.feedback-card-likes {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  background: none;
+  text-decoration: none;
+
+  .feedback-date {
+    color: transparent;
+    display: inline-block;
+    background: linear-gradient(90deg, #ACCBE5 0%, #86FDE8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .likes {
+    margin-right: 0.5rem;
+  }
+  img {
+    margin-top: -0.2rem;
+  }
+}
+
+.feedback-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 1rem;
+}

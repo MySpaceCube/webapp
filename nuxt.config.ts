@@ -115,6 +115,12 @@ export default ({
           absolute: true
         },
         {
+          name: 'website-tools',
+          path: '/website-tools',
+          component: 'pages/website.vue',
+          absolute: true
+        },
+        {
           name: 'logout',
           path: '/logout',
           component: 'pages/logout.vue',

@@ -9,6 +9,11 @@
     "sign-up": "Sign up",
     "actions": "Actions",
     "readMore": "Read more",
+    "player": "Player",
+    "players": "Players",
+    "other": "Other",
+    "feedback": "Feedback",
+    "feedbacks": "Feedbacks",
     "link": "Link",
     "title": "Title",
     "type": "Type",
@@ -62,6 +67,28 @@
         "confirm": "Your account has been verified."
       }
     },
+    "feedbacksInfos": {
+      "statuses": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "refused": "Refused",
+        "in-progress": "In progress",
+        "done": "Done"
+      },
+      "types": {
+        "bug": "Bug",
+        "feature": "feature",
+        "feedback": "Feedback",
+        "style": "Style",
+        "ask": "Ask",
+        "other": "Other"
+      },
+      "targetApp": {
+        "website": "Website",
+        "minecraft": "Minecraft Server",
+        "administration": "Adminstration"
+      }
+    },
     "roles": {
       "super_admin": "Super Administrator",
       "admin": "Administrator",
@@ -79,6 +106,7 @@
       "feedbacks": "Feedbacks",
       "resources": "Resources",
       "servers": "Servers",
+      "website": "Website tools",
       "about": "About",
       "admin": "Administration",
       "search": "Search a creator, resource, feedbacks...",
