@@ -65,6 +65,15 @@
   }
 }
 
+.img-avatar-feedback {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  border: 3px solid $cyan-2;
+}
+
 .feedback-card-footer {
   display: flex;
   justify-content: flex-end;

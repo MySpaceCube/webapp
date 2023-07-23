@@ -1,7 +1,7 @@
 <template>
   <section class="feedback-card d-flex flex-column" :style="`background-image: url('${cardImg}')`">
     <div class="feedback-card-likes">
-      <span class="feedback-date">{{ getDateFormat(feedback.createdAt) }}</span>
+      <span class="feedback-date">{{ feedback.author.username }} <nuxt-img v-if="feedback.author" :src="getVerifyBadges(feedback.author)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
       &nbsp;-&nbsp;
       <span class="likes">1</span>
       <NuxtImg src="heart-full.png" height="24px" width="24px" />
@@ -9,7 +9,7 @@
     <NuxtLink :to="`feedbacks/${feedback.slug}`" class="feedback-card-infos">
       <div class="d-flex row justify-content-between">
         <div class="d-flex flex-row justify-content-between">
-          <NuxtImg :src="`${feedback.author.avatar}`" height="24" width="24" />
+          <NuxtImg :src="`${feedback.author.avatar}`" height="24" width="24" class="img-avatar-feedback" />
         </div>
         <div>
           <h3>{{ feedback.title }}</h3>
@@ -37,7 +37,8 @@ import {
   feedbackVariantType,
   feedbackVariantStatus,
   feedbackVariantTargetApp,
-  feedbackTransTargetApp
+  feedbackTransTargetApp,
+  getVerifyBadges
 } from '~/utils/utils';
 
 export default {
@@ -63,8 +64,9 @@ export default {
   },
   methods: {
     formatDescription (description) {
-      return description.substring(0, 40);
+      return description.substring(0, 40) + '...';
     },
+    getVerifyBadges,
     feedbackTransTargetApp,
     feedbackVariantType,
     feedbackVariantTargetApp,

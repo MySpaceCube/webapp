@@ -1,5 +1,6 @@
 {
   "global": {
+    "submit": "Submit",
     "username": "Username",
     "email": "Email",
     "password": "Password",
@@ -77,8 +78,7 @@
       },
       "types": {
         "bug": "Bug",
-        "feature": "feature",
-        "feedback": "Feedback",
+        "feature": "Feature",
         "style": "Style",
         "ask": "Ask",
         "other": "Other"
