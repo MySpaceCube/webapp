@@ -1,5 +1,6 @@
 {
   "global": {
+    "submit": "Envoyer",
     "username": "Nom d'utilisateur",
     "email": "Email",
     "password": "Mot de passe",
@@ -78,7 +79,6 @@
       "types": {
         "bug": "Bug",
         "feature": "Fonctionnalité",
-        "feedback": "Suggestion",
         "style": "Style",
         "ask": "Question",
         "other": "Autre"

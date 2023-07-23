@@ -77,6 +77,12 @@ export default ({
           absolute: true
         },
         {
+          name: 'feedbacks-create',
+          path: '/feedbacks/crate',
+          component: 'pages/feedbacks/create.vue',
+          absolute: true
+        },
+        {
           name: 'feedbacks-infos',
           path: '/feedbacks/:id',
           component: 'pages/feedbacks/[id].vue',

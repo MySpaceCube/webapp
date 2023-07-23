@@ -118,7 +118,8 @@ const itemsCreate = ref([
   {
     label: t('global.nav.create.feedback'),
     icon: 'pi pi-directions-alt',
-    disabled: true
+    disabled: false,
+    to: '/feedbacks/create'
   },
   {
     label: t('global.nav.create.news'),

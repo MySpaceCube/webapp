@@ -38,5 +38,16 @@ export const actions = {
 
         return error;
       });
+  },
+  async createFeedback (payload) {
+    axios.post(this.apiUrl + '/feedback', payload)
+      .then((response) => {
+        this.state.apiVersion = response.data.version;
+      })
+      .catch((error) => {
+        console.error(error);
+
+        return error;
+      });
   }
 };

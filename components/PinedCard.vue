@@ -2,7 +2,7 @@
   <section :class="`pined-card invert-${invertInfos}`" :style="`background-image: url('${cardImg}')`">
     <div class="pined-card-infos">
       <div v-if="isFeedback" class="feedback-card-likes">
-        <span class="feedback-date">{{ getDateFormat(feedback.createdAt) }}</span>
+        <span class="feedback-date">{{ feedback.author.username }}<nuxt-img v-if="feedback.author" :src="getVerifyBadges(feedback.author, true)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
         &nbsp;-&nbsp;
         <span class="likes">1</span>
         <NuxtImg src="heart-full.png" height="24px" width="24px" />
@@ -12,7 +12,7 @@
           <i :class="`pi pi-${iconName}`"></i>
         </div>
         <div v-if="isFeedback" class="d-flex flex-row justify-content-between">
-          <NuxtImg :src="`${author.avatar}`" height="24" width="24" />
+          <NuxtImg :src="`${author.avatar}`" height="24" width="24" class="img-avatar-feedback" />
         </div>
         <div class="pined-card-col-infos">
           <h3>{{ title }}</h3>
@@ -36,6 +36,7 @@ import axios from 'axios';
 export default {
   name: 'pined-card',
   mounted () {
+    if (!this.isShowServerInfos) return;
     axios.get('https://api.minetools.eu/ping/149.202.108.158/25589')
       .then((response) => {
         this.server = response.data;
@@ -101,7 +102,7 @@ export default {
   },
   methods: {
     formatDescription (description) {
-      return description.substring(0, 40);
+      return description.substring(0, 40) + '...';
     }
   }
 };

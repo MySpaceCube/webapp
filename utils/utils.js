@@ -99,10 +99,7 @@ export const getPoints = (points) => {
 };
 
 export const getVerifyBadges = (user, checkIsVerify = true) => {
-  if (!checkIsVerify ? user.isVerify || !checkIsVerify : user.isVerify && !checkIsVerify) {
-    if (!checkIsVerify ? !user.isMinecraftVerify && checkIsVerify : !user.isMinecraftVerify && checkIsVerify) {
-      return 'verify/verify-partial.svg';
-    }
+  if (checkIsVerify ? user.isVerify || !checkIsVerify : user.isVerify && !checkIsVerify) {
     switch (user.roles[0]) {
     case roles.ROLE_SUPER_ADMIN:
       return 'verify/verify-super-admin.svg';
@@ -118,6 +115,10 @@ export const getVerifyBadges = (user, checkIsVerify = true) => {
       return 'verify/verify-editor.svg';
     case roles.ROLE_MINECRAFT:
     case roles.ROLE_USER:
+      if (!checkIsVerify ? !user.isMinecraftVerify && checkIsVerify : !user.isMinecraftVerify && checkIsVerify) {
+        return 'verify/verify-partial.svg';
+      }
+      return 'verify/verify-all.svg';
     default:
       return 'verify/verify-all.svg';
     }
