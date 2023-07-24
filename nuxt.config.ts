@@ -154,7 +154,7 @@ export default ({
     ]
   },
   modules: [
-    '@nuxt/image-edge',
+    '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/robots',
     'nuxt-simple-sitemap',
