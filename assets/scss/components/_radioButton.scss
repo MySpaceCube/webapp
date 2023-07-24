@@ -1,0 +1,32 @@
+.p-radiobutton {
+  margin-right: 0.5rem;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.radiobutton-section {
+  div.flex.align-items-center {
+    margin-left: 1.5rem;
+    label {
+      display: inline-flex;
+      height: 35px !important;
+      line-height: 35px;
+      align-items: center;
+    }
+  }
+}
+
+.p-radiobutton-box {
+  background-color: $blue-dark !important;
+  border-color: $blue-dark !important;
+  &.p-highlight {
+    background-color: $pink-2 !important;
+    border-color: $pink-2 !important;
+    .p-radiobutton-icon {
+      height: 10px;
+      width: 10px;
+      background-color: $blue !important;
+    }
+  }
+}

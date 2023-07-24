@@ -1,5 +1,6 @@
 {
   "global": {
+    "error.message": "Une erreur est survenue, veuillez nous excuser pour la gêne occasionnée.",
     "submit": "Envoyer",
     "username": "Nom d'utilisateur",
     "email": "Email",
@@ -57,6 +58,29 @@
     "all": "Tous",
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
+    "form": {
+      "feedback": {
+        "successTitle": "Suggestion envoyée",
+        "successMessage": "Votre suggestion a été envoyée avec succès. Elle sera traitée dans les plus brefs délais.",
+        "errorTitle": "Erreur lors de l'envoi de la suggestion"
+      },
+      "title": {
+        "label": "Titre",
+        "error": "Le titre est requis."
+      },
+      "description": {
+        "label": "Description",
+        "error": "La description est requise, elle doit contenir au moins 20 caractères."
+      },
+      "targetApp": {
+        "label": "Application concernée",
+        "error": "Vous devez sélectionner au moins une application."
+      },
+      "type": {
+        "label": "Type",
+        "error": "Vous devez sélectionner au moins un type."
+      }
+    },
     "user": {
       "basicInfos": "Informations de base",
       "isNotVerify": "Votre compte n'est pas vérifié.",
@@ -67,6 +91,9 @@
       "emailVerify": {
         "confirm": "Votre compte a été vérifié avec succès."
       }
+    },
+    "feedbackPage": {
+      "create": "Créer une suggestion"
     },
     "feedbacksInfos": {
       "statuses": {

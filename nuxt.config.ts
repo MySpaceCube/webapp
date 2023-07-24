@@ -204,7 +204,8 @@ export default ({
   plugins: [
     '~/plugins/axios',
     '~/plugins/vercel',
-    '~/plugins/primevue'
+    '~/plugins/primevue',
+    '~/plugins/mitt'
   ],
   robots: {
     // https://nuxt.com/modules/robots

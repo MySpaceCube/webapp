@@ -6,10 +6,24 @@
     {{ $t('global.user.isNotVerifyEmail') }}
     <span style="text-decoration: underline; cursor: pointer" @click="sendConfirmationEmail()">{{ $t('global.user.isNotVerifyResend') }}</span>
   </Message>
+  <Message v-if="store.user && !store.user.isMinecraftVerify" severity="warn" :closable="false" sticky>
+    <span class="p-text-bold">{{ $t('global.user.isNotMinecraftVerify') }}</span>
+    <br>
+    {{ $t('global.user.isNotMinecraftVerify_explain') }}
+    <br>
+    <br>
+    <code>play.space-cube.xyz</code>
+    <br>
+    <br>
+    {{ $t('global.user.isNotMinecraftVerify_explain_next') }}
+    <br>
+    <br>
+    <code>/verify</code>
+  </Message>
   <Message v-if="isEmailVerify" severity="success" sticky>
     <span>{{ $t('global.user.emailVerify.confirm') }}</span>
   </Message>
-  <Toast />
+  <Toast position="bottom-right" />
   <hr>
   <form action="">
     <Card>
