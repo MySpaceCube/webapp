@@ -12,6 +12,7 @@
           <span class="input">
             <nuxt-img src="gold-pts.svg" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
             <span>{{ getPoints(store.user.points) }} pts</span>
+            <div id="user-points"></div>
           </span>
         </span>
         <span class="p-input-icon-left">
@@ -85,9 +86,28 @@ const api = apiStore();
 const { t } = useI18n();
 const menu = ref();
 const menuUser = ref();
+const { $bus } = useNuxtApp();
 
 const toggle = (event) => {
   menu.value.toggle(event);
+};
+
+$bus.$on('updatePoints', (data) => {
+  updatePoints(data.nbPoints, data.isNegative);
+});
+
+const updatePoints = (nbPoints, isNegative = false) => {
+  const el = document.getElementById('user-points');
+  el.innerHTML = (isNegative ? '-' : '+') + nbPoints + ' points';
+  el.classList.add('animate_points__animated');
+  setTimeout(() => {
+    if (isNegative) {
+      store.user.points = (store.user.points - nbPoints);
+    } else {
+      store.user.points = (store.user.points + nbPoints);
+    }
+    el.classList.remove('animate_points__animated');
+  }, 1500);
 };
 
 const toggleUser = (event) => {
@@ -180,6 +200,35 @@ const showRole = () => {
 </script>
 
 <style lang="scss">
+#user-points {
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+  color: transparent;
+  background: linear-gradient(90deg, #ACCBE5 0%, #86FDE8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  opacity: 0;
+  margin-left: 2rem;
+  transform: translateY(100%);
+  &.animate_points__animated {
+    animation: animate-points 3s cubic-bezier(0, 0.50, 0.58, 1);
+  }
+}
+
+@keyframes animate-points {
+  0% {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+}
+
 header {
   display: flex;
   justify-content: space-between;

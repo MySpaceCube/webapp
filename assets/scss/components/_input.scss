@@ -27,8 +27,11 @@ span {
     background: linear-gradient(90deg, rgb(31, 162, 255), #a8ffcc);
 }
 
-input, .input {
-    color: $text-white;
+input,
+.input,
+textarea,
+.textarea {
+    color: $text-white !important;
     position: relative;
     display: flex;
     justify-content: center;

@@ -2,50 +2,87 @@
   <div>
     <h1>{{ $t('global.feedbackPage.create') }}</h1>
     <hr>
-    <form action="">
+    <Toast position="bottom-right" />
+    <form>
       <Card>
         <template #content>
           <label for="title">{{ $t('global.form.title.label') }} :</label>
-          <InputText id="title" type="text" v-model="title" />
-          <label for="description">{{ $t('global.form.title.label') }} :</label>
-          <Textarea v-model="description" rows="5" cols="30" style="display: block; margin-top: 1rem; margin-bottom: 1rem"/>
-          <p>Please choose your targetApp.</p>
-          <div class="d-flex flex-wrap justify-content-between" style="width: 50%">
+          <InputText
+            id="title"
+            v-model="title"
+            type="text"
+            :class="{ 'p-invalid': errorMessage.title }"
+            @change="isValidateForm()"
+            required
+          />
+          <div>
+            <small id="text-error" class="p-error" style="display: block;">
+              {{ errorMessage.title || '&nbsp;' }}
+            </small> <br>
+          </div>
+          <label for="description">{{ $t('global.form.description.label') }} :</label>
+          <Textarea
+            v-model="description"
+            :class="{ 'p-invalid': errorMessage.description }"
+            style="display: block; width: 100%; min-height: 200px; margin-top: 1rem; margin-bottom: 1rem"
+            @change="isValidateForm()"
+            required
+          />
+          <div>
+            <small id="text-error" class="p-error" style="display: block;">
+              {{ errorMessage.description || '&nbsp;' }}
+            </small> <br>
+          </div>
+          <p>{{ $t('global.form.targetApp.label') }} :</p>
+          <div class="d-flex flex-wrap radiobutton-section" style="width: 100%">
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" inputId="targetApp_administration" name="administration" value="administration" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_administration" name="administration" value="administration" />
               <label for="targetApp_administration" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.administration') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" inputId="targetApp_website" name="website" value="website" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_website" name="website" value="website" />
               <label for="targetApp_website" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.website') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" inputId="targetApp_server" name="minecraft" value="server" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_server" name="minecraft" value="server" />
               <label for="targetApp_server" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.minecraft') }}</label>
             </div>
           </div>
-          <p>Please choose feedback type.</p>
-          <div class="d-flex flex-wrap justify-content-between" style="width: 50%">
+          <div>
+            <small id="text-error" class="p-error" style="display: block;">
+              {{ errorMessage.targetApp || '&nbsp;' }}
+            </small> <br>
+          </div>
+          <p>{{ $t('global.form.type.label') }} :</p>
+          <div class="d-flex flex-wrap radiobutton-section" style="width: 100%">
             <div class="flex align-items-center">
-              <RadioButton v-model="type" inputId="type_administration" name="style" value="style" />
+              <RadioButton v-model="type" @change="isValidateForm()" inputId="type_administration" name="style" value="style" />
               <label for="type_administration" class="ml-2">{{ $t('global.feedbacksInfos.types.style') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="type" inputId="type_feature" name="feature" value="feature" />
+              <RadioButton v-model="type" @change="isValidateForm()" inputId="type_feature" name="feature" value="feature" />
               <label for="type_feature" class="ml-2">{{ $t('global.feedbacksInfos.types.feature') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="type" inputId="type_bug" name="bug" value="bug" />
+              <RadioButton v-model="type" @change="isValidateForm()" inputId="type_bug" name="bug" value="bug" />
               <label for="type_bug" class="ml-2">{{ $t('global.feedbacksInfos.types.bug') }}</label>
             </div>
           </div>
-          <Button
-            label="Submit"
-            icon="pi pi-check"
-            class="mt-3"
-            type="button"
-            @click="postFeedback"
-          />
+          <div>
+            <small id="text-error" class="p-error" style="display: block;">
+              {{ errorMessage.type || '&nbsp;' }}
+            </small> <br>
+          </div>
+          <span class="p-input">
+            <Button
+              icon="pi pi-check"
+              class="p-button p-component input p-button-text mt-3"
+              type="button"
+              @click="onSubmit"
+            >
+              {{ $t('global.submit') }}
+            </Button>
+          </span>
         </template>
       </Card>
     </form>
@@ -55,45 +92,96 @@
 <script setup>
 import { apiStore } from '~/store/api';
 import { authStore } from '~/store/auth';
-import { globalStore } from '~/store/global';
-import Card from "primevue/card";
-import InputText from "primevue/inputtext";
+import Card from 'primevue/card';
+import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import RadioButton from 'primevue/radiobutton';
-import Button from 'primevue/button';
-import axios from "axios";
+import axios from 'axios';
+import { useToast } from 'primevue/usetoast';
+const { t } = useI18n();
 
 const title = ref('');
 const description = ref('');
 const targetApp = ref('');
 const type = ref('');
+let errorMessage = {};
 
 const api = apiStore();
 const auth = authStore();
-const global = globalStore();
+const toast = useToast();
+const { $bus } = useNuxtApp();
 
-const postFeedback = () => {
+watch([title, description, targetApp, type], () => {
+  isValidateForm();
+});
+
+const isValidateForm = () => {
+  if (title.value.length < 7) {
+    errorMessage.title = t('global.form.title.error');
+  } else {
+    delete errorMessage.title;
+  }
+  if (description.value.length < 20) {
+    errorMessage.description = t('global.form.description.error');
+  } else {
+    delete errorMessage.description;
+  }
+  if (targetApp.value.length < 1) {
+    errorMessage.targetApp = t('global.form.targetApp.error');
+  } else {
+    delete errorMessage.targetApp;
+  }
+  if (type.value.length < 1) {
+    errorMessage.type = t('global.form.type.error');
+  } else {
+    delete errorMessage.type;
+  }
+
+  return errorMessage !== {};
+};
+
+const resetForm = () => {
+  errorMessage = {};
+  title.value = '';
+  description.value = '';
+  targetApp.value = '';
+  type.value = '';
+};
+
+const onSubmit = () => {
+  if (!isValidateForm()) {
+    return false;
+  }
+
   axios.post(api.apiUrl + '/feedbacks', {
     title: title.value,
     description: description.value,
     targetApp: targetApp.value,
-    type: type.value,
+    type: type.value
   }, {
     headers: {
-      'Authorization': 'Bearer ' + auth.token,
+      Authorization: 'Bearer ' + auth.token
     }
   })
     .then((response) => {
-      console.log(response);
-
-      return response;
+      $bus.$emit('updatePoints', { nbPoints: 1, isNegative: false });
+      toast.add({
+        severity: 'success',
+        summary: t('global.form.feedback.successTitle'),
+        detail: t('global.form.feedback.successMessage'),
+        life: 5000
+      });
     })
-    .catch((error) => {
-      console.error(error);
-
-      return error;
+    .catch(() => {
+      toast.add({
+        severity: 'danger',
+        summary: t('global.form.feedback.errorTitle'),
+        detail: t('global.error.message'),
+        life: 5000
+      });
     });
-}
+  resetForm();
+};
 
 useHead({
   title: 'Space-Cube | Create Feedback',
