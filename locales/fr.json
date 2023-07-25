@@ -1,5 +1,6 @@
 {
   "global": {
+    "copied": "Copié!",
     "error.message": "Une erreur est survenue, veuillez nous excuser pour la gêne occasionnée.",
     "submit": "Envoyer",
     "username": "Nom d'utilisateur",

@@ -18,7 +18,7 @@
     {{ $t('global.user.isNotMinecraftVerify_explain_next') }}
     <br>
     <br>
-    <code>/verify</code>
+    <Code :code="`/verify ${store.user.tokenConfirmationMinecraft}`"></Code>
   </Message>
   <Message v-if="isEmailVerify" severity="success" sticky>
     <span>{{ $t('global.user.emailVerify.confirm') }}</span>
@@ -101,3 +101,8 @@ const sendConfirmationEmail = () => {
   });
 };
 </script>
+<style lang="scss">
+.p-message .p-message-text {
+  width: 90%;
+}
+</style>

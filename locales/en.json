@@ -1,5 +1,6 @@
 {
   "global": {
+    "copied": "Copied!",
     "error.message": "An error has occurred, sorry for the inconvenience.",
     "submit": "Submit",
     "username": "Username",
