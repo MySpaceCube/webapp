@@ -8,7 +8,6 @@
         <form class="card-col-infos">
           <h2>{{ $t('global.sign-up') }}</h2>
           <input id="input-email" type="text" name="email" v-model="form.email" :placeholder="`${ $t('global.email') }`" required>
-          <input id="input-username" type="text" name="username" v-model="form.username" :placeholder="`${ $t('global.username') }`" required>
           <input id="input-password" type="password" name="password" v-model="form.password" :placeholder="`${ $t('global.password') }`" required>
           <input id="input-repeat-password" type="password" name="repeat-password" v-model="form.repeatPassword" :placeholder="`${ $t('global.repeatPassword') }`" required>
         </form>
@@ -64,16 +63,6 @@ export default {
         document.getElementById('input-email').classList.remove('valid');
       }
     },
-    'form.username' () {
-      this.isLoading = false;
-      if (this.form.username && this.form.username !== '') {
-        document.getElementById('input-username').classList.add('valid');
-        this.isValid = this.checkIsValid();
-      } else {
-        this.isValid = false;
-        document.getElementById('input-username').classList.remove('valid');
-      }
-    },
     'form.password' () {
       this.isLoading = false;
       if (this.form.password && this.form.password !== '') {
@@ -99,7 +88,6 @@ export default {
     return ({
       form: {
         email: null,
-        username: null,
         password: null,
         repeatPassword: null
       },
@@ -120,7 +108,6 @@ export default {
     },
     checkIsValid () {
       return this.form.email && this.form.email !== '' &&
-        this.form.username && this.form.username !== '' &&
         this.form.password && this.form.password !== '' &&
         this.form.repeatPassword && this.form.repeatPassword !== '' &&
         this.form.password === this.form.repeatPassword;
