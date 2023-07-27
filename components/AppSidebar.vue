@@ -2,7 +2,7 @@
   <aside>
     <nav>
       <NuxtLink to="/" class="logo">
-        <nuxt-img src="/img/logo.png" alt="logo of spacecube" loading="lazy" height="40" width="40"/>
+        <NuxtImg src="/img/logo.png" alt="logo of spacecube" loading="lazy" height="40" width="40"/>
       </NuxtLink>
       <ul class="start">
         <li>

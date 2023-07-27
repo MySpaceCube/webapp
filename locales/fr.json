@@ -1,5 +1,7 @@
 {
   "global": {
+    "refuse": "Refuser",
+    "accept": "Accepter",
     "copied": "Copié!",
     "error.message": "Une erreur est survenue, veuillez nous excuser pour la gêne occasionnée.",
     "submit": "Envoyer",

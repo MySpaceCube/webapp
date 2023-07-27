@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ store.user.username }} <nuxt-img v-if="store.user && (store.user.isVerify || store.user.isMinecraftVerify)" :src="`/img/` + getVerifyBadges(store.user)" alt="icon" height="20" width="20" style="margin-left: 5px; "/></h1>
+  <h1>{{ store.user.username }} <NuxtImg v-if="store.user && (store.user.isVerify || store.user.isMinecraftVerify)" :src="`/img/` + getVerifyBadges(store.user)" alt="icon" height="20" width="20" style="margin-left: 5px; "/></h1>
   <Message v-if="store.user && !store.user.isVerify" severity="warn" :closable="false" sticky>
     <span class="p-text-bold">{{ $t('global.user.isNotVerify') }}</span> {{ $t('global.user.isNotVerify2') }}
     <br>

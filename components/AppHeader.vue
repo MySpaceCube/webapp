@@ -10,8 +10,8 @@
       <section id="header-action-bar--logged" v-if="store.isLogged && store.user">
         <span class="p-input-icon-left">
           <span class="input">
-            <nuxt-img src="/img/emerald.png" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
-            <span v-if="store.user">{{ getPoints(store.user.points) }} pts</span>
+            <NuxtImg src="/img/emerald.png" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
+            <span v-if="store.user">{{ getPoints(store.user.points) }}</span>
             <div id="user-points"></div>
           </span>
         </span>
@@ -37,27 +37,41 @@
         </span>
         <div class="vertical-separator" />
         <section class="me-info d-flex row align-items-center">
-          <Avatar
-          :image="`${store.user.avatar}`"
-          size="large"
-          shape="circle"
-          />
           <section class="d-flex flex-column ml-1">
             <Button
             type="button"
-            class="p-button-text d-flex flex-column justify-content-start align-items-start"
+            class=""
             aria-haspopup="true"
             aria-controls="overlay_me"
             @click="toggleUser"
             >
-              <span class="header-me-info-pseudo">{{store.user.username}}</span>
-              <span class="text-muted">
-                {{ $t('global.roles.' + showRole()) }}
-              </span>
+              <Avatar
+                :image="`${store.user.avatar}`"
+                size="large"
+                shape="circle"
+                class="mr-1"
+              />
+              <div class="p-button-text d-flex flex-column justify-content-start align-items-start">
+                <span class="header-me-info-pseudo">
+                  {{store.user.username}}
+                  <NuxtImg
+                    v-if="store.user"
+                    :src="`/img/` + getVerifyBadges(store.user)"
+                    alt="icon"
+                    loading="lazy"
+                    height="14"
+                    width="14"
+                    style="margin-left: 5px;"
+                  />
+                </span>
+                  <span class="text-muted">
+                    {{ $t('global.roles.' + showRole()) }}
+                  </span>
+              </div>
+              <i class="pi pi-angle-down ml-1" />
             </Button>
             <TieredMenu ref="menuUser" id="overlay_me" :model="itemsUser" :popup="true" />
           </section>
-          <i class="pi pi-angle-down" />
         </section>
       </section>
       <section v-else id="header-action-bar--logged">
@@ -77,7 +91,7 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import Avatar from 'primevue/avatar';
 import TieredMenu from 'primevue/tieredmenu';
-import { getCurrentRole, getPoints } from '~/utils/utils';
+import { getCurrentRole, getPoints, getVerifyBadges, isGrantedAccess } from '~/utils/utils';
 import { ref } from 'vue';
 import { authStore } from '~/store/auth';
 import { apiStore } from '~/store/api';
@@ -142,11 +156,6 @@ const itemsCreate = ref([
     to: '/feedbacks/create'
   },
   {
-    label: t('global.nav.create.news'),
-    icon: 'pi pi-megaphone',
-    disabled: true
-  },
-  {
     label: t('global.nav.create.server'),
     icon: 'pi pi-fw pi-server',
     disabled: true
@@ -193,6 +202,15 @@ const itemsCreate = ref([
     ]
   }
 ]);
+
+if (store.user && store.user.roles && isGrantedAccess(store.user.roles, 'ROLE_EDITOR')) {
+  itemsCreate.value.unshift({
+    label: t('global.nav.create.news'),
+    icon: 'pi pi-megaphone',
+    target: '_blank',
+    url: api.apiUrl + '/acp?crudAction=new&crudControllerFqcn=App%5CController%5CAdmin%5CNewsCrudController&referrer=?crudAction%3Dindex%26crudControllerFqcn%3DApp%255CController%255CAdmin%255CNewsCrudController'
+  });
+}
 
 const showRole = () => {
   return getCurrentRole(store.user.roles[0]);

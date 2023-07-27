@@ -32,7 +32,7 @@ export const getMonths = (datetime) => {
   default:
     return 'January';
   }
-}
+};
 
 export const getDateTimeFormat = (datetime) => {
   return new Date(datetime).getUTCDate().toLocaleString();
@@ -79,6 +79,18 @@ export const isAdmin = (userRole) => {
   }
 };
 
+export const isGrantedAccess = (userRole, neededRole) => {
+  let found = false;
+
+  userRole.forEach((role) => {
+    if (role === neededRole) {
+      found = true;
+    }
+  });
+
+  return found;
+};
+
 export const getPoints = (points) => {
   if (points instanceof String) {
     points = parseInt(points);
@@ -106,8 +118,11 @@ export const getPoints = (points) => {
   return points;
 };
 
-export const getVerifyBadges = (user, checkIsVerify = true) => {
-  if (checkIsVerify ? user.isVerify || !checkIsVerify : user.isVerify && !checkIsVerify) {
+export const getVerifyBadges = (user) => {
+  if (user.isVerify) {
+    if (!user.isMinecraftVerify) {
+      return 'verify/verify-partial.svg';
+    }
     switch (user.roles[0]) {
     case roles.ROLE_SUPER_ADMIN:
       return 'verify/verify-super-admin.svg';
@@ -123,7 +138,7 @@ export const getVerifyBadges = (user, checkIsVerify = true) => {
       return 'verify/verify-editor.svg';
     case roles.ROLE_MINECRAFT:
     case roles.ROLE_USER:
-      if (!checkIsVerify ? !user.isMinecraftVerify && checkIsVerify : !user.isMinecraftVerify && checkIsVerify) {
+      if (!user.isMinecraftVerify) {
         return 'verify/verify-partial.svg';
       }
       return 'verify/verify-all.svg';

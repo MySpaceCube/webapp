@@ -1,6 +1,5 @@
 <script setup>
-const { t } = useI18n();
-const props = defineProps(['code'])
+const props = defineProps(['code']);
 
 const showCopyMessage = () => {
   // genere moi un copy to clipboard a partir du field avec l'id code-to-copy
@@ -11,7 +10,7 @@ const showCopyMessage = () => {
   setTimeout(() => {
     document.querySelector('.copied-message').classList.remove('show');
   }, 1000);
-}
+};
 </script>
 
 <template>
@@ -79,7 +78,7 @@ code {
     p.copied-message {
       position: absolute;
       background-color: $pink-2;
-      color: $blue-dark;
+      color: $text-white;
       font-weight: bold;
       padding: 5px;
       border-radius: 1px;

@@ -29,6 +29,7 @@
             v-for="feedback in feedbacks.data"
             :key='feedback.id'
             :feedback="feedback"
+            :card-img="feedback.img ? global.imgPath + feedback.img  : 'https://wallpapercave.com/wp/wp10584479.png'"
           />
         </ul>
       </div>
@@ -51,8 +52,6 @@ import FeedbackCard from '~/components/FeedbackCard.vue';
 
 const api = apiStore();
 const global = globalStore();
-console.log(global.apiUrl);
-console.log(global.imgPath);
 
 useHead({
   title: 'Space-Cube | Feedbacks',

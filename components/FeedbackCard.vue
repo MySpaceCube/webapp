@@ -1,12 +1,12 @@
 <template>
-  <section class="feedback-card d-flex flex-column" :style="`background-image: url('${cardImg}')`">
+  <section class="feedback-card d-flex flex-column" :class="isFeedbackInfos ? '' : 'animated'" :style="`background-image: url('${cardImg}')`">
     <div class="feedback-card-likes">
-      <span class="feedback-date">{{ feedback.author.username }} <nuxt-img v-if="feedback.author" :src="`/img/` + getVerifyBadges(feedback.author)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
+      <span class="feedback-date">{{ feedback.author.username }} <NuxtImg v-if="feedback.author" :src="`/img/` + getVerifyBadges(feedback.author)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
       &nbsp;-&nbsp;
       <span class="likes">1</span>
       <NuxtImg src="/img/heart-full.png" height="24px" width="24px" />
     </div>
-    <NuxtLink :to="`feedbacks/${feedback.slug}`" class="feedback-card-infos">
+    <NuxtLink :to="!isFeedbackInfos ? `feedbacks/${feedback.slug}` : ''" class="feedback-card-infos">
       <div class="d-flex row justify-content-between">
         <div class="d-flex flex-row justify-content-between">
           <NuxtImg :src="`${feedback.author.avatar}`" height="24" width="24" class="img-avatar-feedback" />
@@ -59,11 +59,18 @@ export default {
     },
     feedback: {
       type: Object,
-      required: false
+      required: true
+    },
+    isFeedbackInfos: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     formatDescription (description) {
+      if (this.isFeedbackInfos) {
+        return description;
+      }
       return description.substring(0, 40) + '...';
     },
     getVerifyBadges,
@@ -88,7 +95,7 @@ export default {
   }
 }
 .feedback-card {
-  width: 50%;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,10 +105,12 @@ export default {
   margin-bottom: 2rem;
   transition: 0.5s;
 
-  &:hover {
-    transition: 0.5s;
-    transform: scale(1.05);
-    z-index: 5;
+  &.animated {
+    &:hover {
+      transition: 0.5s;
+      transform: scale(1.05);
+      z-index: 5;
+    }
   }
 
   .feedback-card-infos {

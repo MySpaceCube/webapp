@@ -1,5 +1,7 @@
 {
   "global": {
+    "refuse": "Refuse",
+    "accept": "Accept",
     "copied": "Copied!",
     "error.message": "An error has occurred, sorry for the inconvenience.",
     "submit": "Submit",
