@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ $route.params.id }} <nuxt-img v-if="!pending && user.data" :src="getVerifyBadges(user.data, true)" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/></h1>
+  <h1>{{ $route.params.id }} <nuxt-img v-if="!pending && user.data" :src="`/img/` + getVerifyBadges(user.data, true)" alt="icon" loading="lazy" height="20" width="20" style="margin-left: 5px; "/></h1>
   <img v-if="!pending && user.data" :src="user.data.avatar" alt="{{ user }}" height="60" width="60" style="border-radius: 12px">
 </template>
 

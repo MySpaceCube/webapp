@@ -148,8 +148,9 @@ export default ({
     }
   },
   image: {
-    dir: 'public/img',
+    dir: process.env.NUXT_ENV !== 'dev' ? 'img' : 'public/',
     domains: [
+      process.env.NUXT_PUBLIC_SITE_URL,
       process.env.NUXT_PUBLIC_IMG_URL
     ]
   },

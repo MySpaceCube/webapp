@@ -10,7 +10,7 @@
       <section id="header-action-bar--logged" v-if="store.isLogged">
         <span class="p-input-icon-left">
           <span class="input">
-            <nuxt-img src="gold-pts.svg" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
+            <nuxt-img src="/img/emerald.png" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
             <span>{{ getPoints(store.user.points) }} pts</span>
             <div id="user-points"></div>
           </span>

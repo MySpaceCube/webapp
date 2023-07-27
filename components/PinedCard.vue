@@ -2,10 +2,10 @@
   <section :class="`pined-card invert-${invertInfos}`" :style="`background-image: url('${cardImg}')`">
     <div class="pined-card-infos">
       <div v-if="isFeedback" class="feedback-card-likes">
-        <span class="feedback-date">{{ feedback.author.username }}<nuxt-img v-if="feedback.author" :src="getVerifyBadges(feedback.author, true)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
+        <span class="feedback-date">{{ feedback.author.username }}<nuxt-img v-if="feedback.author" :src="`/img/` + getVerifyBadges(feedback.author, true)" alt="icon" loading="lazy" style="margin-left: 5px; "/> | {{ getDateFormat(feedback.createdAt) }}</span>
         &nbsp;-&nbsp;
         <span class="likes">1</span>
-        <NuxtImg src="heart-full.png" height="24px" width="24px" />
+        <NuxtImg src="/img/heart-full.png" height="24px" width="24px" />
       </div>
       <div class="d-flex row justify-content-between">
         <div v-if="!isIconHidden" class="pined-card-col-icon">
