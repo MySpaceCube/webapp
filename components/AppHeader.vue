@@ -7,11 +7,11 @@
       </span>
     </section>
     <section id="header-action-bar">
-      <section id="header-action-bar--logged" v-if="store.isLogged">
+      <section id="header-action-bar--logged" v-if="store.isLogged && store.user">
         <span class="p-input-icon-left">
           <span class="input">
             <nuxt-img src="/img/emerald.png" alt="icon of spacecube points" loading="lazy" height="27" width="27" />
-            <span>{{ getPoints(store.user.points) }} pts</span>
+            <span v-if="store.user">{{ getPoints(store.user.points) }} pts</span>
             <div id="user-points"></div>
           </span>
         </span>

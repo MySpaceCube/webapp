@@ -80,6 +80,14 @@ export const isAdmin = (userRole) => {
 };
 
 export const getPoints = (points) => {
+  if (points instanceof String) {
+    points = parseInt(points);
+  }
+
+  if (!points) {
+    return 0;
+  }
+
   if (points.toString().length >= 11) {
     points /= 1000000000;
     return parseFloat(points.toFixed(1)) + ' B';
