@@ -40,14 +40,17 @@ a {
 }
 
 .container {
-  width: calc(80% - 2rem);
+  width: calc(100% - 2rem);
   position: absolute;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  left: 10%;
   padding-left: 1rem;
   padding-right: 1rem;
+  @media (min-width: 1200px) {
+    width: calc(90% - 2rem);
+    left: 10%;
+  }
 }
 
 hr {

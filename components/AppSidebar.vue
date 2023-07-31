@@ -56,13 +56,13 @@
     </nav>
   </aside>
   <div id="overlay" class="overlay" @click="toggleMenu()"></div>
-  <aside class="mobile-section-sidebar d-flex d-lg-none">
-    <section id="icon-menu-mobile" class="icon-menu" @click="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </section>
-    <section id='mobile-menu' class="mobile-sidebar">
+  <section id="icon-menu-mobile" class="icon-menu" @click="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+  <aside id='mobile-menu' class="mobile-section-sidebar d-flex d-lg-none">
+    <section class="mobile-sidebar">
       <section class="user-mobile">
         <div v-if="store.user" class="user-infos-mobile">
           <div class="user-avatar-mobile">
@@ -346,10 +346,10 @@ aside nav {
   right: 0;
   bottom: 0;
   background: rgb(0 0 0 / 64%);
-  z-index: 1000;
   display: none;
   transition: 0.3s;
   &.show {
+    z-index: 1000;
     display: block;
     transition: 0.3s;
   }
@@ -360,8 +360,8 @@ aside nav {
   top: 15px;
   right: 15px;
   display: block;
-  z-index: 3000;
   transition: 0.3s;
+  z-index: 3000;
   div {
     height: 2px;
     background: #fff;
@@ -382,6 +382,9 @@ aside nav {
       transform: rotate(-45deg) translate(5px, -6px);
       transition: 0.3s;
     }
+  }
+  @media (min-width: 1200px) {
+    display: none;
   }
 }
 
@@ -432,6 +435,8 @@ aside nav {
   margin: 2rem 0;
   flex-direction: row !important;
   justify-content: space-between;
+  flex-wrap: wrap;
+
   .stats-block {
     border-radius: 15px;
     border: 10px solid transparent;
@@ -439,6 +444,7 @@ aside nav {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 
     .stats-block-stats {
       z-index:2;
@@ -485,22 +491,31 @@ aside nav {
   align-items: center;
 }
 
-.user-menu-mobile {
-  width: 100%;
-  list-style: none;
-  padding: 0;
-}
-
 .mobile-section-sidebar {
   position: fixed;
   width: calc(100% - 5rem);
   height: 100%;
-  z-index: 2000;
   top: 0;
   bottom: 0;
   left: 5rem;
   right: 0;
   flex-direction: column;
+  transform: translateX(100%);
+  transition: 0.3s transform;
+  display: none;
+  z-index: 2000;
+
+  &.show {
+    display: block;
+    transition: 0.3s transform;
+    transform: translateX(0%);
+  }
+}
+
+.user-menu-mobile {
+  width: 100%;
+  list-style: none;
+  padding: 0;
 }
 
 .mobile-sidebar {
@@ -510,13 +525,6 @@ aside nav {
   height: 100%;
   flex-direction: column;
   padding: 0.5rem 1rem;
-  transition: 0.3s;
-  transform: translateX(100%);
-
-  &.show {
-    transition: 0.3s;
-    transform: translateX(0%);
-  }
 
   .mobile-menu,
   .user-infos-mobile,

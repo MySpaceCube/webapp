@@ -258,7 +258,6 @@ header {
   }
   #header-action-bar {
     #header-action-bar--logged {
-      max-width: 450px;
       display: flex;
       justify-content: center;
       align-items: center;
