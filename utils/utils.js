@@ -170,23 +170,23 @@ export const feedbackVariantType = (type) => {
 
 export const feedbackTransTargetApp = (targetApp) => {
   switch (targetApp) {
-  case '3':
+  case 2:
     return 'administration';
-  case '2':
+  case 3:
     return 'minecraft';
-  case '1':
+  case 1:
   default:
     return 'website';
   }
 };
 
-export const feedbackVariantTargetApp = (targetApp) => {
-  switch (targetApp) {
-  case '1':
+export const feedbackVariantTargetApp = (appName) => {
+  switch (appName) {
+  case 1:
     return 'danger';
-  case '3':
+  case 2:
     return 'warning';
-  case '2':
+  case 3:
     return 'success';
   default:
     return 'secondary';

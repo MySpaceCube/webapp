@@ -18,7 +18,7 @@
           <h3>{{ title }}</h3>
           <p>{{ formatDescription(description) }}</p>
         </div>
-        <div v-if="isShowServerInfos" class="pined-card-col-server_infos d-flex flex-column">
+        <div v-if="isShowServerInfos && server" class="pined-card-col-server_infos d-flex flex-column">
             <div v-if="server" class="d-flex row count-players">{{ server.players.online }}/{{ server.players.max }}</div>
             <div class="d-flex row count-players-label">players</div>
         </div>

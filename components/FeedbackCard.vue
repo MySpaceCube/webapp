@@ -23,8 +23,8 @@
         <Badge :severity="feedbackVariantType(feedback.type)" style="margin-left: 0.5rem;">
           {{ $t('global.feedbacksInfos.types.' + feedback.type) }}
         </Badge>
-        <Badge :severity="feedbackVariantTargetApp(feedback.targetApp)" style="margin-left: 0.5rem;">
-          {{ $t('global.feedbacksInfos.targetApp.' + feedbackTransTargetApp(feedback.targetApp)) }}
+        <Badge :severity="feedbackVariantTargetApp(feedback.targetApp.id)" style="margin-left: 0.5rem;">
+          {{ $t('global.feedbacksInfos.targetApp.' + feedbackTransTargetApp(feedback.targetApp.id)) }}
         </Badge>
       </div>
     </NuxtLink>

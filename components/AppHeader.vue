@@ -31,7 +31,7 @@
           <TieredMenu ref="menu" id="overlay_create" :model="itemsCreate" :popup="true" />
         </span>
         <span v-if="store.isAdmin" class="p-input-administration">
-          <NuxtLink :to="api.apiUrl + '/acp_login'" target="_blank">
+          <NuxtLink :to="api.apiUrl + '/acp'" target="_blank">
             <Button type="button" class="input p-button-text" :label="`${ $t('global.nav.admin') }`" :placeholder="`${ $t('global.nav.admin') }`" />
           </NuxtLink>
         </span>

@@ -36,15 +36,15 @@
           <p>{{ $t('global.form.targetApp.label') }} :</p>
           <div class="d-flex flex-wrap radiobutton-section" style="width: 100%">
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_administration" name="administration" value="administration" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_administration" name="administration" value="2" />
               <label for="targetApp_administration" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.administration') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_website" name="website" value="website" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_website" name="website" value="1" />
               <label for="targetApp_website" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.website') }}</label>
             </div>
             <div class="flex align-items-center">
-              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_server" name="minecraft" value="server" />
+              <RadioButton v-model="targetApp" @change="isValidateForm()" inputId="targetApp_server" name="minecraft" value="3" />
               <label for="targetApp_server" class="ml-2">{{ $t('global.feedbacksInfos.targetApp.minecraft') }}</label>
             </div>
           </div>
@@ -156,7 +156,7 @@ const onSubmit = () => {
   axios.post(api.apiUrl + '/feedbacks', {
     title: title.value,
     description: description.value,
-    targetApp: targetApp.value,
+    targetApp: parseInt(targetApp.value),
     type: type.value
   }, {
     headers: {
