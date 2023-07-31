@@ -20,7 +20,7 @@
         </div>
         <div v-if="isShowServerInfos" class="pined-card-col-server_infos d-flex flex-column">
             <div v-if="server" class="d-flex row count-players">{{ server.players.online }}/{{ server.players.max }}</div>
-            <div class="d-flex row">players</div>
+            <div class="d-flex row count-players-label">players</div>
         </div>
       </div>
       <NuxtLink :to="ctaPath">
@@ -37,7 +37,8 @@ export default {
   name: 'pined-card',
   mounted () {
     if (!this.isShowServerInfos) return;
-    axios.get('https://api.minetools.eu/ping/149.202.108.158/25589')
+    // TODO: set server ip in const
+    axios.get('https://api.minetools.eu/ping/87.98.154.169/25583')
       .then((response) => {
         this.server = response.data;
       });
@@ -108,10 +109,16 @@ export default {
 };
 </script>
 <style lang="scss">
-.pined-card-section > * {
-  width: 49% !important;
-  &:first-child:nth-last-child(1) {
-    width: 100% !important;
+.pined-card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 1200px) {
+  .pined-card-section > * {
+    width: 49% !important;
+    &:first-child:nth-last-child(1) {
+      width: 100% !important;
+    }
   }
 }
 .pined-card {
@@ -121,18 +128,39 @@ export default {
   max-height: 19rem;
   height: 19rem;
   min-height: 13rem;
+  min-width: 100%;
   padding: 14px 24px;
   display: flex;
   align-items: flex-end;
   border-radius: 1rem;
+  margin-bottom: 1rem;
+  @media screen and (min-width: 1200px) {
+    min-width: 49%;
+  }
 
   &.invert-true {
     justify-content: end;
   }
 
   .count-players {
-    font-size: 1.2rem;
+    font-size: 0.75rem;
     font-weight: 400;
+    position: absolute;
+    right: 5px;
+  }
+
+  .count-players-label {
+    display: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .count-players {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    .count-players-label {
+      display: block;
+    }
   }
 
   i.pi {
@@ -151,7 +179,8 @@ export default {
     backdrop-filter: blur(6px);
     padding: 14px 24px;
     min-height: 50%;
-    min-width: 357px;
+    width: 357px;
+    max-width: 100%;
     border-radius: 1rem;
     border: 1px solid #60A5FA;
     display: flex;

@@ -40,7 +40,7 @@ a {
 }
 
 .container {
-  width: calc(100% - 2rem);
+  width: calc(100% - 1rem);
   position: absolute;
   display: block;
   margin-left: auto;
