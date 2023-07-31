@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="d-none d-lg-flex">
     <section id="header-search-bar">
       <span class="p-input-icon-left">
         <i class="pi pi-search" />

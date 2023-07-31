@@ -75,3 +75,68 @@ a.top-players-username {
 .mt-1 {
     margin-top: 1rem;
 }
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.d-flex {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .d-md-none {
+    display: none;
+  }
+
+  .d-md-block {
+    display: block;
+  }
+
+  .d-md-inline-block {
+    display: inline-block;
+  }
+
+  .d-md-inline {
+    display: inline;
+  }
+
+  .d-md-flex {
+    display: flex;
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .d-lg-none {
+    display: none;
+  }
+
+  .d-lg-block {
+    display: block;
+  }
+
+  .d-lg-inline-block {
+    display: inline-block;
+  }
+
+  .d-lg-inline {
+    display: inline;
+  }
+
+  .d-lg-flex {
+    display: flex;
+  }
+}
