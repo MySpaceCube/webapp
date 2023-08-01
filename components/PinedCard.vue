@@ -112,6 +112,7 @@ export default {
 .pined-card-section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 @media (max-width: 1200px) {
   .pined-card-section > * {
