@@ -160,6 +160,9 @@ export default {
     }
     .count-players-label {
       display: block;
+      position: absolute;
+      margin-top: 1.5rem;
+      right: 0.5rem;
     }
   }
 
