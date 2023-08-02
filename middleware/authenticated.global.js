@@ -1,6 +1,7 @@
 import { authStore } from '~/store/auth';
 import { isAdmin } from '~/utils/utils';
 import { apiStore } from '~/store/api';
+import { useRoute } from '#app';
 
 export default defineNuxtPlugin((nuxt) => {
   const store = authStore(nuxt.$pinia);
@@ -25,5 +26,13 @@ export default defineNuxtPlugin((nuxt) => {
       });
   }
 
-  // TODO if user go to login page or register page, redirect to home page
+  if (store.isLogged && store.token) {
+    const routes = ['/login', '/register'];
+    const globalRoute = useRoute;
+
+    console.log(globalRoute.path);
+    if (routes.includes(globalRoute.path)) {
+      return navigateTo('/', { replace: true, redirectCode: 301 });
+    }
+  }
 });
