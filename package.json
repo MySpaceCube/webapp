@@ -13,7 +13,6 @@
     "precommit": "npm run lint",
     "start": "nuxt-start",
     "scan-trans": "node ./scripts/i18n-scanner.js",
-    "use-latest-node-version": "./scripts/use-default-node.sh"
   },
   "devDependencies": {
     "@nuxt/image": "^1.0.0-rc.1",
