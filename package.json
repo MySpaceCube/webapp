@@ -12,7 +12,7 @@
     "lintfix": "eslint --fix --ext .js,.vue,.ts --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "start": "nuxt-start",
-    "scan-trans": "node ./scripts/i18n-scanner.js",
+    "scan-trans": "node ./scripts/i18n-scanner.js"
   },
   "devDependencies": {
     "@nuxt/image": "^1.0.0-rc.1",
