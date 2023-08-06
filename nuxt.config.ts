@@ -77,13 +77,13 @@ export default ({
           absolute: true
         },
         {
-          name: 'feedbacks-create',
+          name: 'feedbacksCreate',
           path: '/feedbacks/crate',
           component: 'pages/feedbacks/create.vue',
           absolute: true
         },
         {
-          name: 'feedbacks-infos',
+          name: 'feedbacksInfos',
           path: '/feedbacks/:id',
           component: 'pages/feedbacks/[id].vue',
           absolute: true
@@ -91,8 +91,16 @@ export default ({
         {
           name: 'resources',
           path: '/resources',
-          component: 'pages/resources.vue',
-          absolute: true
+          component: 'pages/resources/index.vue',
+          absolute: true,
+          children: [
+            {
+              name: 'texturesPacks',
+              path: '/textures-packs/create',
+              component: 'pages/resources/textures/index.vue',
+              absolute: true
+            }
+          ]
         },
         {
           name: 'server',
@@ -121,7 +129,7 @@ export default ({
           absolute: true
         },
         {
-          name: 'website-tools',
+          name: 'websiteTools',
           path: '/website-tools',
           component: 'pages/website.vue',
           absolute: true
