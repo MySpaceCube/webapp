@@ -167,7 +167,8 @@ const itemsCreate = ref([
       {
         label: t('global.nav.create.resources.texturePack'),
         icon: 'pi pi-fw pi-image',
-        disabled: true
+        disabled: false,
+        to: '/resources/textures/create'
       },
       {
         label: t('global.nav.create.resources.datapack'),
