@@ -7,9 +7,39 @@
         </div>
         <form class="card-col-infos">
           <h2>{{ $t('global.sign-up') }}</h2>
-          <input id="input-email" type="text" name="email" v-model="form.email" :placeholder="`${ $t('global.email') }`" required>
-          <input id="input-password" type="password" name="password" v-model="form.password" :placeholder="`${ $t('global.password') }`" required>
-          <input id="input-repeat-password" type="password" name="repeat-password" v-model="form.repeatPassword" :placeholder="`${ $t('global.repeatPassword') }`" required>
+          <InputText
+            id="input-email"
+            v-model="form.email"
+            :placeholder="`${ $t('global.email') }`"
+            class="p-invalid"
+          />
+          <Password
+            id="input-password"
+            v-model="form.password"
+            :placeholder="`${ $t('global.password') }`"
+            toggleMask
+            promptLabel="Choose a password"
+            weakLabel="Too simple"
+            mediumLabel="Average complexity"
+            strongLabel="Complex password"
+            aria-autocomplete="none"
+            autocomplete="false"
+            required
+          >
+            <template #header>
+              <h6>Pick a password</h6>
+            </template>
+            <template #footer>
+              <Divider />
+              <p class="mt-2">Suggestions</p>
+              <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                <li>At least one lowercase</li>
+                <li>At least one uppercase</li>
+                <li>At least one numeric</li>
+                <li>Minimum 8 characters</li>
+              </ul>
+            </template>
+          </Password>
         </form>
       </div>
       <button class="btn btn-primary" type="submit" @click="submit()" :disabled="isLoading || !isValid">
@@ -24,9 +54,15 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import { authStore } from '~/store/auth';
+import Password from 'primevue/password';
+import InputText from 'primevue/inputtext';
 
 export default {
   name: 'CardRegister',
+  components: {
+    Password,
+    InputText
+  },
   props: {
     cardImg: {
       type: String,
@@ -72,24 +108,13 @@ export default {
         this.isValid = false;
         document.getElementById('input-password').classList.remove('valid');
       }
-    },
-    'form.repeatPassword' () {
-      this.isLoading = false;
-      if (this.form.repeatPassword && this.form.repeatPassword !== '') {
-        document.getElementById('input-repeat-password').classList.add('valid');
-        this.isValid = this.checkIsValid();
-      } else {
-        this.isValid = false;
-        document.getElementById('input-repeat-password').classList.remove('valid');
-      }
     }
   },
   data () {
     return ({
       form: {
         email: null,
-        password: null,
-        repeatPassword: null
+        password: null
       },
       isLoading: false,
       isValid: false
@@ -108,9 +133,7 @@ export default {
     },
     checkIsValid () {
       return this.form.email && this.form.email !== '' &&
-        this.form.password && this.form.password !== '' &&
-        this.form.repeatPassword && this.form.repeatPassword !== '' &&
-        this.form.password === this.form.repeatPassword;
+        this.form.password && this.form.password !== '';
     }
   }
 };

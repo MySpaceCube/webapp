@@ -139,6 +139,12 @@ export default ({
           absolute: true
         },
         {
+          name: 'forgot-password',
+          path: '/forgotPassword',
+          component: 'pages/forgotPassword.vue',
+          absolute: true
+        },
+        {
           name: 'register',
           path: '/register',
           component: 'pages/register.vue',

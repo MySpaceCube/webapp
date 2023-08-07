@@ -30,13 +30,52 @@
       <template #title>{{ $t('global.user.basicInfos') }}</template>
       <template #content>
         <label for="username">Username :</label>
-        <InputText id="username" type="text" v-model="username" disabled />
+        <InputText
+          id="username"
+          v-model="username"
+          disabled
+        />
         <label for="email">Email :</label>
-        <InputText id="email" type="text" v-model="email" disabled />
+        <InputText
+          id="email"
+          v-model="email"
+          disabled
+        />
         <label for="password">Password :</label>
-        <InputText id="password" type="text" v-model="password" disabled />
+        <Password
+          id="password"
+          v-model="password"
+          :placeholder="`${ $t('global.password') }`"
+          toggleMask
+          :feedback="false"
+        />
         <label for="newPassword">newPassord :</label>
-        <InputText id="newPassword" type="text" v-model="newPassword" disabled />
+        <Password
+          id="newPassword"
+          v-model="newPassword"
+          toggleMask
+          promptLabel="Choose a password"
+          weakLabel="Too simple"
+          mediumLabel="Average complexity"
+          strongLabel="Complex password"
+          aria-autocomplete="none"
+          autocomplete="false"
+          required
+        >
+          <template #header>
+            <h6>Pick a password</h6>
+          </template>
+          <template #footer>
+            <Divider />
+            <p class="mt-2">Suggestions</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+            </ul>
+          </template>
+        </Password>
       </template>
     </Card>
   </form>
@@ -45,7 +84,10 @@
     <Card>
       <template #title>{{ $t('global.user.experimentalFeature') }}</template>
       <template #content>
-        <SelectButton v-model="beta" :options="options" aria-labelledby="basic" />
+        <div class="small">
+          {{ $t('global.user.betaDescription') }}
+        </div>
+        <InputSwitch v-model="beta" />
       </template>
     </Card>
   </form>
@@ -54,14 +96,15 @@
 <script setup>
 import { useToast } from 'primevue/usetoast';
 import Card from 'primevue/card';
-import InputText from 'primevue/inputtext';
 import Message from 'primevue/message';
-import SelectButton from 'primevue/selectbutton';
 import { authStore } from '~/store/auth';
 import { apiStore } from '~/store/api';
 import { ref } from 'vue';
 import axios from 'axios';
 import { getVerifyBadges } from '~/utils/utils';
+import Password from 'primevue/password';
+import InputText from 'primevue/inputtext';
+import InputSwitch from 'primevue/inputswitch';
 
 const store = authStore();
 const api = apiStore();
@@ -72,7 +115,6 @@ const username = ref(store.user.username);
 const email = ref(store.user.email);
 const password = ref('');
 const newPassword = ref('');
-const options = ref(['Off', 'On']);
 const toast = useToast();
 useHead({
   title: 'Space-Cube | Settings',
@@ -102,7 +144,10 @@ const sendConfirmationEmail = () => {
 };
 </script>
 <style lang="scss">
-.p-message .p-message-text {
+.p-message .p-message-text, {
   width: 90%;
+}
+.p-password {
+  width: 100%;
 }
 </style>

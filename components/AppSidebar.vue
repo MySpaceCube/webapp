@@ -313,6 +313,7 @@ aside nav {
           display: block;
           opacity: 1;
           text-transform: uppercase;
+          text-wrap: wrap;
         }
       }
 
