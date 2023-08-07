@@ -33,6 +33,17 @@
               {{ errorMessage.description || '&nbsp;' }}
             </small> <br>
           </div>
+          <FileUpload name="file[]"
+                      :url="`${api.apiUrl}/upload`"
+                      @upload="onAdvancedUpload($event)"
+                      :multiple="true"
+                      accept="image/*"
+                      :file-limit="auth.isAdmin ? 100 : 2"
+                      :maxFileSize="1000000">
+            <template #empty>
+              <p>Drag and drop files to here to upload.</p>
+            </template>
+          </FileUpload>
           <span class="p-input">
             <Button
               icon="pi pi-check"
@@ -57,12 +68,12 @@ import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import axios from 'axios';
 import { useToast } from 'primevue/usetoast';
+import FileUpload from 'primevue/fileupload';
 const { t } = useI18n();
 
 const title = ref('');
 const description = ref('');
-const targetApp = ref('');
-const type = ref('');
+let images = [];
 let errorMessage = {};
 
 const api = apiStore();
@@ -70,7 +81,13 @@ const auth = authStore();
 const toast = useToast();
 const { $bus } = useNuxtApp();
 
-watch([title, description, targetApp, type], () => {
+const onAdvancedUpload = (event) => {
+  const response = JSON.parse(event.xhr.response);
+  images = response.files;
+  toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+};
+
+watch([title, description], () => {
   isValidateForm();
 });
 
@@ -102,9 +119,7 @@ const onSubmit = () => {
 
   axios.post(api.apiUrl + '/feedbacks', {
     title: title.value,
-    description: description.value,
-    targetApp: parseInt(targetApp.value),
-    type: type.value
+    description: description.value
   }, {
     headers: {
       Authorization: 'Bearer ' + auth.token
