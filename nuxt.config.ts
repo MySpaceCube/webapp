@@ -92,13 +92,12 @@ export default ({
           name: 'resources',
           path: '/resources',
           component: 'pages/resources/index.vue',
-          absolute: true,
+          absolute: false,
           children: [
             {
-              name: 'texturesPacks',
-              path: '/textures-packs/create',
-              component: 'pages/resources/textures/index.vue',
-              absolute: true
+              name: 'createResource',
+              path: '/create/:type',
+              component: 'pages/resources/create/[type].vue'
             }
           ]
         },
