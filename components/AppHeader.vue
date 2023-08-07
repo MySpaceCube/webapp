@@ -168,37 +168,43 @@ const itemsCreate = ref([
         label: t('global.nav.create.resources.texturePack'),
         icon: 'pi pi-fw pi-image',
         disabled: false,
-        to: '/resources/textures/create'
+        to: '/resources/create/textures'
       },
       {
         label: t('global.nav.create.resources.datapack'),
         icon: 'pi pi-fw pi-th-large',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/textures'
       },
       {
         label: t('global.nav.create.resources.mod'),
         icon: 'pi pi-fw pi-box',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/mod'
       },
       {
         label: t('global.nav.create.resources.map'),
         icon: 'pi pi-fw pi-map',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/map'
       },
       {
         label: t('global.nav.create.resources.skin'),
         icon: 'pi pi-fw pi-users',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/skin'
       },
       {
         label: t('global.nav.create.resources.plugin'),
         icon: 'pi pi-fw pi-play',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/plugin'
       },
       {
         label: t('global.nav.create.resources.other'),
         icon: 'pi pi-fw pi-users',
-        disabled: true
+        disabled: true,
+        to: '/resources/create/other'
       }
     ]
   }
