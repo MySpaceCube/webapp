@@ -38,17 +38,22 @@ export const authStore = defineStore({
         });
     },
     async updateUser (token) {
-      this.user = (await axios.get(this.apiUrl + '/users/me', {
+      await axios.get(this.apiUrl + '/users/me', {
         headers: {
           Authorization: 'Bearer ' + token ?? this.token
         }
-      })).data.data;
+      }).then((response) => {
+        this.user = response.data.data;
+      }).catch((e) => {
+        this.logout();
+      });
     },
     logout () {
-      this.isLogged = false;
       this.isAdmin = false;
-      this.token = null;
       this.user = {};
+      this.token = null;
+      this.isLogged = false;
+      localStorage.setItem('token', null);
     }
   },
   getters: {

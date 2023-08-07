@@ -12,7 +12,7 @@ export const feedbackStore = defineStore({
   },
   actions: {
     async getFeedbacks (page) {
-      const request = (await axios.get(`${this.apiUrl}/feedbacks/`, {
+      const request = (await axios.get(`${this.apiUrl}/feedbacks`, {
         params: {
           page
         }
