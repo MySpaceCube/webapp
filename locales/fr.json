@@ -1,4 +1,12 @@
 {
+  "user": {
+    "email": {
+      "forgotPassword": {
+        "success": "Un email vous a été envoyé pour réinitialiser votre mot de passe.",
+        "error": "Une erreur est survenue lors de l'envoi de l'email de réinitialisation de mot de passe."
+      }
+    }
+  },
   "global": {
     "refuse": "Refuser",
     "accept": "Accepter",
@@ -48,6 +56,7 @@
     "tags": "Tags",
     "text": "Texte",
     "update": "Modifier",
+    "send": "Envoyer",
     "validate": "Valider",
     "value": "Valeur",
     "choose":  "Choisissez...",
@@ -61,6 +70,7 @@
     "all": "Tous",
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
+    "forgotPassword": "Mot de passe oublié ?",
     "form": {
       "feedback": {
         "successTitle": "Suggestion envoyée",
@@ -93,7 +103,8 @@
       "experimentalFeature": "Fonctionnalité expérimentale",
       "emailVerify": {
         "confirm": "Votre compte a été vérifié avec succès."
-      }
+      },
+      "betaDescription": "Avant d'utiliser cette nouvelle fonctionnalité, veuillez noter qu'elle est actuellement en mode \"beta\", ce qui signifie qu'elle est encore en cours de développement et pourrait présenter des instabilités ou des bugs."
     },
     "feedbackPage": {
       "create": "Créer une suggestion"

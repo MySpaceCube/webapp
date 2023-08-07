@@ -1,4 +1,12 @@
 {
+  "user": {
+    "email": {
+      "forgotPassword": {
+        "success": "An email has been sent to you to reset your password.",
+        "error": "An error has occurred, please try again later."
+      }
+    }
+  },
   "global": {
     "refuse": "Refuse",
     "accept": "Accept",
@@ -48,6 +56,7 @@
     "tags": "Tags",
     "text": "Text",
     "update": "Update",
+    "send": "Send",
     "validate": "Validate",
     "value": "Value",
     "choose":  "Choose...",
@@ -61,6 +70,7 @@
     "all": "All",
     "createdBy": "created by",
     "all_right_reserved": "All rights reserved",
+    "forgotPassword": "Forgot password ?",
     "form": {
       "feedback": {
         "successTitle": "Feedback sent successfully",
@@ -96,7 +106,8 @@
       "experimentalFeature": "Experimental Features",
       "emailVerify": {
         "confirm": "Your account has been verified."
-      }
+      },
+      "betaDescription": "Before using this new feature, please be aware that it is currently in \"beta\" mode, which means it is still under development and may have instabilities or bugs."
     },
     "feedbackPage": {
       "create": "Create a feedback"

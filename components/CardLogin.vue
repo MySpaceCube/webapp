@@ -7,8 +7,24 @@
         </div>
         <form class="card-col-infos">
           <h2>{{ $t('global.sign-in') }}</h2>
-          <input id="input-email" type="text" name="email" v-model="form.email" :placeholder="`${ $t('global.email') }`" required>
-          <input id="input-password" type="password" name="password" v-model="form.password" :placeholder="`${ $t('global.password') }`" required>
+          <InputText
+            id="input-email"
+            v-model="form.email"
+            :placeholder="`${ $t('global.email') }`"
+            class="p-invalid"
+          />
+          <Password
+            id="input-password"
+            v-model="form.password"
+            :placeholder="`${ $t('global.password') }`"
+            toggleMask
+            :feedback="false"
+            required
+          >
+          </Password>
+          <NuxtLink to="/forgotPassword" class="d-flex mb-1">
+            {{ $t('global.forgotPassword') }}
+          </NuxtLink>
         </form>
       </div>
       <button class="btn btn-primary" type="submit" @click="submit()" :disabled="isLoading || !isValid">
@@ -24,9 +40,15 @@
 <script>
 import { mapActions, mapState } from 'pinia';
 import { authStore } from '~/store/auth';
+import Password from 'primevue/password';
+import InputText from 'primevue/inputtext';
 
 export default {
   name: 'CardLogin',
+  components: {
+    Password,
+    InputText
+  },
   props: {
     cardImg: {
       type: String,
