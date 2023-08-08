@@ -55,3 +55,32 @@ textarea,
 .p-float-label {
   margin-top: 2rem;
 }
+
+.p-dropdown {
+    width: 100%;
+    border-radius: 15px;
+    background-color: $blue-dark;
+    border: none;
+    padding: 0.75rem 1rem;
+}
+
+.p-dropdown-panel .p-dropdown-header,
+.p-dropdown-panel {
+    background-color: $blue-light;
+    border: none;
+    padding: 0.75rem 1rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    color: $text-white;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    background-color: $blue-dark;
+    color: $text-white;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background-color: $blue;
+    color: $text-white;
+}

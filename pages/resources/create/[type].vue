@@ -69,7 +69,7 @@
           </div>
           <Dropdown
             v-model="selectedCategory"
-            :options="categories"
+            :options="catStore.categoriesListing"
             filter
             optionLabel="name"
             placeholder="Select a Category"
@@ -89,11 +89,16 @@
               </div>
             </template>
           </Dropdown>
+          <div>
+            <small id="text-error" class="p-error" style="display: block;">
+              {{ errorMessage.category || '&nbsp;' }}
+            </small> <br>
+          </div>
           <FileUpload name="file[]"
                       :url="`${api.apiUrl}/upload`"
                       @upload="onAdvancedUpload($event)"
                       :multiple="true"
-                      accept="image/*"
+                      accept="image/webp"
                       :file-limit="auth.isAdmin ? 100 : 2"
                       :maxFileSize="1000000">
             <template #empty>
@@ -106,6 +111,7 @@
               class="p-button p-component input p-button-text mt-3"
               type="button"
               @click="onSubmit"
+              :disabled="disabled"
             >
               {{ $t('global.submit') }}
             </Button>
@@ -126,6 +132,7 @@ import axios from 'axios';
 import { useToast } from 'primevue/usetoast';
 import FileUpload from 'primevue/fileupload';
 import Dropdown from 'primevue/dropdown';
+import { categoryStore } from '~/store/category';
 const { t } = useI18n();
 
 const route = useRoute();
@@ -134,12 +141,14 @@ const description = ref('');
 const selectedCategory = ref('');
 const link = ref('');
 const author = ref('');
+const disabled = ref(true);
 const resourceType = route.path.split('/')[3];
 let previewImg = [];
 let errorMessage = {};
 
 const api = apiStore();
 const auth = authStore();
+const catStore = categoryStore();
 const toast = useToast();
 const { $bus } = useNuxtApp();
 
@@ -151,6 +160,7 @@ const onAdvancedUpload = (event) => {
 
 watch([title, description], () => {
   isValidateForm();
+  this.disabled = isValidateForm();
 });
 
 const isValidateForm = () => {
@@ -174,20 +184,7 @@ const resetForm = () => {
   description.value = '';
 };
 
-let categories = ref([{ code: 'test', name: 'test' }]);
-
-axios.get(api.apiUrl + '/categories', {
-  headers: {
-    Authorization: 'Bearer ' + auth.token
-  }
-}).then((response) => {
-  categories = response.data.data.map((category) => {
-    return {
-      code: category.id,
-      name: category.name
-    };
-  });
-});
+catStore.getCategories();
 
 const onSubmit = () => {
   if (!isValidateForm()) {
@@ -228,7 +225,7 @@ const onSubmit = () => {
 };
 
 useHead({
-  title: 'Space-Cube | Create Feedback',
+  title: 'Space-Cube | Create resource',
   meta: [
     { name: 'description', content: 'My amazing site.' }
   ],
@@ -237,3 +234,43 @@ useHead({
   }
 });
 </script>
+<style lang="scss">
+@import 'assets/scss/settings/Settings.scss';
+  .p-fileupload {
+    margin-bottom: 2rem;
+  }
+
+  .p-fileupload-buttonbar {
+    border-radius: 15px 15px 0 0 !important;
+    background-color: $blue-dark !important;
+    border: none !important;
+
+    .p-button {
+      height: 35px;
+      border-radius: 10px !important;
+      background-color: $blue;
+    }
+  }
+
+  .p-fileupload-content {
+    border-radius: 0 0 15px 15px !important;
+    background-color: $blue-dark !important;
+    border: none !important;
+    border-top: 2px solid $blue !important;
+  }
+
+  .p-fileupload-file {
+    color: $text-white !important;
+  }
+
+  .p-button.p-component.p-button-icon-only.p-button-danger.p-button-rounded.p-button-text.p-fileupload-file-remove {
+    background-color: $pink-2 !important;
+    border: none !important;
+    color: $text-white !important;
+    margin-left: 1rem;
+
+    &:hover {
+      background-color: $pink-3 !important;
+    }
+  }
+</style>

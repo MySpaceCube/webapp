@@ -71,7 +71,19 @@
     "createdBy": "créé par",
     "all_right_reserved": "Tous les droits réservées",
     "forgotPassword": "Mot de passe oublié ?",
+    "resource": {
+      "textures": {
+        "create": "Créer un pack de textures"
+      }
+    },
     "form": {
+      "link": {
+        "label": "Lien",
+        "error": "Le lien est requis."
+      },
+      "author": {
+        "label": "Auteur"
+      },
       "feedback": {
         "successTitle": "Suggestion envoyée",
         "successMessage": "Votre suggestion a été envoyée avec succès. Elle sera traitée dans les plus brefs délais.",
