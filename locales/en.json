@@ -79,7 +79,7 @@
     "form": {
       "link": {
         "label": "Link",
-        "error": "The link is required"
+        "error": "The link is required, and must be at least 20 characters"
       },
       "author": {
         "label": "Author"
@@ -91,11 +91,15 @@
       },
       "title": {
         "label": "Title",
-        "error": "The title is required"
+        "error": "The title is required, and must be at least 7 characters"
       },
       "description": {
         "label": "Description",
         "error": "The description is required, and must be at least 20 characters"
+      },
+      "previewImg": {
+        "label": "Preview image",
+        "error": "The preview image is required"
       },
       "targetApp": {
         "label": "Target application",
