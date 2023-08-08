@@ -16,11 +16,9 @@
               />
               <label for="title">{{ $t('global.form.title.label') }}</label>
           </span>
-          <div>
-            <small id="text-error" class="p-error" style="display: block;">
-              {{ errorMessage.title || '&nbsp;' }}
-            </small> <br>
-          </div>
+          <small v-if="errorMessage.title" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.title || '&nbsp;' }}
+          </small>
           <span class="p-float-label">
               <InputText
                 id="link"
@@ -31,11 +29,9 @@
               />
               <label for="link">{{ $t('global.form.link.label') }}</label>
           </span>
-          <div>
-            <small id="text-error" class="p-error" style="display: block;">
-              {{ errorMessage.link || '&nbsp;' }}
-            </small> <br>
-          </div>
+          <small v-if="errorMessage.link" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.link || '&nbsp;' }}
+          </small>
           <span class="p-float-label">
               <InputText
                 id="author"
@@ -46,11 +42,9 @@
               />
               <label for="author">{{ $t('global.form.author.label') }}</label>
           </span>
-          <div>
-            <small id="text-error" class="p-error" style="display: block;">
-              {{ errorMessage.link || '&nbsp;' }}
-            </small> <br>
-          </div>
+          <small v-if="errorMessage.author" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.author || '&nbsp;' }}
+          </small>
           <span class="p-float-label">
             <Textarea
               id="description"
@@ -62,11 +56,9 @@
             />
             <label for="description">{{ $t('global.form.description.label') }} :</label>
           </span>
-          <div>
-            <small id="text-error" class="p-error" style="display: block;">
-              {{ errorMessage.description || '&nbsp;' }}
-            </small> <br>
-          </div>
+          <small v-if="errorMessage.description" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.description || '&nbsp;' }}
+          </small>
           <Dropdown
             v-model="selectedCategory"
             :options="catStore.categoriesListing"
@@ -89,22 +81,25 @@
               </div>
             </template>
           </Dropdown>
-          <div>
-            <small id="text-error" class="p-error" style="display: block;">
-              {{ errorMessage.category || '&nbsp;' }}
-            </small> <br>
-          </div>
-          <FileUpload name="file[]"
-                      :url="`${api.apiUrl}/upload`"
-                      @upload="onAdvancedUpload($event)"
-                      :multiple="true"
-                      accept="image/webp"
-                      :file-limit="auth.isAdmin ? 100 : 2"
-                      :maxFileSize="1000000">
+          <small v-if="errorMessage.category" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.category || '&nbsp;' }}
+          </small>
+          <FileUpload
+            name="file[]"
+            :url="`${api.apiUrl}/upload`"
+            @upload="onAdvancedUpload($event)"
+            :multiple="true"
+            accept="image/webp"
+            :file-limit="auth.isAdmin ? 100 : 2"
+            :maxFileSize="1000000"
+          >
             <template #empty>
               <p>Drag and drop files to here to upload.</p>
             </template>
           </FileUpload>
+          <small v-if="errorMessage.previewImg" id="text-error" class="p-error" style="display: block;">
+            {{ errorMessage.previewImg || '&nbsp;' }}
+          </small>
           <span class="p-input">
             <Button
               icon="pi pi-check"
@@ -141,7 +136,7 @@ const description = ref('');
 const selectedCategory = ref('');
 const link = ref('');
 const author = ref('');
-const disabled = ref(true);
+let disabled = ref(true);
 const resourceType = route.path.split('/')[3];
 let previewImg = [];
 let errorMessage = {};
@@ -154,13 +149,19 @@ const { $bus } = useNuxtApp();
 
 const onAdvancedUpload = (event) => {
   const response = JSON.parse(event.xhr.response);
-  previewImg = response.files;
+  response.files.map((file) => {
+    previewImg.push(file);
+  });
+  console.log(previewImg.length);
+  if (previewImg.length > 0) {
+    delete errorMessage.previewImg;
+  }
   toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
 };
 
-watch([title, description], () => {
+watch([title, description, link, previewImg, selectedCategory], () => {
   isValidateForm();
-  this.disabled = isValidateForm();
+  disabled = !isValidateForm();
 });
 
 const isValidateForm = () => {
@@ -174,8 +175,23 @@ const isValidateForm = () => {
   } else {
     delete errorMessage.description;
   }
+  if (link.value.length < 20) {
+    errorMessage.link = t('global.form.link.error');
+  } else {
+    delete errorMessage.link;
+  }
+  if (selectedCategory.value === null) {
+    errorMessage.category = t('global.form.category.error');
+  } else {
+    delete errorMessage.category;
+  }
+  if (previewImg.length === 0) {
+    errorMessage.previewImg = t('global.form.previewImg.error');
+  } else {
+    delete errorMessage.previewImg;
+  }
 
-  return errorMessage !== {};
+  return errorMessage === {};
 };
 
 const resetForm = () => {
@@ -238,6 +254,7 @@ useHead({
 @import 'assets/scss/settings/Settings.scss';
   .p-fileupload {
     margin-bottom: 2rem;
+    margin-top: 2rem;
   }
 
   .p-fileupload-buttonbar {

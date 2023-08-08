@@ -79,7 +79,7 @@
     "form": {
       "link": {
         "label": "Lien",
-        "error": "Le lien est requis."
+        "error": "Le lien est requis, il doit contenir au moins 20 caractères."
       },
       "author": {
         "label": "Auteur"
@@ -91,11 +91,15 @@
       },
       "title": {
         "label": "Titre",
-        "error": "Le titre est requis."
+        "error": "Le titre est requis, il doit contenir au moins 7 caractères."
       },
       "description": {
         "label": "Description",
         "error": "La description est requise, elle doit contenir au moins 20 caractères."
+      },
+      "previewImg": {
+        "label": "Image de prévisualisation",
+        "error": "L'image de prévisualisation est requise."
       },
       "targetApp": {
         "label": "Application concernée",
