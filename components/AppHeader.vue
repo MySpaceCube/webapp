@@ -174,37 +174,37 @@ const itemsCreate = ref([
         label: t('global.nav.create.resources.datapack'),
         icon: 'pi pi-fw pi-th-large',
         disabled: true,
-        to: '/resources/create/textures'
+        to: '/resources/create/datapacks'
       },
       {
         label: t('global.nav.create.resources.mod'),
         icon: 'pi pi-fw pi-box',
         disabled: true,
-        to: '/resources/create/mod'
+        to: '/resources/create/mods'
       },
       {
         label: t('global.nav.create.resources.map'),
         icon: 'pi pi-fw pi-map',
         disabled: true,
-        to: '/resources/create/map'
+        to: '/resources/create/maps'
       },
       {
         label: t('global.nav.create.resources.skin'),
         icon: 'pi pi-fw pi-users',
         disabled: true,
-        to: '/resources/create/skin'
+        to: '/resources/create/skins'
       },
       {
         label: t('global.nav.create.resources.plugin'),
         icon: 'pi pi-fw pi-play',
         disabled: true,
-        to: '/resources/create/plugin'
+        to: '/resources/create/plugins'
       },
       {
         label: t('global.nav.create.resources.other'),
         icon: 'pi pi-fw pi-users',
         disabled: true,
-        to: '/resources/create/other'
+        to: '/resources/create/others'
       }
     ]
   }

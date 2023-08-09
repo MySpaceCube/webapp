@@ -5,6 +5,7 @@ export const authStore = defineStore({
   id: 'Authentication',
   state: () => {
     return {
+      maxUploadFile: 4,
       isAdmin: false,
       isLogged: false,
       token: null,
@@ -24,6 +25,11 @@ export const authStore = defineStore({
               role === 'ROLE_MODERATOR'
             ) {
               this.isAdmin = true;
+              this.maxUploadFile = 100;
+            } else {
+              if (role === 'ROLE_PREMIUM') {
+                this.maxUploadFile = 10;
+              }
             }
           });
           localStorage.setItem('token', res.data.token);
