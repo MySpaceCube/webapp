@@ -188,5 +188,28 @@
         }
       }
     }
+  },
+  "upload": {
+    "error": {
+      "file": {
+        "invalid": "Le fichier est invalide.",
+        "tooBig": "Le fichier est trop volumineux.",
+        "tooSmall": "Le fichier est trop petit.",
+        "notFound": "Le fichier n'a pas été trouvé.",
+        "notAllowed": "Le fichier n'est pas autorisé.",
+        "aborted": "Le fichier a été abandonné.",
+        "unknown": "Une erreur inconnue est survenue."
+      },
+      "image": {
+        "default": "Importer ou déposer une image au format 'webp' ici. (max 2Mo). Vous ne pouvez importer que {count} images.",
+        "invalid": "L'image est invalide.",
+        "tooBig": "L'image est trop volumineuse.",
+        "tooSmall": "L'image est trop petite.",
+        "notFound": "L'image n'a pas été trouvée.",
+        "notAllowed": "L'image n'est pas autorisée.",
+        "aborted": "L'image a été abandonnée.",
+        "unknown": "Une erreur inconnue est survenue."
+      }
+    }
   }
 }

@@ -191,5 +191,28 @@
         }
       }
     }
+  },
+  "upload": {
+    "default": "Import or upload an image in 'webp' format here. (max 2MB). You can only import {count} images.",
+    "error": {
+      "file": {
+        "invalid": "The file is invalid.",
+        "tooBig": "The file is too big.",
+        "tooSmall": "The file is too small.",
+        "notFound": "The file was not found.",
+        "notAllowed": "The file is not allowed.",
+        "aborted": "The file was aborted.",
+        "unknown": "An unknown error occurred."
+      },
+      "image": {
+        "invalid": "The image is invalid",
+        "tooBig": "The image is too big.",
+        "tooSmall": "The image is too small.",
+        "notFound": "The image was not found.",
+        "notAllowed": "The image is not allowed.",
+        "aborted": "The image was aborted.",
+        "unknown": "An unknown error occurred."
+      }
+    }
   }
 }

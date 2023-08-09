@@ -88,13 +88,14 @@
             name="file[]"
             :url="`${api.apiUrl}/upload`"
             @upload="onAdvancedUpload($event)"
+            @removeUploadedFile="onRemoveUploadedFile($event)"
             :multiple="true"
             accept="image/webp"
             :file-limit="auth.isAdmin ? 100 : 2"
             :maxFileSize="1000000"
           >
             <template #empty>
-              <p>Drag and drop files to here to upload.</p>
+              {{ $t('upload.default', { count: auth.maxUploadFile }) }}
             </template>
           </FileUpload>
           <small v-if="errorMessage.previewImg" id="text-error" class="p-error" style="display: block;">
@@ -135,10 +136,11 @@ const title = ref('');
 const description = ref('');
 const selectedCategory = ref('');
 const link = ref('');
-const author = ref('');
+const author = ref(null);
 let disabled = ref(true);
 const resourceType = route.path.split('/')[3];
-let previewImg = [];
+const file = ref([]);
+const previewImg = ref([]);
 let errorMessage = {};
 
 const api = apiStore();
@@ -147,19 +149,23 @@ const catStore = categoryStore();
 const toast = useToast();
 const { $bus } = useNuxtApp();
 
+const onRemoveUploadedFile = (event) => {
+  // TODO : remove file from server https://github.com/MySpaceCube/api/issues/451
+};
+
 const onAdvancedUpload = (event) => {
   const response = JSON.parse(event.xhr.response);
   response.files.map((file) => {
-    previewImg.push(file);
+    return previewImg.value.push(file);
   });
-  console.log(previewImg.length);
-  if (previewImg.length > 0) {
-    delete errorMessage.previewImg;
+  if (previewImg.value.length > 0) {
+    disabled = !isValidateForm();
   }
   toast.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
 };
 
 watch([title, description, link, previewImg, selectedCategory], () => {
+  console.log(isValidateForm());
   isValidateForm();
   disabled = !isValidateForm();
 });
@@ -180,24 +186,25 @@ const isValidateForm = () => {
   } else {
     delete errorMessage.link;
   }
-  if (selectedCategory.value === null) {
+  if (selectedCategory.value === '') {
     errorMessage.category = t('global.form.category.error');
   } else {
     delete errorMessage.category;
   }
-  if (previewImg.length === 0) {
-    errorMessage.previewImg = t('global.form.previewImg.error');
-  } else {
-    delete errorMessage.previewImg;
-  }
 
-  return errorMessage === {};
+  return (!errorMessage.title && !errorMessage.description && !errorMessage.link && !errorMessage.category);
 };
 
 const resetForm = () => {
   errorMessage = {};
   title.value = '';
   description.value = '';
+  link.value = '';
+  author.value = null;
+  selectedCategory.value = '';
+  previewImg.value = [];
+  file.value = [];
+  disabled = true;
 };
 
 catStore.getCategories();
@@ -211,7 +218,7 @@ const onSubmit = () => {
     title: title.value,
     description: description.value,
     link: link.value,
-    author: author.value,
+    author: author.value ? author.value : undefined,
     category: selectedCategory.value.name,
     resourceType,
     previewImg
@@ -225,16 +232,16 @@ const onSubmit = () => {
       resetForm();
       toast.add({
         severity: 'success',
-        summary: t('global.form.feedback.successTitle'),
-        detail: t('global.form.feedback.successMessage'),
+        summary: t('global.form.resource.successTitle'),
+        detail: t('global.form.resource.successMessage'),
         life: 5000
       });
     })
-    .catch(() => {
+    .catch((error) => {
       toast.add({
-        severity: 'danger',
-        summary: t('global.form.feedback.errorTitle'),
-        detail: t('global.error.message'),
+        severity: 'error',
+        summary: t('global.form.resource.errorTitle'),
+        detail: error,
         life: 5000
       });
     });
