@@ -28,15 +28,15 @@
 </template>
 
 <script setup>
-import { apiStore } from '~/store/api';
 import { getVerifyBadges, getPoints } from '~/utils/utils';
+import { useLazyAsyncData } from 'nuxt/app';
 
-const api = apiStore();
+const { $api } = useNuxtApp();
 
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch(api.apiUrl + '/users/top')) || { data: [] };
+} = await useLazyAsyncData('userTop', () => $fetch($api + '/users/top')) || { data: [] };
 </script>
 
 <style>

@@ -1,18 +1,18 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
+const { $api } = useNuxtApp();
 
 export const feedbackStore = defineStore({
   id: 'Feedback',
   state: () => {
     return {
       feedbacks: [],
-      pagination: {},
-      apiUrl: process.env.NUXT_PUBLIC_API_URL
+      pagination: {}
     };
   },
   actions: {
     async getFeedbacks (page) {
-      const request = (await axios.get(`${this.apiUrl}/feedbacks`, {
+      const request = (await axios.get(`${$api}/feedbacks`, {
         params: {
           page
         }

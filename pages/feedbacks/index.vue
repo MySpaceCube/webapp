@@ -45,15 +45,14 @@
 </template>
 
 <script setup>
-import { apiStore } from '~/store/api';
 import { globalStore } from '~/store/global';
 import Skeleton from 'primevue/skeleton';
 import PinedCard from '~/components/PinedCard.vue';
 import { feedbackStore } from '~/store/feedback';
-
 import Paginate from 'vuejs-paginate-next';
+import { useLazyFetch } from "nuxt/app";
 
-const api = apiStore();
+const { $api } = useNuxtApp();
 const global = globalStore();
 const feedback = feedbackStore();
 
@@ -73,5 +72,5 @@ const updatePagination = (data) => {
   page = data;
   feedback.getFeedbacks(page);
 };
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api.apiUrl + '/feedbacks/pinned') || { data: [] };
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch($api + '/feedbacks/pinned') || { data: [] };
 </script>

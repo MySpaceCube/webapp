@@ -19,7 +19,6 @@ export default ({
     }
   },
   runtimeConfig: {
-    // see https://nuxt.com/modules/simple-sitemap
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
@@ -67,7 +66,7 @@ export default ({
         {
           name: 'news',
           path: '/news',
-          component: 'pages/news.vue',
+          component: 'pages/news/index.vue',
           absolute: true
         },
         {
@@ -216,7 +215,7 @@ export default ({
     '@nuxtjs/axios'
   ],
   plugins: [
-    '~/plugins/axios',
+    { src: '~/plugins/axios', mode: 'client' },
     '~/plugins/vercel',
     '~/plugins/primevue',
     '~/plugins/mitt'
