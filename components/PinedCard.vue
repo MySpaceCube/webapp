@@ -114,7 +114,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-@media (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .pined-card-section > * {
     width: 49% !important;
     &:first-child:nth-last-child(1) {
@@ -129,15 +129,12 @@ export default {
   max-height: 19rem;
   height: 19rem;
   min-height: 13rem;
-  min-width: 100%;
+  width: 100%;
   padding: 14px 24px;
   display: flex;
   align-items: flex-end;
   border-radius: 1rem;
   margin-bottom: 1rem;
-  @media screen and (min-width: 1200px) {
-    min-width: 49%;
-  }
 
   &.invert-true {
     justify-content: end;
@@ -164,6 +161,12 @@ export default {
       position: absolute;
       margin-top: 1.5rem;
       right: 0.5rem;
+    }
+    .pined-card-section > * {
+      width: 49% !important;
+      &:first-child:nth-last-child(1) {
+        width: 100% !important;
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 import { authStore } from '~/store/auth';
 import { isAdmin, isPremium } from '~/utils/utils';
 import { useRoute } from '#app';
+import {defineNuxtPlugin} from "nuxt/app";
 
 export default defineNuxtPlugin((nuxt) => {
   const store = authStore(nuxt.$pinia);
@@ -30,7 +31,6 @@ export default defineNuxtPlugin((nuxt) => {
     const routes = ['/login', '/register'];
     const globalRoute = useRoute;
 
-    console.log(globalRoute.path);
     if (routes.includes(globalRoute.path)) {
     //   TODO
     }

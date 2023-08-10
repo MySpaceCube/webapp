@@ -1,9 +1,9 @@
 <template>
-  <h1>{{ $t('global.resources') }}</h1>
-    <div v-if='!pending && resources.data'>
+  <h1>{{ $t('global.news') }}</h1>
+    <div v-if='!pending && news.data'>
       <ul class="d-flex feedbacks-card-section">
-        <li v-for="resource in resources.data" :key="resource.id">
-          <ResourceCard :resource="resource"></ResourceCard>
+        <li v-for="article in news.data" :key="article.id">
+          {{ article.title }}
         </li>
       </ul>
     </div>
@@ -24,10 +24,10 @@ let page = 1;
 
 const {
   pending,
-  data: resources
+  data: news
 } = await useLazyAsyncData(
-  'resources',
-  () => $fetch($api + '/resources?page=' + page)
+  'news',
+  () => $fetch($api + '/news?page=' + page)
 ) || {
   data: []
 };
