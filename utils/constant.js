@@ -7,6 +7,7 @@ export const roles = {
   ROLE_MINECRAFT: 'ROLE_MINECRAFT',
   ROLE_MINECRAFT_ADMIN: 'ROLE_MINECRAFT_ADMIN',
   ROLE_MINECRAFT_MODERATOR: 'ROLE_MINECRAFT_MODERATOR',
+  ROLE_PREMIUM: 'ROLE_PREMIUM',
   ROLE_USER: 'ROLE_USER'
 };
 
@@ -19,5 +20,6 @@ export const rolesTrans = {
   ROLE_MINECRAFT: 'minecraft',
   ROLE_MINECRAFT_ADMIN: 'minecraft_admin',
   ROLE_MINECRAFT_MODERATOR: 'minecraft_moderator',
+  ROLE_PREMIUM: 'premium',
   ROLE_USER: 'user'
 };

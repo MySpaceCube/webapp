@@ -62,6 +62,24 @@ export const getCurrentRole = (userRole) => {
   }
 };
 
+export const isPremium = (userRole) => {
+  switch (userRole) {
+  case roles.ROLE_SUPER_ADMIN:
+  case roles.ROLE_ADMIN:
+  case roles.ROLE_MODERATOR:
+  case roles.ROLE_EDITOR:
+  case roles.ROLE_AUTHOR:
+  case roles.ROLE_MINECRAFT_ADMIN:
+  case roles.ROLE_MINECRAFT_MODERATOR:
+  case roles.ROLE_PREMIUM:
+    return true;
+  case roles.ROLE_MINECRAFT:
+  case roles.ROLE_USER:
+  default:
+    return false;
+  }
+};
+
 export const isAdmin = (userRole) => {
   switch (userRole) {
   case roles.ROLE_SUPER_ADMIN:
@@ -72,6 +90,7 @@ export const isAdmin = (userRole) => {
   case roles.ROLE_MINECRAFT_ADMIN:
   case roles.ROLE_MINECRAFT_MODERATOR:
     return true;
+  case roles.ROLE_PREMIUM:
   case roles.ROLE_MINECRAFT:
   case roles.ROLE_USER:
   default:
@@ -136,6 +155,7 @@ export const getVerifyBadges = (user) => {
       return 'verify/verify-editor.svg';
     case roles.ROLE_AUTHOR:
       return 'verify/verify-editor.svg';
+    case roles.ROLE_PREMIUM:
     case roles.ROLE_MINECRAFT:
     case roles.ROLE_USER:
       if (!user.isMinecraftVerify) {

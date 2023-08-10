@@ -1,5 +1,5 @@
 import { authStore } from '~/store/auth';
-import { isAdmin } from '~/utils/utils';
+import { isAdmin, isPremium } from '~/utils/utils';
 import { useRoute } from '#app';
 
 export default defineNuxtPlugin((nuxt) => {
@@ -18,6 +18,11 @@ export default defineNuxtPlugin((nuxt) => {
     store.updateUser(token)
       .then(() => {
         store.isAdmin = isAdmin(store.user.roles[0]);
+        if (store.isAdmin) {
+          store.maxUploadFile = 100;
+        } else if (isPremium(store.user.roles[0])) {
+          store.maxUploadFile = 10;
+        }
       });
   }
 
@@ -27,7 +32,7 @@ export default defineNuxtPlugin((nuxt) => {
 
     console.log(globalRoute.path);
     if (routes.includes(globalRoute.path)) {
-      return navigateTo('/', { replace: true, redirectCode: 301 });
+    //   TODO
     }
   }
 });
