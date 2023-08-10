@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+
+let dynamicRoutes = [];
+
 export default ({
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL,
+  },
   srcDir: '.',
   ssr: true,
   app: {
@@ -151,6 +157,8 @@ export default ({
           absolute: true
         }
       );
+
+      dynamicRoutes = routes;
     }
   },
   image: {
@@ -216,7 +224,23 @@ export default ({
   ],
   robots: {
     // https://nuxt.com/modules/robots
-    /* module options */
+    UserAgent: '*',
+    Disallow: '',
+
+    Sitemap: `${process.env.NUXT_PUBLIC_SITE_URL}/sitemap.xml`
+  },
+  sitemap: {
+    hostname: process.env.NUXT_PUBLIC_SITE_URL,
+    routes: async () => {
+      const routes = [];
+      // Génération automatique des routes dynamiques à partir de la configuration de routes
+      for (const route of dynamicRoutes) {
+        if (route.path.includes(':')) {
+          routes.push(route.path);
+        }
+      }
+      return routes;
+    }
   },
   nuxtIcon: {
     // see: https://icones.js.org/ & https://nuxt.com/modules/icon
