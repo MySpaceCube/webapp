@@ -50,7 +50,7 @@
         </li>
       </ul>
       <div class="version">
-        <strong v-if="`${ global.beta }`">Beta</strong> <br>
+        <strong v-if="`${ global.beta }`">Alpha</strong> <br>
         <span>V{{ global.version }}</span>
       </div>
     </nav>
