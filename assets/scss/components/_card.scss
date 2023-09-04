@@ -76,7 +76,63 @@
 
 .feedback-card-footer {
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin-top: 1rem;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  justify-content: space-between;
+
+  .p-badge {
+    width: 75%;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    &.p-badge-danger {
+      background-color: #FC6767 !important;
+    }
+    &.p-badge-success {
+      color: white;
+    }
+
+    &:first-child {
+      border-radius: 0 0 0 10px !important;
+      &.p-badge-info {
+        + .p-badge.p-badge-danger {
+          background-image: linear-gradient(90deg, #0288D1 0%, #FC6767 25%) !important;
+        }
+      }
+      &.p-badge-warning {
+        + .p-badge.p-badge-success {
+          background-image: linear-gradient(90deg, #FBC02D 0%, #10B981 25%) !important;
+        }
+      }
+      &.p-badge-danger {
+        + .p-badge.p-badge-success {
+          background-image: linear-gradient(90deg, #FC6767 0%, #10B981 25%) !important;
+        }
+      }
+    }
+    &:nth-child(2) {
+      width: 112%;
+      padding-left: 12%;
+      &.p-badge-success {
+        + .p-badge.p-badge-danger {
+          background-image: linear-gradient(90deg, #10B981 0%, #FC6767 25%) !important;
+        }
+      }
+      &.p-badge-danger {
+        + .p-badge.p-badge-warning {
+          background-image: linear-gradient(90deg, #FC6767 0%, #FBC02D 25%) !important;
+        }
+      }
+      &.p-badge-danger {
+        + .p-badge.p-badge-success {
+          background-image: linear-gradient(90deg, #FC6767 0%, #10B981 25%) !important;
+        }
+      }
+    }
+    &:last-child {
+      width: 112%;
+      border-radius: 0 0 10px 0 !important;
+    }
+  }
 }

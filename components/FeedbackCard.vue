@@ -116,7 +116,7 @@ export default {
   .feedback-card-infos {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(6px);
-    padding: 14px 24px;
+    padding: 14px 24px 2rem 24px;
     min-height: 100%;
     min-width: 100%;
     border-radius: 1rem;

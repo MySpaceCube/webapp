@@ -1,10 +1,9 @@
 import axios from 'axios';
 import { authStore } from '~/store/auth';
-import {defineNuxtPlugin, useRuntimeConfig} from "nuxt/app";
+import { defineNuxtPlugin } from 'nuxt/app';
 
 export default defineNuxtPlugin((nuxtApp) => {
   const store = authStore(nuxtApp.$pinia);
-  const api = useRuntimeConfig().public.apiUrl;
 
   axios.interceptors.request.use((config) => {
     if (store.token) {
@@ -12,10 +11,4 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
     return config;
   });
-
-  return {
-    provide: {
-      api
-    }
-  };
 });

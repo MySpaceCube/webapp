@@ -29,14 +29,14 @@
 
 <script setup>
 import { getVerifyBadges, getPoints } from '~/utils/utils';
-import { useLazyAsyncData } from 'nuxt/app';
+import { useLazyAsyncData, useRuntimeConfig } from 'nuxt/app';
 
-const { $api } = useNuxtApp();
+const api = useRuntimeConfig().public.apiUrl;
 
 const {
   pending,
   data: userTop
-} = await useLazyAsyncData('userTop', () => $fetch($api + '/users/top')) || { data: [] };
+} = await useLazyAsyncData('userTop', () => $fetch(api + '/users/top')) || { data: [] };
 </script>
 
 <style>

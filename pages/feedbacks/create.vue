@@ -90,7 +90,6 @@
 </template>
 
 <script setup>
-import { apiStore } from '~/store/api';
 import { authStore } from '~/store/auth';
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
@@ -106,10 +105,9 @@ const targetApp = ref('');
 const type = ref('');
 let errorMessage = {};
 
-const api = apiStore();
 const auth = authStore();
 const toast = useToast();
-const { $bus } = useNuxtApp();
+const { $bus, $api } = useNuxtApp();
 
 watch([title, description, targetApp, type], () => {
   isValidateForm();
@@ -153,7 +151,7 @@ const onSubmit = () => {
     return false;
   }
 
-  axios.post(api.apiUrl + '/feedbacks', {
+  axios.post($api + '/feedbacks', {
     title: title.value,
     description: description.value,
     targetApp: parseInt(targetApp.value),

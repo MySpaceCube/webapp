@@ -175,14 +175,11 @@ export const getVerifyBadges = (user) => {
 export const feedbackVariantType = (type) => {
   switch (type) {
   case 'style':
-    return 'dark';
+    return 'help';
   case 'bug':
     return 'danger';
-  case 'done':
-    return 'info';
-  case 'in-progress':
-    return 'warning';
-  case 'pending':
+  case 'feature':
+    return 'success';
   default:
     return 'secondary';
   }

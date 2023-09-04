@@ -23,6 +23,10 @@
     <hr>
     <section>
       <h2>{{ $t('global.other') }} {{ $t('global.feedbacks') }}</h2>
+      <Paginate v-model="page"
+                :page-count="feedback.pagination.maxPage"
+                :click-handler="updatePagination">
+      </Paginate>
       <div v-if='!pending && feedback.feedbacks'>
         <ul class="d-flex feedbacks-card-section">
           <li v-for="feedback in feedback.feedbacks" :key="feedback.id">
@@ -50,9 +54,9 @@ import Skeleton from 'primevue/skeleton';
 import PinedCard from '~/components/PinedCard.vue';
 import { feedbackStore } from '~/store/feedback';
 import Paginate from 'vuejs-paginate-next';
-import { useLazyFetch } from "nuxt/app";
+import { useLazyFetch, useRuntimeConfig } from 'nuxt/app';
+const api = useRuntimeConfig().public.apiUrl;
 
-const { $api } = useNuxtApp();
 const global = globalStore();
 const feedback = feedbackStore();
 
@@ -66,11 +70,12 @@ useHead({
     class: 'test'
   }
 });
-feedback.getFeedbacks(page);
+feedback.api = api;
+await feedback.getFeedbacks(page);
 
 const updatePagination = (data) => {
   page = data;
   feedback.getFeedbacks(page);
 };
-const { pendingPinned, data: feedbacksPinned } = await useLazyFetch($api + '/feedbacks/pinned') || { data: [] };
+const { pendingPinned, data: feedbacksPinned } = await useLazyFetch(api + '/feedbacks/pinned') || { data: [] };
 </script>
