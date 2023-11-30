@@ -15,7 +15,6 @@
     "scan-trans": "node ./scripts/i18n-scanner.js"
   },
   "devDependencies": {
-    "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/i18n": "^8.0.0-beta.11",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "chalk": "^5.3.0",
@@ -25,12 +24,11 @@
     "eslint-plugin-n": "^15.5.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.8.0",
-    "fs": "^0.0.1-security",
     "i18next-scanner": "^4.3.0",
     "nuxt": "3.6.2",
     "nuxt-icon": "^0.4.0",
     "nuxt-simple-sitemap": "^2.4.14",
-    "nuxt-vite": "^0.3.5",
+    "nuxt-vite": "^0.0.27",
     "typescript": "^4.9.3"
   },
   "dependencies": {
@@ -50,8 +48,6 @@
     "nuxt-start": "^2.16.3",
     "nuxt3-vuex-module": "^1.0.11",
     "pinia": "^2.1.4",
-    "primeicons": "^6.0.1",
-    "primevue": "^3.30.0",
     "sass": "^1.56.2",
     "sass-loader": "^10.4.1",
     "vue": "^3.2.47",

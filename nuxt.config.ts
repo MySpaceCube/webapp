@@ -70,66 +70,9 @@ export default ({
           absolute: true
         },
         {
-          name: 'feedbacks',
-          path: '/feedbacks',
-          component: 'pages/feedbacks/index.vue',
-          absolute: true
-        },
-        {
-          name: 'feedbacksCreate',
-          path: '/feedbacks/crate',
-          component: 'pages/feedbacks/create.vue',
-          absolute: true
-        },
-        {
-          name: 'feedbacksInfos',
-          path: '/feedbacks/:id',
-          component: 'pages/feedbacks/[id].vue',
-          absolute: true
-        },
-        {
-          name: 'resources',
-          path: '/resources',
-          component: 'pages/resources/index.vue',
-          absolute: false,
-          children: [
-            {
-              name: 'createResource',
-              path: '/create/:type',
-              component: 'pages/resources/create/[type].vue'
-            }
-          ]
-        },
-        {
-          name: 'server',
-          path: '/servers',
-          component: 'pages/server.vue',
-          absolute: true,
-          children: [
-            {
-              name: 'SpaceCube',
-              path: '/spacecube',
-              component: 'pages/servers/spacecube.vue',
-              absolute: true
-            },
-            {
-              name: 'PeepsLords',
-              path: '/peepslords',
-              component: 'pages/servers/peepslords.vue',
-              absolute: true
-            }
-          ]
-        },
-        {
           name: 'about',
           path: '/about',
           component: 'pages/about.vue',
-          absolute: true
-        },
-        {
-          name: 'websiteTools',
-          path: '/website-tools',
-          component: 'pages/website.vue',
           absolute: true
         },
         {
@@ -167,7 +110,6 @@ export default ({
     ]
   },
   modules: [
-    '@nuxt/image',
     '@nuxtjs/i18n',
     '@nuxtjs/robots',
     'nuxt-simple-sitemap',
@@ -246,9 +188,6 @@ export default ({
     }
   },
   css: [
-    'primevue/resources/themes/saga-blue/theme.css',
-    'primevue/resources/primevue.css',
-    'primeicons/primeicons.css'
   ],
   build: {
     transpile: ['primevue']

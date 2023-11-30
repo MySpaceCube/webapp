@@ -13,7 +13,7 @@
         <a href="https://invite.gg/spacecancer" target="_blank">discord</a>.
       </p>
       <br />
-      <p>&copy; 2022 - Tous droits réservés</p>
+      <p>&copy; 2024 - Tous droits réservés</p>
     </div>
   </template>
 <script>
@@ -21,7 +21,7 @@ export default {
   name: 'MaintenancePage',
   head () {
     return {
-      title: 'Space-Cube - Serveur minecraft - Site en Maintenance'
+      title: 'MySpaceCube - Site en Maintenance'
     };
   }
 };
